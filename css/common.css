@@ -1,0 +1,673 @@
+/* ==========================================================================
+   GOGU BREWERY - 공통 스타일시트 (Common CSS)
+   - 모든 페이지에서 공통으로 사용하는 폰트, 색상 변수, 헤더(Navbar), 푸터 등을 관리합니다.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. 웹 폰트 정의 (@font-face)
+   - 국민대 성곡 세리프 (제목용 한글 폰트)
+   ========================================================================== */
+@font-face {
+    font-family: 'KookminUniversitySunggokSerif';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2607101542@kmu80sungkokserif/kmu80sungkokserif/KMU80SungkokSerif.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    /* 폰트 로딩 중에도 글자가 먼저 보이게 설정 */
+}
+
+/* ==========================================================================
+   2. 디자인 토큰 및 변수 (:root)
+   - 웹사이트 전체에서 재사용할 색상, 폰트, 여백 등을 변수로 지정합니다.
+   ========================================================================== */
+:root {
+    /* [폰트 설정] */
+    --font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* 본문 기본 폰트 */
+    --font-en: 'Bebas Neue', sans-serif;
+    /* 영문 / 포인트용 폰트 */
+    --font-title: 'KookminUniversitySunggokSerif', serif;
+    /* 제목 / 헤드라인용 폰트 */
+
+    /* [배경 및 테마 색상] */
+    --color-main: #18231F;
+    /* 메인 배경 색상 (짙은 다크 그린) */
+    --color-sub-1: #344E41;
+    /* 서브 색상 1 (중간 톤 포레스트 그린) */
+    --color-sub-2: #2B4135;
+    /* 서브 색상 2 (어두운 포레스트 그린) */
+    --color-footer: #18231F;
+    /* 푸터 배경 색상 */
+    --color-accent: #AD1931;
+    /* 포인트 강조 색상 (딥 레드) */
+
+    /* [텍스트 색상] */
+    --text-primary: #F4F4F2;
+    /* 기본 텍스트 (밝은 아이보리/화이트) */
+    --text-muted: #A3B0A7;
+    /* 보조/설명 텍스트 (차분한 세이지 그레이) */
+    --text-gold: #C5A059;
+    /* 골드 텍스트 (우아한 포인트) */
+    --text-gold-light: #E5B84C;
+    /* 밝은 골드 텍스트 (하이라이트) */
+    --text-accent: #AD1931;
+    /* 레드 텍스트 (강조용) */
+
+    /* [레이아웃 & 여백 설정] */
+    --page-padding-x: 300px;
+    /* 기본 좌우 여백 (PC 기준 300px) */
+    --border-color: rgba(163, 176, 167, 0.2);
+    /* 텍스트 보조색 기반의 은은한 테두리 */
+    --container-max-width: 1920px;
+    /* 전체 최대 너비 */
+    --header-height: 100px;
+    /* 헤더 높이 (100px) */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* ==========================================================================
+   3. 기본 리셋 스타일 (Reset & Base)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* 패딩과 테두리를 너비에 포함시켜 계산 */
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* 부드러운 스크롤 이동 */
+}
+
+body {
+    font-family: var(--font-body);
+    /* 기본 본문 폰트(Pretendard) 적용 */
+    background-color: var(--color-main);
+    /* 모든 페이지의 기본 메인 배경색 (#18231F) */
+    color: var(--text-primary);
+    /* 기본 글자색 (#F4F4F2) */
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+/* ==========================================================================
+   4. 제목(Headings) 폰트 일괄 설정
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-title);
+    /* 제목 전용 폰트 */
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+/* 영문 전용 폰트 유틸리티 클래스 */
+.font-en {
+    font-family: var(--font-en);
+    letter-spacing: 1.5px;
+}
+
+/* ==========================================================================
+   5. 레이아웃 & 공통 컨테이너
+   - 좌우 300px 여백이 적용되는 공통 컨테이너
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding-left: var(--page-padding-x);
+    /* 왼쪽 300px 여백 */
+    padding-right: var(--page-padding-x);
+    /* 오른쪽 300px 여백 */
+}
+
+/* ==========================================================================
+   6. 상단 고정 헤더 & 네비게이션 바 (Header & Navbar)
+   - 크기: 1920px x 100px (화면 상단 고정: position: fixed)
+   - 배경: 글래스모피즘 (반투명 + blur 효과)
+   - 요소 간격: 80px 유지 및 중앙 정렬
+   ========================================================================== */
+.header {
+    position: fixed;
+    /* 스크롤 시 화면 상단에 고정 */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 1920px 기준으로 화면 중앙 정렬 */
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 최대 1920px */
+    height: var(--header-height);
+    /* 높이 100px */
+    background: rgba(24, 35, 31, 0.3);
+    /* 반투명 배경 */
+    backdrop-filter: blur(4px);
+    /* 은은한 글래스모피즘 효과 */
+    -webkit-backdrop-filter: blur(4px);
+    /* 사파리 브라우저 호환 */
+    border: none;
+    /* 테두리 없음 */
+    z-index: 1000;
+    /* 항상 최상단에 표시 */
+}
+
+/* 네비게이션 컨테이너 */
+.nav-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    /* 가로 중앙 정렬 */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    gap: 80px;
+    /* 메뉴 및 로고 간 80px 간격 유지 */
+}
+
+/* 중앙 브랜드 로고 영역 (60x60) */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    width: 60px;
+    /* 로고 가로 60px */
+    height: 60px;
+    /* 로고 세로 60px */
+    object-fit: contain;
+    /* 비율 유지 */
+    display: block;
+}
+
+/* 각 메뉴 아이템 (영문 + 한글 서브텍스트 감싸는 링크) */
+.nav-item {
+    display: inline-flex;
+    align-items: baseline;
+    /* 영문과 한글 밑 라인 정렬 */
+    position: relative;
+    padding: 8px 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 1) 영문 메뉴 텍스트 */
+.nav-text-en {
+    font-family: var(--font-en);
+    /* Bebas Neue 영문 폰트 */
+    font-size: 24px;
+    /* 글자 크기 24px */
+    color: var(--text-gold);
+    /* 골드 색상 (#C5A059) */
+    letter-spacing: 1px;
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+/* 2) 한글 서브 텍스트 */
+.nav-text-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 폰트 */
+    font-size: 10px;
+    /* 글자 크기 10px */
+    color: var(--text-accent);
+    /* 포인트 붉은색 (#AD1931) */
+    margin-left: 6px;
+    /* 영문과 한글 사이 6px 간격 */
+    opacity: 0;
+    /* 평소에는 투명(숨김) */
+    transform: translateY(2px);
+    /* 살짝 아래 위치 */
+    transition: all var(--transition-fast);
+    /* 서서히 나타나는 전환 효과 */
+    white-space: nowrap;
+    /* 줄바꿈 방지 */
+    line-height: 1;
+}
+
+/* 3) 일체형 밑줄 효과 (영문 + 한글 전체를 연결하는 붉은색 밑줄) */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    /* 글자 아래 1px 위치 */
+    left: 0;
+    width: 0;
+    /* 평소에는 너비 0 */
+    height: 2px;
+    /* 밑줄 두께 2px */
+    background-color: var(--color-accent);
+    /* 포인트 붉은색 (#AD1931) */
+    transition: width var(--transition-fast);
+    /* 부드러운 애니메이션 */
+}
+
+/* 마우스 올렸을 때(Hover) 인터랙션 */
+.nav-item:hover .nav-text-ko {
+    opacity: 1;
+    /* 한글 서브텍스트 표시 */
+    transform: translateY(0);
+}
+
+.nav-item:hover::after {
+    width: 100%;
+    /* 밑줄이 전체 너비로 100% 확장 */
+}
+
+/* ==========================================================================
+   7. 공통 푸터 영역 (Footer)
+   - 크기: 1920px x 639px
+   - 배경색: --color-footer (#18231F)
+   - 상단 여백: 64px
+   ========================================================================== */
+.footer {
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 최대 1920px */
+    min-height: 639px;
+    /* 최소 높이 639px */
+    margin: 0 auto;
+    background-color: var(--color-footer);
+    /* 푸터 배경색 (#18231F) */
+    border-top: 1px solid var(--border-color);
+    padding-top: 64px;
+    /* 상단 64px 여백 */
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* 상단 정보, 중앙 대형 배너, 하단 메타정보 분할 */
+    overflow: hidden;
+}
+
+/* 푸터 상단 컨테이너 */
+.footer-top-container {
+    width: 100%;
+}
+
+/* 푸터 상단 콘텐츠 레이아웃 */
+.footer-top {
+    display: flex;
+    justify-content: flex-start;
+    /* 좌측부터 순서대로 정렬 */
+    align-items: flex-start;
+    gap: 64px;
+    /* 소개 영역 우측 64px 간격 */
+    margin-bottom: 64px;
+    /* AI 자산 안내 사각형 박스 하단 64px 여백 */
+}
+
+/* 푸터 좌측 브랜드 컬럼 */
+.footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    /* 너비 축소 방지 */
+}
+
+/* 1. 로고 영역 (원형 60x60 + 우측 15px 텍스트) */
+.footer-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* 로고와 텍스트 사이 15px 간격 */
+    margin-bottom: 25px;
+    /* 하단 소개글과 25px 간격 */
+}
+
+.footer-logo-img {
+    width: 60px;
+    /* 로고 가로 60px */
+    height: 60px;
+    /* 로고 세로 60px */
+    border-radius: 50%;
+    /* 원형 */
+    object-fit: cover;
+    display: block;
+}
+
+.footer-logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* GOGU와 브루어리 곡우 사이 4px 간격 */
+}
+
+.footer-logo-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 28px;
+    /* 글자 크기 28px */
+    color: var(--text-primary);
+    /* 밝은 아이보리 (#F4F4F2) */
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.footer-logo-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    /* 글자 크기 16px */
+    color: var(--text-gold);
+    /* 골드 색상 (#C5A059) */
+    line-height: 1;
+}
+
+/* 2. 소개 텍스트 (로고 하단 25px, --font-body, --text-gold, 16px, 줄간격 1.875) */
+.footer-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    /* 글자 크기 16px */
+    color: var(--text-gold);
+    /* 골드 색상 (#C5A059) */
+    line-height: 1.875;
+    /* 줄간격 1.875 */
+    margin-bottom: 24px;
+    /* 하단 AI 배지와 24px 간격 */
+}
+
+/* 3. AI 자산 안내 사각형 박스 (340x37 크기, 배경 --color-sub-2, 테두리 1px --text-gold) */
+.footer-ai-badge {
+    width: 340px;
+    /* 가로 340px */
+    height: 37px;
+    /* 세로 37px */
+    background-color: var(--color-sub-2);
+    /* 배경색 #2B4135 */
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    /* 골드(#C5A059) 1px 굵기, 40% 투명도 테두리 */
+    padding: 0 17px;
+    /* 좌우 17px 여백 */
+    display: inline-flex;
+    align-items: center;
+    /* 상하 중앙 정렬 (13px 수직 여백 효과) */
+    gap: 10px;
+    /* 아이콘과 텍스트 사이 10px 간격 */
+    box-sizing: border-box;
+}
+
+/* 12x12 사이즈 필름 아이콘 (--text-muted) */
+.footer-film-icon {
+    width: 12px;
+    /* 가로 12px */
+    height: 12px;
+    /* 세로 12px */
+    color: var(--text-muted);
+    /* 세이지 그레이 (#A3B0A7) */
+    flex-shrink: 0;
+    display: block;
+}
+
+/* AI 안내 텍스트 (10px, --font-body) */
+.footer-ai-text {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 10px;
+    /* 글자 크기 10px */
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.footer-ai-text .text-muted-part {
+    color: var(--text-muted);
+    /* 회색 텍스트 (#A3B0A7) */
+}
+
+.footer-ai-text .text-gold-part {
+    color: var(--text-gold);
+    /* 골드 텍스트 (#C5A059) */
+    margin-left: 2px;
+}
+
+/* ==========================================================================
+   푸터 우측 3개 정보 영역 (EXPLORE, VISIT, CONTACT)
+   - 영역 끼리의 간격: 187px
+   - 좌측 정렬
+   ========================================================================== */
+.footer-info-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 187px;
+    /* 영역 끼리의 간격 187px */
+    flex-shrink: 0;
+}
+
+/* 각 컬럼 공통 스타일 (좌측 정렬) */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* 좌측 정렬 */
+    text-align: left;
+}
+
+/* 각 영역 설명 타이틀 (EXPLORE, VISIT, CONTACT) */
+.footer-col-title {
+    font-family: var(--font-en);
+    /* Bebas Neue 영문 폰트 */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold-light);
+    /* --text-gold-light (#E5B84C) */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    margin-bottom: 24px;
+    /* 하단 내용과의 간격 */
+}
+
+/* 1) 텍스트 메뉴 버튼 영역 (EXPLORE) */
+.footer-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    /* 메뉴 버튼 간 세로 간격 */
+}
+
+.footer-menu-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    /* 영문과 한글 사이 간격 */
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.footer-menu-item:hover {
+    opacity: 0.8;
+    transform: translateX(3px);
+    /* 마우스 올렸을 때 오른쪽으로 살짝 이동 */
+}
+
+/* 영문 텍스트: --font-en, 14px, #AD1931 */
+.footer-menu-en {
+    font-family: var(--font-en);
+    /* Bebas Neue 영문 폰트 */
+    font-size: 14px;
+    /* 14px */
+    color: var(--color-accent);
+    /* #AD1931 */
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+/* 한글 텍스트: --font-body, 14px, --text-gold */
+.footer-menu-ko {
+    font-family: var(--font-body);
+    /* Pretendard 본문 폰트 */
+    font-size: 14px;
+    /* 14px */
+    color: var(--text-gold);
+    /* #C5A059 */
+    line-height: 1;
+}
+
+/* 2 & 3) 위치 소개(VISIT) 및 연락처(CONTACT) 정보 리스트 */
+.footer-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* 텍스트 줄 간격 */
+}
+
+.footer-info-item {
+    font-family: var(--font-body);
+    /* Pretendard 본문 폰트 */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold);
+    /* --text-gold (#C5A059) */
+    line-height: 1.5;
+    text-decoration: none;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* 월 • 화 휴무: --text-muted (#A3B0A7) */
+.footer-info-item.text-muted {
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+}
+
+/* 연락처 링크 호버 효과 */
+.footer-link {
+    transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--text-gold-light);
+    /* 호버 시 밝은 골드 색상 */
+}
+
+/* ==========================================================================
+   푸터 중앙 대형 배너 영역 (길이 1920px 가로선 2개 및 210px BERWERY GOGU 텍스트)
+   - 상하 1920px 가로선: 투명도 40%, --text-muted, 1px 굵기
+   - 210px 텍스트: 배경색 없고, 투명도 40%, 테두리 --text-muted, --font-en
+   - 하단 40px 여백
+   ========================================================================== */
+.footer-giant-banner {
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 1920px */
+    margin: 0 auto 40px auto;
+    /* 하단에 40px 여백 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    user-select: none;
+}
+
+/* 상하 1920px 가로선 (투명도 40%, --text-muted, 1px 굵기) */
+.footer-divider-line {
+    width: 100%;
+    max-width: 1920px;
+    height: 1px;
+    background-color: rgba(163, 176, 167, 0.4);
+    /* --text-muted (#A3B0A7), 40% 투명도 */
+}
+
+/* 중앙 대형 텍스트: 배경색 없고, 투명도 40%, 테두리 --text-muted, --font-en, 210px "BERWERY GOGU" */
+.footer-giant-title {
+    width: 100%;
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 210px;
+    /* 210px 대형 텍스트 */
+    line-height: 0.82;
+    /* 위아래 가로선과 타이트하게 맞물리는 라인 높이 */
+    text-align: center;
+    /* 가로 정중앙 */
+    color: transparent;
+    /* 배경색 없음 (글자 내부 투명) */
+    -webkit-text-stroke: 1px rgba(163, 176, 167, 0.4);
+    /* 투명도 40%, 테두리 --text-muted */
+    letter-spacing: 2px;
+    white-space: nowrap;
+    display: block;
+    padding: 0;
+    margin: 0 0 -23px 0;
+    /* 하단 가로선이 글자 밑면에 딱 밀착되도록 여백 보정 */
+}
+
+/* ==========================================================================
+   푸터 최하단 프로젝트 메타 정보 행 (상하 20px 여백, 좌우 끝 정렬)
+   - 좌측: 좌측정렬 --text-muted, --font-title, 16px, 투명도 60%
+   - 우측: 우측정렬 --text-muted, --font-title, 16px, 투명도 60%
+   ========================================================================== */
+.footer-bottom-container {
+    width: 100%;
+}
+
+.footer-bottom-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* 화면 좌측과 우측 끝 정렬 */
+    align-items: center;
+    padding: 20px 0;
+    /* 상하로 20px 여백 */
+    box-sizing: border-box;
+}
+
+/* 좌측 텍스트: "2026 Brewery Gogu - fictional brand project" */
+.footer-bottom-left {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    /* 16px */
+    color: rgba(163, 176, 167, 0.6);
+    /* --text-muted (#A3B0A7), 60% 투명도 */
+    text-align: left;
+    /* 좌측 정렬 */
+    line-height: 1;
+}
+
+/* 우측 텍스트: "기획 • AI 콘텐츠 • 디자인 • 프론트엔드 - one brand, one archive. " */
+.footer-bottom-right {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    /* 16px */
+    color: rgba(163, 176, 167, 0.6);
+    /* --text-muted (#A3B0A7), 60% 투명도 */
+    text-align: right;
+    /* 우측 정렬 */
+    line-height: 1;
+}

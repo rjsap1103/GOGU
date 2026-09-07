@@ -1,0 +1,1687 @@
+/* ==========================================================================
+   GOGU BREWERY - 메인 홈 전용 스타일시트 (Main CSS)
+   - index.html의 히어로 섹션, 롤링 슬라이더 바, 소개/양조철학 섹션을 관리합니다.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. 히어로 섹션 (Hero Section)
+   - 시작 위치: (0, 0)
+   - 크기: 1920px x 1080px (화면 전체 캔버스)
+   ========================================================================== */
+.main {
+    flex: 1;
+    padding-top: 0;
+    /* 히어로 섹션이 화면 최상단 (0,0)에서 시작 */
+}
+
+/* 1920x1080 고정 캔버스 히어로 영역 */
+.hero-section {
+    position: relative;
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 최대 1920px */
+    height: 1080px;
+    /* 고정 높이 1080px */
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: var(--color-main);
+}
+
+/* 1) 배경 레이어 (1920x1080 화면 꽉 차게 이미지/그라데이션 배치) */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 텍스트 가독성을 위한 어두운 오버레이 + hero_image 배경 이미지 */
+    background-image: linear-gradient(rgba(24, 35, 31, 0.4), rgba(24, 35, 31, 0.7)),
+        url('../assets/images/hero_image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* 2) 고정 부가 텍스트: (107, 154) 위치의 "AI BRAND FILM" */
+.hero-badge-film {
+    position: absolute;
+    left: 107px;
+    top: 154px;
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--text-gold);
+    letter-spacing: 1.5px;
+    z-index: 10;
+}
+
+/* 3) 우측 90도 회전 텍스트: (1604, 412) 위치 */
+.hero-rotate-text {
+    position: absolute;
+    left: 1604px;
+    top: 412px;
+    transform: rotate(90deg);
+    transform-origin: left top;
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--text-gold);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* 4) 메인 텍스트 블록: (300, 489) 위치 */
+.hero-content {
+    position: absolute;
+    left: 300px;
+    top: 489px;
+    z-index: 10;
+    text-align: left;
+}
+
+/* 소제목 한 줄 (영문 + 한글) */
+.hero-subhead-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 25px;
+    /* 하단 GOGU 타이틀과 25px 간격 */
+}
+
+.hero-subhead-en {
+    font-family: var(--font-en);
+    font-size: 20px;
+    color: var(--text-gold);
+    letter-spacing: 1px;
+}
+
+.hero-subhead-ko {
+    font-family: var(--font-title);
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+/* 대제목: GOGU (210px 초대형 텍스트) */
+.hero-main-title {
+    font-family: var(--font-en);
+    font-size: 210px;
+    color: var(--text-primary);
+    line-height: 0.82;
+    /* 영문 대문자 높이에 맞춘 타이트한 라인 높이 */
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    /* 하단 설명문과 30px 간격 */
+    font-weight: 400;
+}
+
+/* 본문 설명 텍스트 (18px) */
+.hero-description {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 36px;
+}
+
+/* 5) 직사각형 버튼 그룹: (860, 744) 위치 (200x60 버튼 2개, 30px 간격) */
+.hero-btn-group {
+    position: absolute;
+    left: 860px;
+    /* 가로 860px 위치 */
+    top: 744px;
+    /* 세로 744px 위치 */
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    /* 버튼 간 30px 간격 */
+    z-index: 10;
+}
+
+/* 공통 직사각형 버튼 베이스 */
+.hero-btn {
+    width: 200px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* 가로 정중앙 정렬 */
+    font-family: var(--font-en);
+    font-size: 20px;
+    line-height: 1;
+    /* 폰트 라인 높이 초기화 */
+    border-radius: 0;
+    /* 각진 직사각형 */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+/* 버튼 내부 텍스트 공통 스타일 */
+.hero-btn .btn-text {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    margin-top: 1px;
+    /* 시각적 센터링 미세 보정 */
+    letter-spacing: 1px;
+}
+
+/* 버튼 1: EXPLORE BEER (배경 #AD1931, 흰색 텍스트, 14px 화살표 아이콘) */
+.hero-btn-primary {
+    background-color: var(--color-accent);
+    /* #AD1931 */
+    color: var(--text-primary);
+    border: none;
+    gap: 10px;
+    /* 텍스트와 화살표 사이 10px 간격 */
+    position: relative;
+    overflow: hidden;
+    /* 빛 효과가 버튼 바깥으로 나가지 않도록 설정 */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+/* 14px 우측 화살표 SVG 아이콘 */
+.btn-arrow-icon {
+    width: 14px;
+    height: 14px;
+    display: block;
+    flex-shrink: 0;
+    stroke: var(--text-primary);
+    transition: transform var(--transition-fast);
+}
+
+/* 빛이 대각선으로 지나가는 반사광 가상 요소 */
+.hero-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    /* 평소에는 버튼 왼쪽 바깥에 대기 */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    /* 비스듬한 빛 모양 */
+    transition: none;
+}
+
+/* 버튼 1 Hover 효과: 1px 확대 + 빛이 좌→우로 통과 */
+.hero-btn-primary:hover {
+    transform: scale(1.01);
+    /* 버튼 1px 살짝 확대 */
+    box-shadow: 0 4px 16px rgba(173, 25, 49, 0.4);
+}
+
+.hero-btn-primary:hover::before {
+    left: 160%;
+    /* 마우스 올렸을 때 빛이 우측으로 시원하게 통과 */
+    transition: left 0.65s ease-in-out;
+}
+
+.hero-btn-primary:hover .btn-arrow-icon {
+    transform: translateX(4px);
+    /* 화살표가 살짝 오른쪽으로 이동 */
+}
+
+/* 버튼 2: BRAND FILM (투명 배경, 1px 테두리, 14px 붉은색 재생 아이콘) */
+.hero-btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    gap: 10px;
+    transition: all var(--transition-fast);
+}
+
+/* 14px 재생 SVG 아이콘 */
+.btn-play-icon {
+    width: 14px;
+    height: 14px;
+    display: block;
+    flex-shrink: 0;
+    color: var(--color-accent);
+    /* 평소에는 붉은색(#AD1931) 아이콘 */
+    transition: color var(--transition-fast);
+}
+
+/* 버튼 2 Hover 효과: 테두리/배경 #AD1931 20% 투명도 + 아이콘 #F4F4F2 */
+.hero-btn-secondary:hover {
+    border-color: var(--color-accent);
+    /* 테두리 #AD1931 변경 */
+    background-color: rgba(173, 25, 49, 0.2);
+    /* 배경색 #AD1931 20% 투명도 적용 */
+}
+
+.hero-btn-secondary:hover .btn-play-icon {
+    color: var(--text-primary);
+    /* 재생 버튼 아이콘이 밝은 아이보리(#F4F4F2)로 변경 */
+}
+
+/* 6) 하단 구분선 (y: 858, 너비 1320px, 굵기 1px, --text-gold) */
+.hero-divider-line {
+    position: absolute;
+    left: 300px;
+    top: 858px;
+    width: 1320px;
+    height: 1px;
+    background-color: var(--text-gold);
+    z-index: 10;
+}
+
+/* 7) 하단 정보 텍스트 (좌/우) */
+/* 좌측 좌표: (309, 878) */
+.hero-info-left {
+    position: absolute;
+    left: 309px;
+    top: 878px;
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--text-gold);
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+/* 우측 정보: (1498, 878) */
+.hero-info-right {
+    position: absolute;
+    left: 1498px;
+    top: 878px;
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--text-gold);
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+/* 8) 하단 중앙 스크롤 인디케이터 (구분선 하단 20px 간격 = top: 878px) */
+.hero-scroll-indicator {
+    position: absolute;
+    left: 50%;
+    top: 878px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+/* 2px 굵기, 세로 32px의 고정 베이스 트랙 선 */
+.scroll-track {
+    width: 2px;
+    height: 32px;
+    background-color: rgba(163, 176, 167, 0.25);
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 트랙 위를 위에서 아래로 미끄러지듯 움직이는 붉은색(#AD1931) 애니메이션 선 */
+.scroll-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
+    animation: scrollDownAnimation 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* 위 → 아래 이동 애니메이션 키프레임 */
+@keyframes scrollDownAnimation {
+    0% {
+        top: -14px;
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 32px;
+        opacity: 0;
+    }
+}
+
+/* 선 하단 4px 간격의 SCROLL 텍스트 (14px, --text-gold) */
+.scroll-text {
+    margin-top: 4px;
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--text-gold);
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   2. 무한 텍스트 롤링 슬라이더 바 (Infinite Ticker Slider)
+   - 위치: 히어로 섹션 바로 하단 (0, 1080)
+   - 크기: 1920px x 60px
+   - 배경색: --color-sub-1 (#344E41 포레스트 그린)
+   ========================================================================== */
+.ticker-slider-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 최대 1920px */
+    height: 60px;
+    /* 고정 높이 60px */
+    margin: 0 auto;
+    background-color: var(--color-sub-1);
+    /* 배경색 #344E41 */
+    overflow: hidden;
+    /* 슬라이더 바깥으로 나가는 텍스트 숨김 */
+    display: flex;
+    align-items: center;
+    /* 세로 정중앙 정렬 */
+    position: relative;
+    z-index: 20;
+    border-top: 1px solid rgba(163, 176, 167, 0.15);
+    border-bottom: 1px solid rgba(163, 176, 167, 0.15);
+}
+
+.ticker-wrapper {
+    display: flex;
+    width: max-content;
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    gap: 24px;
+    /* 객체(아이콘과 텍스트) 사이의 간격을 정확히 24px로 설정 */
+    padding-right: 24px;
+    /* 다음 트랙과 이어지는 연결부 간격 24px */
+    animation: tickerInfiniteScroll 35s linear infinite;
+    /* 부드러운 우→좌 무한 이동 */
+}
+
+.ticker-slider-section:hover .ticker-track {
+    animation-play-state: paused;
+}
+
+.ticker-star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    /* 포인트 붉은색 (#AD1931) */
+    flex-shrink: 0;
+}
+
+.ticker-star svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.ticker-text {
+    font-size: 16px;
+    color: var(--text-gold);
+    /* 골드 색상 (#C5A059) */
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ticker-text-en {
+    font-family: var(--font-en);
+    letter-spacing: 1.5px;
+    margin-top: 1px;
+}
+
+.ticker-text-ko {
+    font-family: var(--font-title);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+@keyframes tickerInfiniteScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* ==========================================================================
+   3. 소개 / 양조철학 섹션 (Intro / Manifesto Section)
+   - 배경색: --color-main (#18231F)
+   - 상하 여백: 128px
+   ========================================================================== */
+.intro-manifesto-section {
+    background-color: var(--color-main);
+    /* 배경색 #18231F */
+    padding: 128px 0;
+    /* 상하 128px 여백 */
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 10;
+}
+
+.intro-container {
+    display: flex;
+    justify-content: space-between;
+    /* 좌측 텍스트와 우측 표를 좌우 분할 배치 */
+    align-items: center;
+    /* 좌측 텍스트 구역과 우측 표 영역 세로 정중앙 정렬 */
+    gap: 60px;
+}
+
+/* 1) 좌측 텍스트 컬럼 */
+.intro-text-col {
+    max-width: 620px;
+    position: relative;
+}
+
+.intro-badge-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    /* 01 숫자의 영역 높이를 컴팩트하게 조절 */
+    margin-bottom: 0;
+}
+
+.intro-bg-num {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 100px;
+    /* 글자 크기 100px */
+    color: var(--text-primary);
+    opacity: 0.15;
+    /* 투명도 15% */
+    line-height: 1;
+    user-select: none;
+}
+
+.intro-subhead-row {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 숫자 01의 세로 중심에 소제목 가로선과 텍스트 완벽 일치 */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 요소 간 10px 간격 */
+    width: max-content;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.intro-subhead-line {
+    width: 30px;
+    height: 1px;
+    background-color: var(--color-accent);
+    /* 포인트 붉은색 (#AD1931) */
+    display: block;
+}
+
+.intro-subhead-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--color-accent);
+    /* 포인트 붉은색 (#AD1931) */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.intro-subhead-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    color: var(--text-gold);
+    /* 골드 색상 (#C5A059) */
+    line-height: 1;
+}
+
+/* 메인 타이틀 (48px, 숫자 01 하단과 완벽하게 맞물려 연결) */
+.intro-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 48px;
+    /* 글자 크기 48px */
+    color: var(--text-primary);
+    /* 밝은 아이보리 (#F4F4F2) */
+    line-height: 1.25;
+    /* 타이틀 줄간격 정돈 */
+    margin-top: -12px;
+    /* 음수 마진으로 위로 당겨 01 하단과 자연스럽게 연결 */
+    margin-bottom: 24px;
+    /* 하단 설명문과의 간격 */
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    /* 글자 크기 16px */
+    color: var(--text-muted);
+    /* 세이지 그레이 (#A3B0A7) */
+    line-height: 1.875;
+    /* 줄간격 1.875 */
+    margin-bottom: 40px;
+    /* 하단 버튼과 40px 간격 */
+}
+
+.intro-story-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    /* 텍스트와 화살표 사이 12px 간격 */
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-primary);
+    /* 기본 흰색 글자 */
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* 영문 대문자 */
+    padding-bottom: 4px;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.intro-arrow-icon {
+    width: 18px;
+    /* 가로 18px */
+    height: 10px;
+    /* 세로 10px */
+    stroke: var(--text-primary);
+    transition: transform var(--transition-fast), stroke var(--transition-fast);
+}
+
+.intro-story-btn:hover {
+    color: var(--color-accent);
+}
+
+.intro-story-btn:hover .intro-arrow-icon {
+    stroke: var(--color-accent);
+    transform: translateX(3px);
+}
+
+/* 2) 우측 2행 2열 표 (588px x 362px) */
+.intro-table-col {
+    flex-shrink: 0;
+}
+
+.intro-stats-table {
+    width: 588px;
+    /* 가로 588px */
+    height: 362px;
+    /* 세로 362px */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 2열 */
+    grid-template-rows: 1fr 1fr;
+    /* 2행 */
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    /* --text-gold (#C5A059) 1px 굵기, 40% 투명도 테두리 */
+    background: transparent;
+    /* 배경색 없음 */
+    box-sizing: border-box;
+}
+
+.stat-cell {
+    padding: 37px;
+    /* 내부 37px 여백 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* 좌측 상단 기준 정렬 */
+    gap: 12px;
+    /* 텍스트들이 12px 간격으로 하단으로 내려감 */
+    box-sizing: border-box;
+}
+
+.stat-cell:nth-child(odd) {
+    border-right: 1px solid rgba(197, 160, 89, 0.4);
+    /* 1열 오른쪽 테두리 */
+}
+
+.stat-cell:nth-child(1),
+.stat-cell:nth-child(2) {
+    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    /* 1행 하단 테두리 */
+}
+
+.stat-num {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 48px;
+    color: var(--text-primary);
+    line-height: 1;
+    font-weight: 400;
+}
+
+.stat-label-ko {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    color: var(--text-gold);
+    /* 골드 색상 (#C5A059) */
+    line-height: 1;
+}
+
+.stat-label-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 14px;
+    color: var(--color-accent);
+    /* 포인트 붉은색 (#AD1931) */
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* 전부 대문자 */
+}
+
+/* ==========================================================================
+   4. 맥주 소개 섹션 (Signature Beers Section)
+   - 배경색: --color-sub-1 (#344E41)
+   - 상하 여백: 128px
+   ========================================================================== */
+.signature-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 1920px */
+    margin: 0 auto;
+    background-color: var(--color-sub-1);
+    /* 배경색 #344E41 */
+    padding: 128px 0;
+    /* 상하 128px 여백 */
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* 1) 좌측 상단 헤더 영역 */
+.signature-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* 좌측 정렬 */
+    text-align: left;
+    margin-bottom: 71px;
+    /* 설명문 하단 71px 간격 */
+}
+
+/* 소제목: 30px 선 + "signature line" + "시그니쳐" (각각 10px 간격) */
+.signature-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 각각 10px 간격 */
+    margin-bottom: 20px;
+    /* 소제목 하단 20px 간격 */
+}
+
+.subhead-line {
+    width: 30px;
+    /* 가로 30px */
+    height: 1px;
+    /* 굵기 1px */
+    background-color: var(--text-gold-light);
+    /* --text-gold-light (#E5B84C) */
+    display: inline-block;
+}
+
+.subhead-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold-light);
+    /* --text-gold-light */
+    letter-spacing: 1px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.subhead-ko {
+    font-family: var(--font-title);
+    /* 성곡 세리프 */
+    font-size: 12px;
+    /* 12px */
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1;
+}
+
+/* 메인 타이틀: --text-primary, --font-title, 48px, "곡우의 세가지 기준" */
+.signature-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 48px;
+    /* 48px */
+    color: var(--text-primary);
+    /* #F4F4F2 */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    /* 타이틀 하단 20px 간격 */
+    font-weight: 400;
+}
+
+/* 설명문: --text-gold, --font-body, 16px */
+.signature-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold);
+    /* #C5A059 */
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 2) 맥주 카드 그룹: 400x581 카드 3장, 60px 간격 */
+.beer-cards-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    /* 카드 사이의 간격 60px */
+    width: 100%;
+}
+
+/* 맥주 카드 단일 아이템 (400px x 581px) */
+.beer-card {
+    width: 400px;
+    /* 가로 400px */
+    height: 581px;
+    /* 세로 581px */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    background-color: var(--color-sub-2);
+    /* 카드 배경색: --color-sub-2 (#2B4135) */
+    border: 1px solid transparent;
+    /* 호버 시 레이아웃 밀림 방지를 위한 투명 1px 테두리 */
+    overflow: hidden;
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.beer-card:hover {
+    transform: translateY(-8px);
+    /* 호버 시 카드 살짝 위로 부유 효과 */
+    border-color: var(--text-accent);
+    /* 호버 시 --text-accent 색상 1px 테두리선 */
+}
+
+/* 배경용 이미지 박스 (400px x 470px) */
+.beer-card-img-box {
+    width: 400px;
+    height: 470px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+/* 1번 카드: LAGER BEER MOCKUP */
+.beer-card:nth-child(1) .beer-card-img-box,
+.beer-card-img-box.beer-img-lager {
+    background-image: url('../assets/images/LAGER BEER MOCKUP.jpeg');
+}
+
+/* 2번 카드: PALE ALE MOCKUP */
+.beer-card:nth-child(2) .beer-card-img-box,
+.beer-card-img-box.beer-img-pale {
+    background-image: url('../assets/images/PALE ALE MOCKUP.jpeg');
+}
+
+/* 3번 카드: DARK BEER MOCKUP */
+.beer-card:nth-child(3) .beer-card-img-box,
+.beer-card-img-box.beer-img-dark {
+    background-image: url('../assets/images/DARK BEER MOCKUP.jpeg');
+}
+
+/* 겹치는 부분 그라데이션 오버레이 (하단 텍스트 가독성 확보) */
+.beer-card-img-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(to bottom, rgba(43, 65, 53, 0) 0%, rgba(43, 65, 53, 0.7) 40%, rgba(43, 65, 53, 1) 100%);
+    pointer-events: none;
+}
+
+/* 이미지 박스 상단 좌측 박스: 80x20, --color-main, 테두리 --text-gold 40% 1px */
+.beer-badge-type {
+    position: absolute;
+    top: 13px;
+    /* 상단 13px 여백 */
+    left: 24px;
+    /* 좌측 24px 여백 */
+    width: 80px;
+    /* 가로 80px */
+    height: 20px;
+    /* 세로 20px */
+    background-color: var(--color-main);
+    /* #18231F */
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    /* --text-gold (#C5A059) 40% 투명도 1px 테두리 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 10px;
+    /* 10px */
+    color: var(--text-gold);
+    /* --text-gold */
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* 이미지 박스 상단 우측 박스: 60x20, --color-accent */
+.beer-badge-abv {
+    position: absolute;
+    top: 13px;
+    /* 상단 13px 여백 */
+    right: 24px;
+    /* 우측 24px 여백 */
+    width: 60px;
+    /* 가로 60px */
+    height: 20px;
+    /* 세로 20px */
+    background-color: var(--color-accent);
+    /* #AD1931 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 10px;
+    /* 10px */
+    color: var(--text-primary);
+    /* #F4F4F2 */
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* 텍스트 박스 (400px x 168px, 57px만큼 겹쳐짐, z-index로 상단 배치) */
+.beer-card-text-box {
+    width: 400px;
+    height: 168px;
+    margin-top: -57px;
+    /* 이미지 박스와 57px 겹침 */
+    position: relative;
+    z-index: 3;
+    /* 텍스트 박스가 상단으로 올라옴 */
+    padding: 10px 24px 24px 24px;
+    /* 좌우 24px 여백 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* 텍스트 박스 안 텍스트들 좌측 정렬 */
+    text-align: left;
+    background-color: var(--color-sub-2);
+    /* #2B4135 */
+    background: linear-gradient(to bottom, rgba(43, 65, 53, 0.7) 0%, rgba(43, 65, 53, 0.96) 57px, #2B4135 57px, #2B4135 100%);
+    box-sizing: border-box;
+}
+
+/* 제목: --text-primary, --font-en, 28px "LAGER" */
+.beer-card-title {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 28px;
+    /* 28px */
+    color: var(--text-primary);
+    /* #F4F4F2 */
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    /* 제목 하단 6px 간격 */
+}
+
+/* 한글 설명: --text-muted, --font-title, 16px */
+.beer-card-korean-desc {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-muted);
+    /* #A3B0A7 */
+    line-height: 1.2;
+    margin-bottom: 16px;
+    /* 설명 하단 16px 간격 */
+}
+
+/* 중앙 정렬 가로선: --text-gold, 1px 굵기, 352px 길이 */
+.beer-card-divider {
+    width: 352px;
+    /* 352px */
+    height: 1px;
+    background-color: var(--text-gold);
+    /* --text-gold */
+    margin: 0 auto 16px auto;
+    /* 중앙 정렬, 하단 16px 간격 */
+    flex-shrink: 0;
+    /* 높이 축소 방지 */
+}
+
+/* 맥주 설명문: --text-muted, --font-body, 14px */
+.beer-card-feature {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 14px;
+    /* 14px */
+    color: var(--text-muted);
+    /* #A3B0A7 */
+    line-height: 1.2;
+    margin-bottom: 24px;
+    /* 맥주 설명문 하단 24px 간격 */
+}
+
+/* BEER 페이지 버튼: --color-accent, --font-en, 14px, "VIEW BEER" + 14x14 화살표 (10px 간격) */
+.beer-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* 텍스트와 화살표 10px 간격 */
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 14px;
+    /* 14px */
+    color: var(--color-accent);
+    /* #AD1931 */
+    text-decoration: none;
+    line-height: 1;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.beer-card-btn:hover {
+    opacity: 0.8;
+}
+
+.beer-btn-arrow {
+    width: 14px;
+    /* 14px */
+    height: 14px;
+    /* 14px */
+    stroke: var(--color-accent);
+    /* 버튼 텍스트와 동일한 색상 (#AD1931) */
+    transition: transform var(--transition-fast);
+}
+
+.beer-card-btn:hover .beer-btn-arrow {
+    transform: translateX(4px);
+    /* 마우스 올렸을 때 화살표 살짝 우측 이동 */
+}
+
+/* ==========================================================================
+   재료 소개 섹션 (Ingredients Section)
+   - 상하 여백: 128px
+   - 좌측: 02 소제목 + 타이틀 + 설명문 + 버튼
+   - 우측: 600x120 원료 박스 4개 (20px 간격)
+   ========================================================================== */
+.ingredients-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: var(--color-main);
+    padding: 128px 0;
+    border-bottom: 1px solid var(--border-color);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+.ingredients-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+/* [좌측: 텍스트 영역] */
+.ingredients-text-area {
+    flex: 1;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* 02 숫자 텍스트 & 소제목 겹침 영역 */
+.ingredients-badge-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 0;
+}
+
+.ingredients-num-badge {
+    font-family: var(--font-title);
+    font-size: 100px;
+    color: var(--text-primary);
+    opacity: 0.15;
+    line-height: 1;
+    user-select: none;
+}
+
+.ingredients-subhead-row {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: max-content;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.ingredients-subhead-line {
+    width: 30px;
+    height: 1px;
+    background-color: var(--color-accent);
+    display: block;
+    flex-shrink: 0;
+}
+
+.ingredients-subhead-en {
+    font-family: var(--font-en);
+    font-size: 16px;
+    color: var(--color-accent);
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.ingredients-subhead-ko {
+    font-family: var(--font-title);
+    font-size: 12px;
+    color: var(--text-gold);
+    line-height: 1;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* 타이틀: 02 하단과 맞닿음, 48px */
+.ingredients-title {
+    font-family: var(--font-title);
+    font-size: 48px;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-top: -12px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 2;
+}
+
+/* 설명문: 타이틀 하단 20px 간격, 16px, 줄간격 1.875 */
+.ingredients-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.875;
+    margin-bottom: 40px;
+}
+
+/* 스토리 페이지 텍스트 버튼: 설명문 하단 40px 간격 */
+.ingredients-story-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-en);
+    font-size: 16px;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.ingredients-story-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-normal);
+}
+
+.ingredients-story-btn:hover {
+    color: var(--color-accent);
+}
+
+.ingredients-story-btn:hover::after {
+    width: 100%;
+}
+
+.ingredients-arrow-icon {
+    width: 18px;
+    height: 10px;
+    stroke: var(--text-primary);
+    transition: transform var(--transition-fast), stroke var(--transition-fast);
+}
+
+.ingredients-story-btn:hover .ingredients-arrow-icon {
+    transform: translateX(6px);
+    stroke: var(--color-accent);
+}
+
+/* [우측: 원료 박스 영역] */
+.ingredients-boxes-area {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+/* 단일 원료 박스 (600px x 120px, STORY 페이지 이동 링크) */
+.ingredient-box {
+    width: 600px;
+    height: 120px;
+    background-color: var(--color-sub-2);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    padding: 20px 17px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ingredient-box:hover {
+    border-color: var(--color-accent);
+    /* 호버 시 붉은 포인트 테두리 */
+    transform: translateY(-3px);
+    /* 부유 효과 */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* 박스 내부 좌측 숫자: 뱃지 박스 제거, --font-title, 48px 외곽선 텍스트 (테두리 --text-primary 1px 40% 투명도, 배경색 없음) */
+.ingredient-num {
+    min-width: 50px;
+    font-family: var(--font-title);
+    font-size: 48px;
+    line-height: 1;
+    color: transparent;
+    /* 텍스트 배경색 없음 (글자 내부 투명) */
+    -webkit-text-stroke: 1px rgba(244, 244, 242, 0.4);
+    /* 테두리 색상 --text-primary (#F4F4F2), 1px, 40% 투명도 */
+    background: transparent;
+    border: none;
+    /* 기존 뱃지 박스 테두리 완전 제거 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    user-select: none;
+    transition: -webkit-text-stroke var(--transition-fast);
+}
+
+.ingredient-box:hover .ingredient-num {
+    -webkit-text-stroke: 1px var(--color-accent);
+    /* 호버 시 붉은색 외곽선으로 강조 */
+}
+
+/* 80x80 사이즈 이미지 박스 (숫자 우측 20px 간격) */
+.ingredient-img-box {
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: var(--color-main);
+}
+
+.ingredient-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-normal);
+}
+
+.ingredient-box:hover .ingredient-img {
+    transform: scale(1.05);
+}
+
+/* 이미지 우측 20px 간격 텍스트 정보 */
+.ingredient-info {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* 제목 행: "보리" 24px + 10px 간격 + "BARLEY" 14px */
+.ingredient-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.ingredient-name-ko {
+    font-family: var(--font-title);
+    font-size: 24px;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.ingredient-name-en {
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--text-gold);
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+/* 하단 14px 간격 "전북 군산" */
+.ingredient-origin {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-gold);
+    line-height: 1;
+}
+
+/* 각각의 박스 우측끝에 40x40 사이즈 아이콘 */
+.ingredient-icon-box {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* 마스크 기반 아이콘: 기본 --text-gold, 호버 시 #AD1931로 부드럽게 색상 변경 */
+.ingredient-icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-color: var(--text-gold);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.ingredient-icon-barley {
+    -webkit-mask-image: url('../assets/icons/icon_barley.png');
+    mask-image: url('../assets/icons/icon_barley.png');
+}
+
+.ingredient-icon-hop {
+    -webkit-mask-image: url('../assets/icons/icon_hop.png');
+    mask-image: url('../assets/icons/icon_hop.png');
+}
+
+.ingredient-icon-water {
+    -webkit-mask-image: url('../assets/icons/icon_water.png');
+    mask-image: url('../assets/icons/icon_water.png');
+}
+
+.ingredient-icon-yeast {
+    -webkit-mask-image: url('../assets/icons/icon_yeast.png');
+    mask-image: url('../assets/icons/icon_yeast.png');
+}
+
+/* 호버 시 아이콘 색상 #AD1931 (--color-accent)로 변경 */
+.ingredient-box:hover .ingredient-icon {
+    background-color: var(--color-accent);
+    /* #AD1931 */
+    transform: scale(1.08);
+}
+
+/* ==========================================================================
+   브랜드 필름 섹션 (Brand Film Section)
+   - 크기: 1920px x 500px, 70% 투명도 어두운 오버레이
+   - 상단 128px 여백: 소제목 (좌우 30px 가로선 + 텍스트 15px 간격)
+   - 정중앙: 60x60 --color-accent 원형 재생 버튼 (20px 재생 아이콘)
+   ========================================================================== */
+.brand-film-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 1920px */
+    height: 500px;
+    /* 500px 고정 높이 */
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-main);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 배경 이미지 및 70% 투명도 어두운 오버레이 */
+.brand-film-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(24, 35, 31, 0.7), rgba(24, 35, 31, 0.7)),
+        url('../assets/images/brand_film_thumb.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* 상단 128px 위치 소제목 행 (좌우 30px 가로선 + 텍스트 15px 간격) */
+.brand-film-header {
+    position: relative;
+    z-index: 2;
+    margin-top: 128px;
+    /* 상단 128px 여백 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* 요소 간 15px 간격 */
+    white-space: nowrap;
+}
+
+.film-line {
+    width: 30px;
+    /* 길이 30px 가로선 */
+    height: 1px;
+    /* 굵기 1px */
+    background-color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    display: block;
+    flex-shrink: 0;
+}
+
+.film-title-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 20px;
+    /* 20px */
+    color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.film-title-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold);
+    /* --text-gold (#C5A059) */
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* 정중앙 60x60 --color-accent 원형 재생 버튼 */
+.brand-film-play-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    /* 60px */
+    height: 60px;
+    /* 60px */
+    border-radius: 50%;
+    /* 원형 */
+    background-color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(173, 25, 49, 0.4);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.brand-film-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    /* 호버 시 원형 버튼 확대 효과 */
+    box-shadow: 0 0 30px rgba(173, 25, 49, 0.7);
+    background-color: #c91f3a;
+}
+
+/* 원 안의 20px 재생 아이콘 (--text-primary) - 항상 정중앙 정렬 유지 */
+.film-play-icon {
+    width: 20px;
+    /* 20px */
+    height: 20px;
+    /* 20px */
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    margin: 0;
+    /* 치우침 없이 항상 정가운데 정렬 */
+    display: block;
+    transform-origin: center center;
+    transition: transform var(--transition-fast);
+}
+
+/* 버튼 호버 시 내부 아이콘도 함께 확대되는 효과 적용 */
+.brand-film-play-btn:hover .film-play-icon {
+    transform: scale(1.15);
+    /* 아이콘 확대 효과 */
+}
+
+/* ==========================================================================
+   갤러리 프리뷰 섹션 (Gallery Preview Section)
+   - 상하 여백: 128px
+   - 배경색: --color-sub-1 (#344E41)
+   - 좌측 상단: 소제목 + 타이틀 + 설명문
+   - 우측 정렬: "VIEW ARCHIVE" 텍스트 버튼
+   ========================================================================== */
+.gallery-preview-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* 1920px */
+    margin: 0 auto;
+    background-color: var(--color-main);
+    /* --color-sub-1 (#344E41) */
+    padding: 128px 0;
+    /* 상하 128px 여백 */
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gallery-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.gallery-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* 소제목: 30px 선 + "AI CREATIVE ARCHIVE" + "아카이브" (10px 간격) */
+.gallery-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 각각 10px 간격 */
+    margin-bottom: 20px;
+    /* 소제목 하단 20px 간격 */
+    white-space: nowrap;
+}
+
+.gallery-subhead-line {
+    width: 30px;
+    /* 가로 30px */
+    height: 1px;
+    /* 굵기 1px */
+    background-color: var(--text-accent);
+    /* --text-accent (#AD1931) */
+    display: block;
+    flex-shrink: 0;
+}
+
+.gallery-subhead-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-accent);
+    /* --text-accent (#AD1931) */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.gallery-subhead-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    /* 12px */
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* 타이틀: --text-primary, --font-title, 48px */
+.gallery-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 48px;
+    /* 48px */
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    line-height: 1.25;
+    margin-bottom: 20px;
+    /* 타이틀 하단 20px 간격 */
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+
+/* 설명문: --text-muted, --font-body, 16px */
+.gallery-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1.6;
+    margin: 0;
+    max-width: 900px;
+}
+
+/* 설명문 아래 우측 정렬 텍스트 버튼 행 (페이지 기준 우측 정렬) */
+.gallery-btn-row {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    /* 페이지 기준 우측 정렬 */
+    margin-top: 24px;
+    /* 설명문 하단 간격 */
+}
+
+.gallery-archive-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.gallery-archive-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    /* 호버 언더라인 #AD1931 */
+    transition: width var(--transition-normal);
+}
+
+.gallery-archive-btn:hover {
+    color: var(--color-accent);
+    /* 호버 시 텍스트 붉은색 전환 */
+}
+
+.gallery-archive-btn:hover::after {
+    width: 100%;
+}
+
+.gallery-arrow-icon {
+    width: 18px;
+    /* 가로 18px */
+    height: 10px;
+    /* 세로 10px */
+    stroke: var(--text-primary);
+    transition: transform var(--transition-fast), stroke var(--transition-fast);
+}
+
+.gallery-archive-btn:hover .gallery-arrow-icon {
+    transform: translateX(6px);
+    /* 마우스 호버 시 화살표 우측 이동 */
+    stroke: var(--color-accent);
+}

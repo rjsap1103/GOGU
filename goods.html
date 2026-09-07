@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="브루어리 곡우 - GOODS">
+    <title>GOGU BREWERY - GOODS</title>
+    <!-- 웹 폰트 로드 (Pretendard & Bebas Neue) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- Common & Page CSS -->
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/goods.css">
+</head>
+
+<body>
+    <!-- ==========================================================================
+         상단 네비게이션 바 (Header / Navbar)
+         ========================================================================== -->
+    <header class="header">
+        <nav class="nav-container">
+            <!-- 좌측 메뉴 1: BEER -->
+            <a href="./beer.html" class="nav-item">
+                <span class="nav-text-en">BEER</span>
+                <span class="nav-text-ko">맥주</span>
+            </a>
+
+            <!-- 좌측 메뉴 2: STORY -->
+            <a href="./story.html" class="nav-item">
+                <span class="nav-text-en">STORY</span>
+                <span class="nav-text-ko">이야기</span>
+            </a>
+
+            <!-- 중앙 브랜드 로고 (60x60) -->
+            <a href="./index.html" class="nav-logo" aria-label="홈으로 이동">
+                <img src="./assets/images/brand_logo(nontext).png" alt="브랜드 로고" class="logo-img">
+            </a>
+
+            <!-- 우측 메뉴 1: GALLERY -->
+            <a href="./gallery.html" class="nav-item">
+                <span class="nav-text-en">GALLERY</span>
+                <span class="nav-text-ko">갤러리</span>
+            </a>
+
+            <!-- 우측 메뉴 2: GOODS -->
+            <a href="./goods.html" class="nav-item">
+                <span class="nav-text-en">GOODS</span>
+                <span class="nav-text-ko">굿즈</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="main" style="padding-top: 100px;">
+        <section class="section">
+            <div class="container">
+                <h1 style="font-family: var(--font-en); font-size: 56px; color: var(--text-gold); margin-bottom: 20px; letter-spacing: 2px;">GOODS</h1>
+                <p style="font-family: var(--font-body); color: var(--text-muted); font-size: 18px;">
+                    곡우 전용 글래스 및 브랜드 굿즈 페이지 기본 틀입니다.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         공통 푸터 영역 (Footer)
+         - 크기: 1920x639, 배경색: --color-footer (#18231F), 상단 64px 여백
+         ========================================================================== -->
+    <footer class="footer">
+        <div class="container footer-top-container">
+            <!-- 푸터 상단 콘텐츠 영역 -->
+            <div class="footer-top">
+                <!-- 좌측 로고 및 소개 블록 -->
+                <div class="footer-brand-col">
+                    <!-- 1. 로고 영역 (원형 60x60 + 우측 15px 텍스트) -->
+                    <div class="footer-logo-row">
+                        <img src="./assets/images/brand_logo(nontext).png" alt="브랜드 로고" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-en">GOGU</span>
+                            <span class="footer-logo-ko">브루어리 곡우</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. 소개 텍스트 (로고 하단 25px 간격) -->
+                    <p class="footer-desc">
+                        브루어리 곡우는 전라북도 군산의 작은 양조장 입니다.<br>
+                        군산의 보리, 홍천의 홉, 강릉의 암반수 그리고 한국 토종 효모<br>
+                        이 땅의 재료로만 빚습니다.
+                    </p>
+
+                    <!-- 3. AI 자산 안내 박스 (소개 하단 24px 간격, 340x37) -->
+                    <div class="footer-ai-badge">
+                        <!-- 12x12 필름 아이콘 SVG -->
+                        <svg class="footer-film-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z"/>
+                        </svg>
+                        <span class="footer-ai-text">
+                            <span class="text-muted-part">이 웹사이트의 모든 이미지 필름은</span>
+                            <span class="text-gold-part">생성형 AI 로 제작된 브랜드 자산입니다</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 우측 메뉴 버튼, 위치, 연락처 영역 그룹 (간격 187px) -->
+                <div class="footer-info-group">
+                    <!-- 1. 텍스트 메뉴 버튼 영역 (EXPLORE) -->
+                    <div class="footer-col footer-explore-col">
+                        <h4 class="footer-col-title">EXPLORE</h4>
+                        <div class="footer-menu-list">
+                            <!-- BEER 맥주 -->
+                            <a href="./beer.html" class="footer-menu-item">
+                                <span class="footer-menu-en">BEER</span>
+                                <span class="footer-menu-ko">맥주</span>
+                            </a>
+                            <!-- STORY 이야기 -->
+                            <a href="./story.html" class="footer-menu-item">
+                                <span class="footer-menu-en">STORY</span>
+                                <span class="footer-menu-ko">이야기</span>
+                            </a>
+                            <!-- GALLERY 아카이브 -->
+                            <a href="./gallery.html" class="footer-menu-item">
+                                <span class="footer-menu-en">GALLERY</span>
+                                <span class="footer-menu-ko">아카이브</span>
+                            </a>
+                            <!-- GOODS 굿즈 -->
+                            <a href="./goods.html" class="footer-menu-item">
+                                <span class="footer-menu-en">GOODS</span>
+                                <span class="footer-menu-ko">굿즈</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2. 위치 소개 영역 (VISIT) -->
+                    <div class="footer-col footer-visit-col">
+                        <h4 class="footer-col-title">VISIT</h4>
+                        <div class="footer-info-list">
+                            <p class="footer-info-item">전라북도 군산시</p>
+                            <p class="footer-info-item">수 ~ 일 • 11:00 ~ 20:00</p>
+                            <p class="footer-info-item text-muted">월 • 화 휴무</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. 연락처 영역 (CONTACT) -->
+                    <div class="footer-col footer-contact-col">
+                        <h4 class="footer-col-title">CONTACT</h4>
+                        <div class="footer-info-list">
+                            <a href="mailto:brewery@gogu.beer" class="footer-info-item footer-link">brewery@gogu.beer</a>
+                            <a href="tel:063-462-2019" class="footer-info-item footer-link">063 - 462 - 2019</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 푸터 중앙 대형 배너 영역 (길이 1920px 가로선 2개 및 210px BERWERY GOGU) -->
+        <div class="footer-giant-banner">
+            <div class="footer-divider-line"></div>
+            <div class="footer-giant-title">BERWERY GOGU</div>
+            <div class="footer-divider-line"></div>
+        </div>
+
+        <!-- 푸터 최하단 프로젝트 메타 정보 행 (상하 20px 여백, 좌우 끝 정렬) -->
+        <div class="container footer-bottom-container">
+            <div class="footer-bottom-row">
+                <span class="footer-bottom-left">2026 Brewery Gogu - fictional brand project</span>
+                <span class="footer-bottom-right">기획 • AI 콘텐츠 • 디자인 • 프론트엔드 - one brand, one archive. </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

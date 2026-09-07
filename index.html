@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="웹사이트 기본 템플릿">
+    <title>My Website</title>
+    <!-- 웹 폰트 로드 (Pretendard & Bebas Neue) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- Main & Common CSS -->
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <!-- ==========================================================================
+         상단 네비게이션 바 (Header / Navbar)
+         - 스크롤 시 상단에 고정되는 100px 높이의 글래스모피즘 헤더입니다.
+         - 좌측 2개 메뉴 | 중앙 로고(60x60) | 우측 2개 메뉴 배치
+         ========================================================================== -->
+    <header class="header">
+        <nav class="nav-container">
+            <!-- 좌측 메뉴 1: BEER -->
+            <a href="./beer.html" class="nav-item">
+                <span class="nav-text-en">BEER</span>
+                <span class="nav-text-ko">맥주</span>
+            </a>
+
+            <!-- 좌측 메뉴 2: STORY -->
+            <a href="./story.html" class="nav-item">
+                <span class="nav-text-en">STORY</span>
+                <span class="nav-text-ko">이야기</span>
+            </a>
+
+            <!-- 중앙 브랜드 로고 (60x60) -->
+            <a href="./index.html" class="nav-logo" aria-label="홈으로 이동">
+                <img src="./assets/images/brand_logo(nontext).png" alt="브랜드 로고" class="logo-img">
+            </a>
+
+            <!-- 우측 메뉴 1: GALLERY -->
+            <a href="./gallery.html" class="nav-item">
+                <span class="nav-text-en">GALLERY</span>
+                <span class="nav-text-ko">갤러리</span>
+            </a>
+
+            <!-- 우측 메뉴 2: GOODS -->
+            <a href="./goods.html" class="nav-item">
+                <span class="nav-text-en">GOODS</span>
+                <span class="nav-text-ko">굿즈</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="main">
+        <!-- ==========================================================================
+             히어로 섹션 (Hero Section)
+             - 1920x1080 크기의 메인 첫 화면
+             - 배경 이미지, 메인 타이틀(GOGU), 버튼 2종, 스크롤 애니메이션, 좌표 정보 포함
+             ========================================================================== -->
+        <section id="home" class="hero-section">
+            <!-- 1. 배경 이미지 컨테이너 (1920x1080 꽉 차는 배경) -->
+            <div class="hero-bg"></div>
+
+            <!-- 2. 고정 좌표 부가 정보 텍스트: (107, 154) 위치의 "AI BRAND FILM" -->
+            <div class="hero-badge-film">AI BRAND FILM</div>
+
+            <!-- 3. 우측 90도 회전 텍스트: (1604, 412) 위치 -->
+            <div class="hero-rotate-text">EST . 2019 GUNSAN . KOREA</div>
+
+            <!-- 4. 메인 콘텐츠 블록: (300, 489) 시작 -->
+            <div class="hero-content">
+                <!-- 소제목 라인 (영문 + 한글 한 줄 배치) -->
+                <div class="hero-subhead-row">
+                    <span class="hero-subhead-en">KOREA PREMIUM CRAFT BEER</span>
+                    <span class="hero-subhead-ko">브루어리 곡우</span>
+                </div>
+
+                <!-- 메인 타이틀: GOGU (210px) -->
+                <h1 class="hero-main-title">GOGU</h1>
+
+                <!-- 본문 설명 텍스트 (18px) -->
+                <p class="hero-description">
+                    한국의 들판에서 당신의 잔까지<br>
+                    이 땅의 보리, 홉, 물, 효모로 빚은 크래프트 비어
+                </p>
+            </div>
+
+            <!-- 5. 직사각형 버튼 그룹: (860, 744) 위치 -->
+            <div class="hero-btn-group">
+                <!-- 버튼 1: EXPLORE BEER (배경 #AD1931 + 화살표 아이콘) -->
+                <a href="#beer" class="hero-btn hero-btn-primary">
+                    <span class="btn-text">EXPLORE BEER</span>
+                    <!-- 20x20 우측 화살표 SVG 아이콘 -->
+                    <svg class="btn-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 버튼 2: BRAND FILM (투명 배경 + 1px 테두리 + 재생 아이콘) -->
+                <button type="button" class="hero-btn hero-btn-secondary" id="brandFilmBtn">
+                    <!-- 14px 재생 아이콘 SVG -->
+                    <svg class="btn-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
+                    <span class="btn-text">BRAND FILM</span>
+                </button>
+            </div>
+
+            <!-- 6. 하단 구분선 (y: 858, 너비 1320px) -->
+            <div class="hero-divider-line"></div>
+
+            <!-- 6. 하단 좌표 정보 & 스크롤 인디케이터 영역 -->
+            <!-- 좌측 좌표 정보: (309, 878) -->
+            <div class="hero-info-left">37.75 N° 128.88 E° - SUNSAN</div>
+
+            <!-- 중앙 스크롤 인디케이터 (32px 세로 라인 애니메이션 + SCROLL 텍스트) -->
+            <div class="hero-scroll-indicator">
+                <div class="scroll-track">
+                    <div class="scroll-bar"></div>
+                </div>
+                <span class="scroll-text">SCROLL</span>
+            </div>
+
+            <!-- 우측 정보: (1498, 878) -->
+            <div class="hero-info-right">4 BEERS 100% KOREAN</div>
+        </section>
+
+        <!-- ==========================================================================
+             무한 텍스트 롤링 슬라이더 바 (Infinite Ticker Slider)
+             - 위치: 히어로 섹션 하단 (0, 1080)
+             - 크기: 1920px x 60px, 배경색: --color-sub-1 (#344E41)
+             - 16px 4꼭짓점 별 아이콘(#AD1931)과 영문/한글 16px 텍스트가 우측→좌측으로 무한 이동
+             ========================================================================== -->
+        <section class="ticker-slider-section" aria-label="브랜드 키워드 롤링 슬라이더">
+            <div class="ticker-wrapper">
+                <!-- 트랙 1 (무한 롤링을 위해 2벌 연속 배치) -->
+                <div class="ticker-track">
+                    <!-- 아이템 1 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">EST 2019 GUNSAN</span>
+
+                    <!-- 아이템 2 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">GUNSAN BARLEY</span>
+
+                    <!-- 아이템 3 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">군산보리</span>
+
+                    <!-- 아이템 4 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">GANGWON HOPS</span>
+
+                    <!-- 아이템 5 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">강원 홉</span>
+
+                    <!-- 아이템 6 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">DEEP ROCK WATER</span>
+
+                    <!-- 아이템 7 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">강릉 암반수</span>
+
+                    <!-- 아이템 8 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">KOREAN YEAST</span>
+
+                    <!-- 아이템 9 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">한국 토종 효모</span>
+                </div>
+
+                <!-- 트랙 2 (복제 세트: 끊김 없는 무한 롤링을 위한 복사본) -->
+                <div class="ticker-track" aria-hidden="true">
+                    <!-- 아이템 1 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">EST 2019 GUNSAN</span>
+
+                    <!-- 아이템 2 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">GUNSAN BARLEY</span>
+
+                    <!-- 아이템 3 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">군산보리</span>
+
+                    <!-- 아이템 4 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">GANGWON HOPS</span>
+
+                    <!-- 아이템 5 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">강원 홉</span>
+
+                    <!-- 아이템 6 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">DEEP ROCK WATER</span>
+
+                    <!-- 아이템 7 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">강릉 암반수</span>
+
+                    <!-- 아이템 8 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-en">KOREAN YEAST</span>
+
+                    <!-- 아이템 9 -->
+                    <span class="ticker-star">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </span>
+                    <span class="ticker-text ticker-text-ko">한국 토종 효모</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             소개 / 양조철학 섹션 (Intro / Manifesto Section)
+             - 배경색: --color-main (#18231F), 상하 여백: 128px
+             - 좌측: "01" 숫자 배경 + 소제목(MANIFESTO 양조철학) + 메인 타이틀 + 설명문 + 스토리 버튼
+             - 우측: 588x362 크기의 2행 2열 양조 스탯 표 (37px 패딩, 12px 간격)
+             ========================================================================== -->
+        <section id="about" class="intro-manifesto-section">
+            <div class="container intro-container">
+                <!-- 1. 좌측 텍스트 구역 -->
+                <div class="intro-text-col">
+                    <!-- 숫자 "01"과 소제목 겹침 영역 -->
+                    <div class="intro-badge-wrapper">
+                        <span class="intro-bg-num">01</span>
+                        <div class="intro-subhead-row">
+                            <span class="intro-subhead-line"></span>
+                            <span class="intro-subhead-en">MANIFESTO</span>
+                            <span class="intro-subhead-ko">양조철학</span>
+                        </div>
+                    </div>
+
+                    <!-- 메인 타이틀 (48px) -->
+                    <h2 class="intro-title">
+                        맥주는 결국 재료가 말하는<br>
+                        이야기 입니다.
+                    </h2>
+
+                    <!-- 설명문 (16px, line-height: 1.875) -->
+                    <p class="intro-desc">
+                        곡우는 장식을 덜어낸 양조를 합니다.<br>
+                        보리의 고소함, 홉의 시트러스, 깨끗한 암반수의 결, 그리고 한국 토종 효모의 서명.<br>
+                        네 가지 재료가 각자의 목소리를 내되, 잔 안에서는 하나의 문장이 되도록.
+                    </p>
+
+                    <!-- 스토리 페이지 링크 버튼 (16px + 18x10 화살표) -->
+                    <a href="./story.html" class="intro-story-btn">
+                        <span class="intro-btn-text">READ OUR STORY</span>
+                        <svg class="intro-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="0" y1="5" x2="16" y2="5"></line>
+                            <polyline points="12 1 16 5 12 9"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 2. 우측 2행 2열 표 영역 (588px x 362px) -->
+                <div class="intro-table-col">
+                    <div class="intro-stats-table">
+                        <!-- 1행 1열: 2019 / 설립연도 / EST GUNSAN -->
+                        <div class="stat-cell">
+                            <span class="stat-num">2019</span>
+                            <span class="stat-label-ko">설립연도</span>
+                            <span class="stat-label-en">EST GUNSAN</span>
+                        </div>
+
+                        <!-- 1행 2열: 6기 / 발효탱크 / CONICAL FERMENTERS -->
+                        <div class="stat-cell">
+                            <span class="stat-num">6기</span>
+                            <span class="stat-label-ko">발효탱크</span>
+                            <span class="stat-label-en">CONICAL FERMENTERS</span>
+                        </div>
+
+                        <!-- 2행 1열: 21일 / 저온숙성 / COLD LAGERING -->
+                        <div class="stat-cell">
+                            <span class="stat-num">21일</span>
+                            <span class="stat-label-ko">저온숙성</span>
+                            <span class="stat-label-en">COLD LAGERING</span>
+                        </div>
+
+                        <!-- 2행 2열: 100% / 국산 원료 비율 / KOREAN INGREDIENTS -->
+                        <div class="stat-cell">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-label-ko">국산 원료 비율</span>
+                            <span class="stat-label-en">KOREAN INGREDIENTS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             맥주 소개 섹션 (Signature Beers Section)
+             - 배경색: --color-sub-1 (#344E41), 상하 128px 여백
+             - 좌측 상단 소제목, 타이틀, 설명문 및 400x581 맥주 카드 3종
+             ========================================================================== -->
+        <section id="signature-beers" class="signature-section">
+            <div class="container">
+                <!-- 1. 좌측 상단 헤더 영역 -->
+                <div class="signature-header">
+                    <!-- 소제목: 30px 선 + "signature line" + "시그니쳐" (각각 10px 간격) -->
+                    <div class="signature-subhead">
+                        <span class="subhead-line"></span>
+                        <span class="subhead-en">signature line</span>
+                        <span class="subhead-ko">시그니쳐</span>
+                    </div>
+
+                    <!-- 타이틀: 48px "곡우의 세가지 기준" (소제목 하단 20px 간격) -->
+                    <h2 class="signature-title">곡우의 세가지 기준</h2>
+
+                    <!-- 설명문: 16px (타이틀 하단 20px 간격) -->
+                    <p class="signature-desc">
+                        라거의 깨끗함, 에일의 향, 다크의 깊이. 곡우의 모든 배치는 이 세 잔의 균형 위에서 설계됩니다.
+                    </p>
+                </div>
+
+                <!-- 2. 맥주 카드 리스트 영역 (설명문 하단 71px 간격, 400x581 카드 3장, 60px 간격) -->
+                <div class="beer-cards-group">
+                    <!-- 맥주 카드 1: LAGER -->
+                    <article class="beer-card">
+                        <!-- 배경용 이미지 박스 (400x470) -->
+                        <div class="beer-card-img-box beer-img-lager">
+                            <!-- 좌측 상단 박스 (80x20, --color-main, 테두리 --text-gold 40%) -->
+                            <div class="beer-badge-type">KOREAN LAGER</div>
+                            <!-- 우측 상단 박스 (60x20, --color-accent) -->
+                            <div class="beer-badge-abv">5.2% ABV</div>
+                        </div>
+
+                        <!-- 텍스트 박스 (400x168, 이미지 박스와 57px 겹침) -->
+                        <div class="beer-card-text-box">
+                            <!-- 제목: 28px "LAGER" -->
+                            <h3 class="beer-card-title">LAGER</h3>
+                            <!-- 한글 설명: 16px (제목 하단 6px 간격) -->
+                            <p class="beer-card-korean-desc">곡우 라거 • Korean Highland Helles</p>
+                            <!-- 중앙정렬 352px 가로선 (설명 하단 16px 간격) -->
+                            <div class="beer-card-divider"></div>
+                            <!-- 맥주 설명문: 14px (가로선 하단 16px 간격) -->
+                            <p class="beer-card-feature">청량한 탄산 • 은은한 곡물향 • 깨끗한 피니시</p>
+                            <!-- BEER 페이지 버튼 (설명문 하단 24px 간격) -->
+                            <a href="./beer.html" class="beer-card-btn">
+                                <span>VIEW BEER</span>
+                                <svg class="beer-btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    stroke="currentColor">
+                                    <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 맥주 카드 2: PALE -->
+                    <article class="beer-card">
+                        <div class="beer-card-img-box beer-img-pale">
+                            <div class="beer-badge-type">PALE ALE</div>
+                            <div class="beer-badge-abv">5.8% ABV</div>
+                        </div>
+                        <div class="beer-card-text-box">
+                            <h3 class="beer-card-title">PALE</h3>
+                            <p class="beer-card-korean-desc">곡우 페일 에일 • Citrus Pale Ale </p>
+                            <div class="beer-card-divider"></div>
+                            <p class="beer-card-feature">감귤 시트러스 • 솔잎 향 • 부드러운 몰트</p>
+                            <a href="./beer.html" class="beer-card-btn">
+                                <span>VIEW BEER</span>
+                                <svg class="beer-btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    stroke="currentColor">
+                                    <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 맥주 카드 3: DARK -->
+                    <article class="beer-card">
+                        <div class="beer-card-img-box beer-img-dark">
+                            <div class="beer-badge-type">DARK ALE</div>
+                            <div class="beer-badge-abv">6.5% ABV</div>
+                        </div>
+                        <div class="beer-card-text-box">
+                            <h3 class="beer-card-title">DARK</h3>
+                            <p class="beer-card-korean-desc">곡우 흑맥주 • Roasted Dark Ale</p>
+                            <div class="beer-card-divider"></div>
+                            <p class="beer-card-feature">다크 초콜릿 • 볶은 곡물 • 흑당 카라멜</p>
+                            <a href="./beer.html" class="beer-card-btn">
+                                <span>VIEW BEER</span>
+                                <svg class="beer-btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    stroke="currentColor">
+                                    <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             재료 소개 섹션 (Ingredients Section)
+             - 상하 128px 여백, 텍스트 영역과 4개의 원료 박스 영역 분할
+             ========================================================================== -->
+        <section id="ingredients" class="ingredients-section">
+            <div class="container ingredients-container">
+                <!-- 좌측: 텍스트 영역 -->
+                <div class="ingredients-text-area">
+                    <!-- 좌측 최상단: 숫자 02 및 겹치는 소제목 영역 -->
+                    <div class="ingredients-badge-wrapper">
+                        <span class="ingredients-num-badge">02</span>
+                        <div class="ingredients-subhead-row">
+                            <span class="ingredients-subhead-line"></span>
+                            <span class="ingredients-subhead-en">KOREAN INGREDIENTS</span>
+                            <span class="ingredients-subhead-ko">네 가지 원료</span>
+                        </div>
+                    </div>
+
+                    <!-- 타이틀: 02 하단과 맞닿음, 48px -->
+                    <h2 class="ingredients-title">이 땅의 보리, 홉, 물, 효모로<br>완성하다</h2>
+
+                    <!-- 설명문: 타이틀 하단 20px 간격, 16px, 줄간격 1.875 -->
+                    <p class="ingredients-desc">씨앗부터 한 모금의 맥주가 되기까지, 모든 순간을 우리 땅의 자연과 함께했습니다.</p>
+
+                    <!-- 스토리 페이지 링크 텍스트 버튼: 설명문 하단 40px 간격, 화살표(18px, 10px) -->
+                    <a href="./story.html" class="ingredients-story-btn">
+                        <span>INGREDIENT STORY</span>
+                        <svg class="ingredients-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                            stroke="currentColor">
+                            <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 우측: 원료 박스 영역 (우측 정렬, 600x120 박스 4개 20px 간격, 클릭 시 스토리 페이지 이동) -->
+                <div class="ingredients-boxes-area">
+                    <!-- 원료 박스 01: 보리 -->
+                    <a href="./story.html" class="ingredient-box">
+                        <div class="ingredient-num">01</div>
+                        <div class="ingredient-img-box">
+                            <img src="./assets/images/BARLEY.jpg" alt="보리 원료 이미지" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-info">
+                            <div class="ingredient-title-row">
+                                <span class="ingredient-name-ko">보리</span>
+                                <span class="ingredient-name-en">BARLEY</span>
+                            </div>
+                            <span class="ingredient-origin">전북 군산</span>
+                        </div>
+                        <div class="ingredient-icon-box">
+                            <span class="ingredient-icon ingredient-icon-barley" aria-label="보리 아이콘"></span>
+                        </div>
+                    </a>
+
+                    <!-- 원료 박스 02: 홉 -->
+                    <a href="./story.html" class="ingredient-box">
+                        <div class="ingredient-num">02</div>
+                        <div class="ingredient-img-box">
+                            <img src="./assets/images/HOP.jpeg" alt="홉 원료 이미지" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-info">
+                            <div class="ingredient-title-row">
+                                <span class="ingredient-name-ko">보리</span>
+                                <span class="ingredient-name-en">BARLEY</span>
+                            </div>
+                            <span class="ingredient-origin">전북 군산</span>
+                        </div>
+                        <div class="ingredient-icon-box">
+                            <span class="ingredient-icon ingredient-icon-hop" aria-label="홉 아이콘"></span>
+                        </div>
+                    </a>
+
+                    <!-- 원료 박스 03: 물 -->
+                    <a href="./story.html" class="ingredient-box">
+                        <div class="ingredient-num">03</div>
+                        <div class="ingredient-img-box">
+                            <img src="./assets/images/WATER.jpeg" alt="물 원료 이미지" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-info">
+                            <div class="ingredient-title-row">
+                                <span class="ingredient-name-ko">보리</span>
+                                <span class="ingredient-name-en">BARLEY</span>
+                            </div>
+                            <span class="ingredient-origin">전북 군산</span>
+                        </div>
+                        <div class="ingredient-icon-box">
+                            <span class="ingredient-icon ingredient-icon-water" aria-label="물 아이콘"></span>
+                        </div>
+                    </a>
+
+                    <!-- 원료 박스 04: 효모 -->
+                    <a href="./story.html" class="ingredient-box">
+                        <div class="ingredient-num">04</div>
+                        <div class="ingredient-img-box">
+                            <img src="./assets/images/YEAST.jpeg" alt="효모 원료 이미지" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-info">
+                            <div class="ingredient-title-row">
+                                <span class="ingredient-name-ko">보리</span>
+                                <span class="ingredient-name-en">BARLEY</span>
+                            </div>
+                            <span class="ingredient-origin">전북 군산</span>
+                        </div>
+                        <div class="ingredient-icon-box">
+                            <span class="ingredient-icon ingredient-icon-yeast" aria-label="효모 아이콘"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             브랜드 필름 섹션 (Brand Film Section)
+             - 1920x500 고정 규격, 투명도 70% 어두운 오버레이
+             - 상단 128px 여백 소제목 행 (가로선 + 영문/한글 텍스트 + 가로선)
+             - 정중앙 60x60 원형 재생 버튼
+             ========================================================================== -->
+        <section id="brand-film" class="brand-film-section">
+            <!-- 배경 이미지 및 70% 투명도 어두운 오버레이 -->
+            <div class="brand-film-bg"></div>
+
+            <!-- 상단 128px 위치 소제목 행 (좌우 30px 가로선 + 텍스트 15px 간격) -->
+            <div class="brand-film-header">
+                <span class="film-line"></span>
+                <span class="film-title-en">AI FILM - MAKE KOREAN BEER</span>
+                <span class="film-title-ko">브랜드 필름</span>
+                <span class="film-line"></span>
+            </div>
+
+            <!-- 정중앙 60x60 --color-accent 원형 재생 버튼 (20px --text-primary 재생 아이콘) -->
+            <button type="button" class="brand-film-play-btn" aria-label="브랜드 필름 재생">
+                <svg class="film-play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </button>
+        </section>
+
+        <!-- ==========================================================================
+             갤러리 프리뷰 섹션 (Gallery Preview Section)
+             - 상하 128px 여백, 배경색 --color-sub-1 (#344E41)
+             - 좌측 상단 소제목 (30px 붉은 선 + 영문/한글 텍스트) + 타이틀 + 설명문
+             - 설명문 아래 우측 정렬 "VIEW ARCHIVE" 버튼 (화살표 18x10)
+             ========================================================================== -->
+        <section id="gallery" class="gallery-preview-section">
+            <div class="container gallery-preview-container">
+                <!-- 갤러리 섹션 헤더 영역 -->
+                <div class="gallery-header">
+                    <!-- 소제목: 30px 선 + "AI CREATIVE ARCHIVE" + "아카이브" (10px 간격) -->
+                    <div class="gallery-subhead">
+                        <span class="gallery-subhead-line"></span>
+                        <span class="gallery-subhead-en">AI CREATIVE ARCHIVE</span>
+                        <span class="gallery-subhead-ko">아카이브</span>
+                    </div>
+
+                    <!-- 타이틀: 48px, 소제목 하단 20px 간격 -->
+                    <h2 class="gallery-title">마시기 전에 마주하는 황홀한 장면들</h2>
+
+                    <!-- 설명문: 16px, 타이틀 하단 20px 간격 -->
+                    <p class="gallery-desc">신선한 원재료, 섬세한 브루잉 과정, 그리고 완벽하게 채워진 한 잔. 곡우 브루어리의 시선으로 엮어낸 미디어 갤러리입니다.</p>
+                </div>
+
+                <!-- 설명문 아래 우측 정렬 텍스트 버튼 행 (페이지 기준 우측 정렬) -->
+                <div class="gallery-btn-row">
+                    <a href="./gallery.html" class="gallery-archive-btn">
+                        <span>VIEW ARCHIVE</span>
+                        <svg class="gallery-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                            stroke="currentColor">
+                            <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         공통 푸터 영역 (Footer)
+         - 크기: 1920x639, 배경색: --color-footer (#18231F), 상단 64px 여백
+         ========================================================================== -->
+    <footer class="footer">
+        <div class="container footer-top-container">
+            <!-- 푸터 상단 콘텐츠 영역 -->
+            <div class="footer-top">
+                <!-- 좌측 로고 및 소개 블록 -->
+                <div class="footer-brand-col">
+                    <!-- 1. 로고 영역 (원형 60x60 + 우측 15px 텍스트) -->
+                    <div class="footer-logo-row">
+                        <img src="./assets/images/brand_logo(nontext).png" alt="브랜드 로고" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-en">GOGU</span>
+                            <span class="footer-logo-ko">브루어리 곡우</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. 소개 텍스트 (로고 하단 25px 간격) -->
+                    <p class="footer-desc">
+                        브루어리 곡우는 전라북도 군산의 작은 양조장 입니다.<br>
+                        군산의 보리, 홍천의 홉, 강릉의 암반수 그리고 한국 토종 효모<br>
+                        이 땅의 재료로만 빚습니다.
+                    </p>
+
+                    <!-- 3. AI 자산 안내 박스 (소개 하단 24px 간격, 340x37) -->
+                    <div class="footer-ai-badge">
+                        <!-- 12x12 필름 아이콘 SVG -->
+                        <svg class="footer-film-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z" />
+                        </svg>
+                        <span class="footer-ai-text">
+                            <span class="text-muted-part">이 웹사이트의 모든 이미지 필름은</span>
+                            <span class="text-gold-part">생성형 AI 로 제작된 브랜드 자산입니다</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 우측 메뉴 버튼, 위치, 연락처 영역 그룹 (간격 187px) -->
+                <div class="footer-info-group">
+                    <!-- 1. 텍스트 메뉴 버튼 영역 (EXPLORE) -->
+                    <div class="footer-col footer-explore-col">
+                        <h4 class="footer-col-title">EXPLORE</h4>
+                        <div class="footer-menu-list">
+                            <!-- BEER 맥주 -->
+                            <a href="./beer.html" class="footer-menu-item">
+                                <span class="footer-menu-en">BEER</span>
+                                <span class="footer-menu-ko">맥주</span>
+                            </a>
+                            <!-- STORY 이야기 -->
+                            <a href="./story.html" class="footer-menu-item">
+                                <span class="footer-menu-en">STORY</span>
+                                <span class="footer-menu-ko">이야기</span>
+                            </a>
+                            <!-- GALLERY 아카이브 -->
+                            <a href="./gallery.html" class="footer-menu-item">
+                                <span class="footer-menu-en">GALLERY</span>
+                                <span class="footer-menu-ko">아카이브</span>
+                            </a>
+                            <!-- GOODS 굿즈 -->
+                            <a href="./goods.html" class="footer-menu-item">
+                                <span class="footer-menu-en">GOODS</span>
+                                <span class="footer-menu-ko">굿즈</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2. 위치 소개 영역 (VISIT) -->
+                    <div class="footer-col footer-visit-col">
+                        <h4 class="footer-col-title">VISIT</h4>
+                        <div class="footer-info-list">
+                            <p class="footer-info-item">전라북도 군산시</p>
+                            <p class="footer-info-item">수 ~ 일 • 11:00 ~ 20:00</p>
+                            <p class="footer-info-item text-muted">월 • 화 휴무</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. 연락처 영역 (CONTACT) -->
+                    <div class="footer-col footer-contact-col">
+                        <h4 class="footer-col-title">CONTACT</h4>
+                        <div class="footer-info-list">
+                            <a href="mailto:brewery@gogu.beer"
+                                class="footer-info-item footer-link">brewery@gogu.beer</a>
+                            <a href="tel:063-462-2019" class="footer-info-item footer-link">063 - 462 - 2019</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 푸터 중앙 대형 배너 영역 (길이 1920px 가로선 2개 및 210px BERWERY GOGU) -->
+        <div class="footer-giant-banner">
+            <div class="footer-divider-line"></div>
+            <div class="footer-giant-title">BERWERY GOGU</div>
+            <div class="footer-divider-line"></div>
+        </div>
+
+        <!-- 푸터 최하단 프로젝트 메타 정보 행 (상하 20px 여백, 좌우 끝 정렬) -->
+        <div class="container footer-bottom-container">
+            <div class="footer-bottom-row">
+                <span class="footer-bottom-left">2026 Brewery Gogu - fictional brand project</span>
+                <span class="footer-bottom-right">기획 • AI 콘텐츠 • 디자인 • 프론트엔드 - one brand, one archive. </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
