@@ -55,13 +55,260 @@
     </header>
 
     <!-- 메인 콘텐츠 영역 -->
-    <main class="main" style="padding-top: 100px;">
-        <section class="section">
-            <div class="container">
-                <h1 style="font-family: var(--font-en); font-size: 56px; color: var(--text-gold); margin-bottom: 20px; letter-spacing: 2px;">STORY</h1>
-                <p style="font-family: var(--font-body); color: var(--text-muted); font-size: 18px;">
-                    곡우의 브랜드 스토리 및 양조철학 페이지 기본 틀입니다.
+    <main class="main story-main">
+        <!-- ==========================================================================
+             스토리 매니페스토 섹션 (Story Manifesto Section)
+             - (300, 200) 위치에서 시작
+             - 하단 여백: 100px 적용
+             ========================================================================== -->
+        <section class="story-manifesto-section">
+            <div class="container story-manifesto-container">
+                <!-- 소제목: 30px 가로선 + "MANIFESTO" + "양조 철학" (10px 간격) -->
+                <div class="story-subhead">
+                    <span class="story-subhead-line"></span>
+                    <span class="story-subhead-en">MANIFESTO</span>
+                    <span class="story-subhead-ko">양조 철학</span>
+                </div>
+
+                <!-- 타이틀: 소제목 하단 20px 간격 (60px) -->
+                <h1 class="story-title">
+                    우리는 맥주를 통해<br>
+                    한국의 <span class="text-highlight">풍토</span>를 말합니다
+                </h1>
+
+                <!-- 설명문: 타이틀 하단 40px 간격 (16px) -->
+                <p class="story-desc">
+                    보리에서 맥주까지 이어지는 로컬 산업의 중심 브루어리 곡우는<br>
+                    봄비가 내려 백곡을 기름지게 한다는 절기 '곡우(穀雨)'와<br>
+                    양조장을 뜻하는 ‘Brewery’를 합쳐 계절의 흐름과 농부의<br>
+                    땀방울이 만들어낸 정직한 원료,<br>
+                    자연의 깊은 풍미를 그대로 담아내는 양조 철학을 전달합니다.
                 </p>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             4가지 재료 소개 섹션 (Ingredients Story Section)
+             - 상하 112px 간격
+             - 이미지-텍스트 지그재그 반복 4개 영역 (두 영역 사이 간격 120px)
+             ========================================================================== -->
+        <section class="story-ingredients-section">
+            <div class="container story-ingredients-container">
+                <!-- ==================== 1번 재료 소개 영역 (이미지 좌 / 텍스트 우) ==================== -->
+                <div class="ingredient-row">
+                    <!-- 1. 이미지 영역 (600x450 이미지 프레임 + 600x40 캡션) -->
+                    <div class="ingredient-img-col">
+                        <div class="ingredient-img-frame ingredient-frame-1">
+                            <div class="ingredient-img-placeholder">
+                                <span class="placeholder-tag">IMAGE 01</span>
+                                <span class="placeholder-size">600 × 450 px</span>
+                            </div>
+                            <img src="./assets/images/BARLEY.jpg" alt="군산 보리" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-caption">
+                            <span class="caption-en">CHAPTER 01 - KOREAN BARLEY</span>
+                            <span class="caption-ko">군산 보리</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. 텍스트 영역 (숫자 01 + 타이틀 + 설명문 + 2행2열 표) -->
+                    <div class="ingredient-text-col">
+                        <!-- 숫자 100px + 타이틀/소제목 (28px 간격) -->
+                        <div class="ingredient-header-row">
+                            <span class="ingredient-num">01</span>
+                            <div class="ingredient-title-group">
+                                <h3 class="ingredient-title">보리</h3>
+                                <span class="ingredient-subhead">KOREAN BARLEY</span>
+                            </div>
+                        </div>
+
+                        <!-- 설명문: 숫자 텍스트 하단 28px 간격 -->
+                        <p class="ingredient-desc">
+                            국내 최초로 지역산 보리를 가공해 수제 맥주용 맥아를 생산 · 공급하는<br>
+                            전문 시설(군산맥아)을 갖추고 있으며,<br>
+                            군산 수제맥주 페스티벌 등을 통해 국내 맥주 산업의 중심지 역할을 하고 있습니다.
+                        </p>
+
+                        <!-- 표: 설명문 하단 32px 간격 (2행 2열, 각 300x60) -->
+                        <div class="ingredient-table">
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">산 지</span>
+                                <span class="table-cell-title">전북 군산</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">품 종</span>
+                                <span class="table-cell-title">겉보리 · 검정보리</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">수 확</span>
+                                <span class="table-cell-title">매년 6월</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">제 맥</span>
+                                <span class="table-cell-title">국내 제맥소 소배치</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 2번 재료 소개 영역 (텍스트 좌 / 이미지 우) ==================== -->
+                <div class="ingredient-row">
+                    <!-- 1. 이미지 영역 (지그재그 반전) -->
+                    <div class="ingredient-img-col">
+                        <div class="ingredient-img-frame ingredient-frame-2">
+                            <div class="ingredient-img-placeholder">
+                                <span class="placeholder-tag">IMAGE 02</span>
+                                <span class="placeholder-size">600 × 450 px</span>
+                            </div>
+                            <img src="./assets/images/HOP.jpeg" alt="재료 이미지 2" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-caption">
+                            <span class="caption-en">CHAPTER 02 - KOREAN HOPS</span>
+                            <span class="caption-ko">홍천 홉</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. 텍스트 영역 -->
+                    <div class="ingredient-text-col">
+                        <div class="ingredient-header-row">
+                            <span class="ingredient-num">02</span>
+                            <div class="ingredient-title-group">
+                                <h3 class="ingredient-title">홉</h3>
+                                <span class="ingredient-subhead">KOREAN HOPS</span>
+                            </div>
+                        </div>
+
+                        <p class="ingredient-desc">
+                            대한민국 홉 재배의 역사적 중심지 강원도 홍천. 매서운 강원의 겨울을 이겨내는<br>
+                            강인한 내한성으로, 우리 땅에 단단히 뿌리내린 토종 홉의 정통성을 이어갑니다.
+                        </p>
+
+                        <div class="ingredient-table">
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">산 지</span>
+                                <span class="table-cell-title">강원 홍천</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">형 태</span>
+                                <span class="table-cell-title">생홉 · 할러타우</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">투 입</span>
+                                <span class="table-cell-title">왈풀 · 드라이호핑</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">아 로 마</span>
+                                <span class="table-cell-title">시트러스 · 솔잎</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 3번 재료 소개 영역 (이미지 좌 / 텍스트 우) ==================== -->
+                <div class="ingredient-row">
+                    <!-- 1. 이미지 영역 -->
+                    <div class="ingredient-img-col">
+                        <div class="ingredient-img-frame ingredient-frame-3">
+                            <div class="ingredient-img-placeholder">
+                                <span class="placeholder-tag">IMAGE 03</span>
+                                <span class="placeholder-size">600 × 450 px</span>
+                            </div>
+                            <img src="./assets/images/WATER.jpeg" alt="재료 이미지 3" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-caption">
+                            <span class="caption-en">CHAPTER 03 - DEEP ROCK WATER</span>
+                            <span class="caption-ko">강릉 암반수</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. 텍스트 영역 -->
+                    <div class="ingredient-text-col">
+                        <div class="ingredient-header-row">
+                            <span class="ingredient-num">03</span>
+                            <div class="ingredient-title-group">
+                                <h3 class="ingredient-title">물</h3>
+                                <span class="ingredient-subhead">DEEP ROCK WATER</span>
+                            </div>
+                        </div>
+
+                        <p class="ingredient-desc">
+                            양조의 90%는 물입니다. 곡우는 대관령 자락 지하 200미터 암반수를 사용하며,<br>
+                            맥주 스타일마다 미네랄 프로필을 다시 설계해 라거에는 부드럽게, 에일에는 단단하게 만듭니다.
+                        </p>
+
+                        <div class="ingredient-table">
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">수 원</span>
+                                <span class="table-cell-title">강릉 왕산면 지하 200m</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">경 도</span>
+                                <span class="table-cell-title">스타일별 재설계</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">처 리</span>
+                                <span class="table-cell-title">카본 필터 · UV</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">p H</span>
+                                <span class="table-cell-title">5.2 - 5.6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 4번 재료 소개 영역 (텍스트 좌 / 이미지 우) ==================== -->
+                <div class="ingredient-row">
+                    <!-- 1. 이미지 영역 (지그재그 반전) -->
+                    <div class="ingredient-img-col">
+                        <div class="ingredient-img-frame ingredient-frame-4">
+                            <div class="ingredient-img-placeholder">
+                                <span class="placeholder-tag">IMAGE 04</span>
+                                <span class="placeholder-size">600 × 450 px</span>
+                            </div>
+                            <img src="./assets/images/YEAST.jpeg" alt="재료 이미지 4" class="ingredient-img">
+                        </div>
+                        <div class="ingredient-caption">
+                            <span class="caption-en">CHAPTER 04 - KOREAN YEAST</span>
+                            <span class="caption-ko">곡우 하우스 균주</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. 텍스트 영역 -->
+                    <div class="ingredient-text-col">
+                        <div class="ingredient-header-row">
+                            <span class="ingredient-num">04</span>
+                            <div class="ingredient-title-group">
+                                <h3 class="ingredient-title">효모</h3>
+                                <span class="ingredient-subhead">KOREAN YEAST</span>
+                            </div>
+                        </div>
+
+                        <p class="ingredient-desc">
+                            한국 전통 누룩과 과수원에서 분리한 토종 균주 중 발효력이 안정된 두 균주를 <br>
+                            하우스 효모로 길러냅니다. <br>
+                            라거의 깨끗한 피니시, 에일의 은근한 과실향은 이 균주들의 서명입니다. </p>
+
+                        <div class="ingredient-table">
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">균 주</span>
+                                <span class="table-cell-title">G-01 라거 · G-07 에일</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">분 리 원</span>
+                                <span class="table-cell-title">전통 누룩 · 과수</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">발 효 온 도</span>
+                                <span class="table-cell-title">9°C · 19°C</span>
+                            </div>
+                            <div class="ingredient-table-cell">
+                                <span class="table-cell-sub">계 대</span>
+                                <span class="table-cell-title">매 배치 신선 배양</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -95,7 +342,8 @@
                     <!-- 3. AI 자산 안내 박스 (소개 하단 24px 간격, 340x37) -->
                     <div class="footer-ai-badge">
                         <svg class="footer-film-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z" />
                         </svg>
                         <span class="footer-ai-text">
                             <span class="text-muted-part">이 웹사이트의 모든 이미지 필름은</span>
@@ -147,7 +395,8 @@
                     <div class="footer-col footer-contact-col">
                         <h4 class="footer-col-title">CONTACT</h4>
                         <div class="footer-info-list">
-                            <a href="mailto:brewery@gogu.beer" class="footer-info-item footer-link">brewery@gogu.beer</a>
+                            <a href="mailto:brewery@gogu.beer"
+                                class="footer-info-item footer-link">brewery@gogu.beer</a>
                             <a href="tel:063-462-2019" class="footer-info-item footer-link">063 - 462 - 2019</a>
                         </div>
                     </div>

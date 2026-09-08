@@ -36,7 +36,7 @@
     height: 100%;
     /* 텍스트 가독성을 위한 어두운 오버레이 + hero_image 배경 이미지 */
     background-image: linear-gradient(rgba(24, 35, 31, 0.4), rgba(24, 35, 31, 0.7)),
-        url('../assets/images/hero_image.jpg');
+        url('../assets/images/hero_image2.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -586,15 +586,19 @@
     font-family: var(--font-en);
     /* Bebas Neue */
     font-size: 16px;
+    line-height: 1;
     color: var(--text-primary);
     /* 기본 흰색 글자 */
     letter-spacing: 1.5px;
     text-decoration: none;
     text-transform: uppercase;
     /* 영문 대문자 */
-    padding-bottom: 4px;
-    position: relative;
     transition: color var(--transition-fast);
+}
+
+.intro-story-btn span {
+    display: inline-block;
+    line-height: 1;
 }
 
 .intro-arrow-icon {
@@ -602,6 +606,11 @@
     /* 가로 18px */
     height: 10px;
     /* 세로 10px */
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    /* 텍스트 대문자 높이와 수직 정중앙 일치 */
     stroke: var(--text-primary);
     transition: transform var(--transition-fast), stroke var(--transition-fast);
 }
@@ -612,7 +621,7 @@
 
 .intro-story-btn:hover .intro-arrow-icon {
     stroke: var(--color-accent);
-    transform: translateX(3px);
+    transform: translateX(6px);
 }
 
 /* 2) 우측 2행 2열 표 (588px x 362px) */
@@ -1015,6 +1024,11 @@
     transition: opacity var(--transition-fast);
 }
 
+.beer-card-btn .btn-text {
+    display: inline-block;
+    line-height: 1;
+}
+
 .beer-card-btn:hover {
     opacity: 0.8;
 }
@@ -1024,6 +1038,10 @@
     /* 14px */
     height: 14px;
     /* 14px */
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
     stroke: var(--color-accent);
     /* 버튼 텍스트와 동일한 색상 (#AD1931) */
     transition: transform var(--transition-fast);
@@ -1158,37 +1176,30 @@
     gap: 12px;
     font-family: var(--font-en);
     font-size: 16px;
+    line-height: 1;
     color: var(--text-primary);
     letter-spacing: 1.5px;
     text-decoration: none;
     text-transform: uppercase;
-    padding-bottom: 4px;
-    position: relative;
     transition: color var(--transition-fast);
 }
 
-.ingredients-story-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--color-accent);
-    transition: width var(--transition-normal);
+.ingredients-story-btn span {
+    display: inline-block;
+    line-height: 1;
 }
 
 .ingredients-story-btn:hover {
     color: var(--color-accent);
 }
 
-.ingredients-story-btn:hover::after {
-    width: 100%;
-}
-
 .ingredients-arrow-icon {
     width: 18px;
     height: 10px;
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
     stroke: var(--text-primary);
     transition: transform var(--transition-fast), stroke var(--transition-fast);
 }
@@ -1640,26 +1651,18 @@
     /* Bebas Neue */
     font-size: 16px;
     /* 16px */
+    line-height: 1;
     color: var(--text-primary);
     /* --text-primary (#F4F4F2) */
     letter-spacing: 1.5px;
     text-decoration: none;
     text-transform: uppercase;
-    padding-bottom: 4px;
-    position: relative;
     transition: color var(--transition-fast);
 }
 
-.gallery-archive-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--color-accent);
-    /* 호버 언더라인 #AD1931 */
-    transition: width var(--transition-normal);
+.gallery-archive-btn span {
+    display: inline-block;
+    line-height: 1;
 }
 
 .gallery-archive-btn:hover {
@@ -1667,15 +1670,15 @@
     /* 호버 시 텍스트 붉은색 전환 */
 }
 
-.gallery-archive-btn:hover::after {
-    width: 100%;
-}
-
 .gallery-arrow-icon {
     width: 18px;
     /* 가로 18px */
     height: 10px;
     /* 세로 10px */
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
     stroke: var(--text-primary);
     transition: transform var(--transition-fast), stroke var(--transition-fast);
 }
@@ -1684,4 +1687,555 @@
     transform: translateX(6px);
     /* 마우스 호버 시 화살표 우측 이동 */
     stroke: var(--color-accent);
+}
+
+/* ==========================================================================
+   갤러리 6개 프레임 그리드 (Hero + 5 Grid)
+   - 소제목/버튼 영역 하단 50px 간격
+   - 6열 CSS Grid 체계 기반
+   ========================================================================== */
+.gallery-grid {
+    width: 100%;
+    margin-top: 50px;
+    /* 소제목/헤더 영역 하단 50px 간격 */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* 6열 그리드 */
+    gap: 20px;
+    /* 프레임 간격 20px */
+}
+
+/* 개별 프레임 공통 베이스 스타일 */
+.gallery-frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    /* 10px 곡률 */
+    background-color: rgba(52, 78, 65, 0.25);
+    /* 은은한 서브 포레스트 톤 */
+    border: 1px dashed rgba(163, 176, 167, 0.35);
+    /* 이미지 삽입 전 가이드 테두리 */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: border-color var(--transition-normal), background-color var(--transition-normal), transform var(--transition-normal);
+}
+
+.gallery-frame:hover {
+    border-color: var(--color-accent);
+    background-color: rgba(52, 78, 65, 0.4);
+}
+
+/* 프레임 내부 플레이스홀더 안내 정보 */
+.frame-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+.frame-tag {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--text-gold);
+}
+
+.frame-size {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* 실제 이미지 삽입 시 적용되는 스타일 */
+.gallery-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-frame:hover .gallery-img {
+    transform: scale(1.04);
+}
+
+/* [1] 상단 히어로 와이드 프레임 (6열 전체 차지, 높이 520px) */
+.gallery-frame-hero {
+    grid-column: span 6;
+    height: 520px;
+}
+
+/* [2, 3, 4] 중단 세로형 프레임 (각 2열씩 총 6열 차지, 높이 500px) */
+.gallery-frame-md {
+    grid-column: span 2;
+    height: 500px;
+}
+
+/* [5, 6] 하단 가로 와이드 프레임 (각 3열씩 총 6열 차지, 높이 420px) */
+.gallery-frame-lg {
+    grid-column: span 3;
+    height: 420px;
+}
+
+/* ==========================================================================
+   개별 프레임 배경 이미지 설정 (1번 ~ 6번)
+   - 원하는 이미지 파일 경로를 url(...) 안에 지정해 주시면 됩니다.
+   ========================================================================== */
+.gallery-frame-1 {
+    /* [1] 상단 시네마틱 와이드 (추천: 1320 × 520 px) */
+    background-image: url('');
+}
+
+.gallery-frame-2 {
+    /* [2] 중단 세로형 1 (추천: 426 × 500 px) */
+    background-image: url('');
+}
+
+.gallery-frame-3 {
+    /* [3] 중단 세로형 2 (추천: 426 × 500 px) */
+    background-image: url('');
+}
+
+.gallery-frame-4 {
+    /* [4] 중단 세로형 3 (추천: 426 × 500 px) */
+    background-image: url('');
+}
+
+.gallery-frame-5 {
+    /* [5] 하단 와이드 1 (추천: 650 × 420 px) */
+    background-image: url('');
+}
+
+.gallery-frame-6 {
+    /* [6] 하단 와이드 2 (추천: 650 × 420 px) */
+    background-image: url('');
+}
+
+/* ==========================================================================
+   한정상품 광고 섹션 (Seasonal Release Section)
+   - 배경색: --color-sub-1 (#344E41)
+   - 상하 여백: 128px
+   - 좌측: 600x400 이미지 프레임
+   - 우측: 90px 간격, 상하 50px 여백의 설명문 영역
+   ========================================================================== */
+.seasonal-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: var(--color-sub-1);
+    /* --color-sub-1 (#344E41) */
+    padding: 128px 0;
+    /* 상하 여백 128px */
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.seasonal-container {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+    /* 이미지 우측 90px 간격 */
+    box-sizing: border-box;
+}
+
+/* 좌측 600x400 이미지 프레임 */
+.seasonal-img-frame {
+    width: 600px;
+    /* 가로 600px */
+    height: 400px;
+    /* 세로 400px */
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    /* 10px 곡률 */
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    background-color: var(--color-main);
+}
+
+.seasonal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.seasonal-img-frame:hover .seasonal-img {
+    transform: scale(1.04);
+}
+
+/* 우측 설명문 영역 (상하 50px 여백 추가) */
+.seasonal-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px 0;
+    /* 설명문 영역 상하 여백 50px 추가 */
+    box-sizing: border-box;
+}
+
+/* 1. 소개문: 30px 가로선 + 영문 + 한글 (간격 10px) */
+.seasonal-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 요소 사이 간격 10px */
+    margin-bottom: 15px;
+    /* 소개문 하단 15px 간격 */
+    white-space: nowrap;
+}
+
+.seasonal-subhead-line {
+    width: 30px;
+    /* 30px 가로선 */
+    height: 1px;
+    /* 굵기 1px */
+    background-color: var(--text-gold-light);
+    /* --text-gold-light */
+    display: block;
+    flex-shrink: 0;
+}
+
+.seasonal-subhead-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold-light);
+    /* --text-gold-light */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.seasonal-subhead-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    /* 12px */
+    color: var(--text-muted);
+    /* --text-muted */
+    line-height: 1;
+}
+
+/* 2. 타이틀: --font-title, --text-primary, 48px */
+.seasonal-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 48px;
+    /* 48px */
+    color: var(--text-primary);
+    /* --text-primary */
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0 0 20px 0;
+    /* 타이틀 하단 20px 간격 */
+    letter-spacing: -0.5px;
+}
+
+/* 3. 설명문: --font-body, --text-gold, 16px, 줄간격 1.875 */
+.seasonal-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold);
+    /* --text-gold */
+    line-height: 1.875;
+    /* 줄간격 1.875 */
+    margin: 0 0 38px 0;
+    /* 설명문 하단 38px 간격 */
+}
+
+/* 4. 상세 정보 행 (3개 상세 정보, 항목 간 간격 32px) */
+.seasonal-specs-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    /* 3개의 소개문 간격 32px 적용 */
+    margin-bottom: 38px;
+    /* 상세 정보 하단 38px 간격 */
+}
+
+/* 개별 상세 정보: 40px 세로선 + 16px 간격 + 텍스트 그룹 */
+.seasonal-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* 16px 간격 */
+}
+
+.spec-divider-line {
+    width: 2px;
+    /* 두께 2px */
+    height: 40px;
+    /* 40px 세로선 */
+    background-color: var(--text-accent);
+    /* --text-accent (#AD1931) */
+    display: block;
+    flex-shrink: 0;
+}
+
+.spec-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    /* 수치와 라벨 사이 4px 간격 */
+}
+
+.spec-value {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 28px;
+    /* 28px */
+    color: var(--text-primary);
+    /* --text-primary */
+    line-height: 1;
+    font-weight: 400;
+}
+
+.spec-label {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 8px;
+    /* 8px */
+    color: var(--text-gold);
+    /* --text-gold */
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* 5. 굿즈 페이지 이동 텍스트 버튼 행 */
+.seasonal-btn-row {
+    width: 100%;
+}
+
+.seasonal-goods-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* 우측 10px 간격 화살표 아이콘 */
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    /* 16px */
+    line-height: 1;
+    color: var(--text-primary);
+    /* --text-primary */
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.seasonal-goods-btn span {
+    display: inline-block;
+    line-height: 1;
+}
+
+.seasonal-goods-btn:hover {
+    color: var(--color-accent);
+}
+
+.seasonal-arrow-icon {
+    width: 18px;
+    /* 가로 18px */
+    height: 10px;
+    /* 세로 10px */
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    stroke: var(--text-primary);
+    /* --text-primary */
+    transition: transform var(--transition-fast), stroke var(--transition-fast);
+}
+
+.seasonal-goods-btn:hover .seasonal-arrow-icon {
+    transform: translateX(6px);
+    stroke: var(--color-accent);
+}
+
+/* ==========================================================================
+   굿즈 홍보 섹션 (Goods Promo Section)
+   - 상하 여백 80px, 배경색: --color-accent (#AD1931)
+   - 좌측: 소제목 + 타이틀 + 설명문
+   - 우측 중앙: 180x60 직사각형 버튼 (--color-main, 반사광 빛 효과)
+   ========================================================================== */
+.goods-promo-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    padding: 80px 0;
+    /* 상하 여백 80px */
+    box-sizing: border-box;
+    position: relative;
+}
+
+.goods-promo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 우측 중앙 배치 */
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+/* 좌측 텍스트 그룹 */
+.goods-promo-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+}
+
+/* 소제목: --font-en, --text-primary, 16px */
+.goods-promo-subhead {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    /* 소제목 하단 16px 간격 */
+}
+
+/* 타이틀: 소제목 하단 16px 간격, --font-title, --text-primary, 48px */
+.goods-promo-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 48px;
+    color: var(--text-primary);
+    /* --text-primary */
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px 0;
+    /* 타이틀 하단 16px 간격 */
+}
+
+/* 설명문: 타이틀 하단 16px 간격, --font-body, --text-primary, 16px */
+.goods-promo-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    color: var(--text-primary);
+    /* --text-primary */
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 우측 중앙 버튼 컨테이너 */
+.goods-promo-btn-col {
+    flex-shrink: 0;
+}
+
+/* 180x60 직사각형 버튼 (--color-main 배경) */
+.goods-promo-btn {
+    width: 180px;
+    height: 60px;
+    background-color: var(--color-main);
+    /* --color-main (#18231F) */
+    border-radius: 0;
+    /* 직사각형 버튼 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* 텍스트와 아이콘 가운데 정렬 */
+    gap: 10px;
+    /* 10px 간격 */
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    /* 빛 효과가 바깥으로 나가지 않도록 설정 */
+    box-sizing: border-box;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* 빛이 대각선으로 지나가는 반사광 효과 가상 요소 */
+.goods-promo-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    /* 평소에는 버튼 왼쪽 바깥에 대기 */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    /* 비스듬한 빛 모양 */
+    transition: none;
+}
+
+/* 호버 시: 버튼 배경색은 변경되지 않고, 빛만 좌→우로 통과 */
+.goods-promo-btn:hover {
+    background-color: var(--color-main);
+    /* 배경색 변경 없음 */
+    transform: translateY(-3px);
+    /* 위로 살짝 들리는 리프트 효과 */
+}
+
+.goods-promo-btn:hover::before {
+    left: 160%;
+    /* 마우스 올렸을 때 빛이 우측으로 시원하게 통과 */
+    transition: left 0.65s ease-in-out;
+}
+
+/* 버튼 텍스트: --font-en, --text-primary, 16px */
+.goods-promo-btn-text {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+/* 버튼 화살표 아이콘: 18x10 동일 규격 + 수직 센터링 */
+.goods-promo-arrow-icon {
+    width: 18px;
+    height: 10px;
+    stroke: var(--text-primary);
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    /* 텍스트 대문자 시각적 중심과 일치 */
+    transition: transform var(--transition-fast);
+}
+
+.goods-promo-btn:hover .goods-promo-arrow-icon {
+    transform: translateX(4px);
+    /* 호버 시 화살표 살짝 우측 이동 */
 }

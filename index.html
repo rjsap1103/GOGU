@@ -651,6 +651,178 @@
                         </svg>
                     </a>
                 </div>
+
+                <!-- 6개 프레임 갤러리 그리드 (소제목/헤더 영역 하단 50px 간격, 클릭 시 갤러리 페이지로 이동) -->
+                <div class="gallery-grid">
+                    <!-- [1] 상단 시네마틱 와이드 프레임 (1320 x 520) -->
+                    <a href="./gallery.html" class="gallery-frame gallery-frame-hero gallery-frame-1"
+                        aria-label="갤러리 페이지로 이동">
+                        <div class="frame-placeholder">
+                            <span class="frame-tag">FRAME 01</span>
+                            <span class="frame-size">1320 × 520 px (시네마틱 와이드)</span>
+                        </div>
+                    </a>
+
+                    <!-- [2] 중단 세로형 프레임 1 (426 x 500) -->
+                    <a href="./gallery.html" class="gallery-frame gallery-frame-md gallery-frame-2"
+                        aria-label="갤러리 페이지로 이동">
+                        <div class="frame-placeholder">
+                            <span class="frame-tag">FRAME 02</span>
+                            <span class="frame-size">426 × 500 px (세로형)</span>
+                        </div>
+                    </a>
+
+                    <!-- [3] 중단 세로형 프레임 2 (426 x 500) -->
+                    <a href="./gallery.html" class="gallery-frame gallery-frame-md gallery-frame-3"
+                        aria-label="갤러리 페이지로 이동">
+                        <div class="frame-placeholder">
+                            <span class="frame-tag">FRAME 03</span>
+                            <span class="frame-size">426 × 500 px (세로형)</span>
+                        </div>
+                    </a>
+
+                    <!-- [4] 중단 세로형 프레임 3 (426 x 500) -->
+                    <a href="./gallery.html" class="gallery-frame gallery-frame-md gallery-frame-4"
+                        aria-label="갤러리 페이지로 이동">
+                        <div class="frame-placeholder">
+                            <span class="frame-tag">FRAME 04</span>
+                            <span class="frame-size">426 × 500 px (세로형)</span>
+                        </div>
+                    </a>
+
+                    <!-- [5] 하단 와이드 프레임 1 (650 x 420) -->
+                    <a href="./gallery.html" class="gallery-frame gallery-frame-lg gallery-frame-5"
+                        aria-label="갤러리 페이지로 이동">
+                        <div class="frame-placeholder">
+                            <span class="frame-tag">FRAME 05</span>
+                            <span class="frame-size">650 × 420 px (와이드)</span>
+                        </div>
+                    </a>
+
+                    <!-- [6] 하단 와이드 프레임 2 (650 x 420) -->
+                    <a href="./gallery.html" class="gallery-frame gallery-frame-lg gallery-frame-6"
+                        aria-label="갤러리 페이지로 이동">
+                        <div class="frame-placeholder">
+                            <span class="frame-tag">FRAME 06</span>
+                            <span class="frame-size">650 × 420 px (와이드)</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             한정상품 광고 섹션 (Seasonal Release Section)
+             - 배경색: --color-sub-1 (#344E41), 상하 128px 여백
+             - 좌측: 600x400 이미지 프레임 (brand_film_thumb.jpeg)
+             - 우측: 90px 간격, 상하 50px 여백의 설명문 영역
+             - 소개문 (가로선 30px + SEASONAL RELEASE + 시즌 한정)
+             - 타이틀: "어텀 에일 — 가을, 잔잔히 머물다" (48px)
+             - 설명문 (16px, 줄간격 1.875)
+             - 3개 상세 정보 (2px 40px 세로선 + 28px 수치 + 8px 라벨, 간격 32px)
+             - 굿즈 페이지 링크 버튼 (SEE AUTUMN ALE + 16x16 화살표)
+             ========================================================================== -->
+        <section id="seasonal-release" class="seasonal-section">
+            <div class="container seasonal-container">
+                <!-- 좌측: 600x400 이미지 프레임 -->
+                <div class="seasonal-img-frame">
+                    <img src="./assets/images/brand_film_thumb.jpeg" alt="어텀 에일 시즌 한정 수제 맥주" class="seasonal-img">
+                </div>
+
+                <!-- 우측: 설명문 영역 (좌측 이미지와 90px 간격, 상하 50px 여백) -->
+                <div class="seasonal-content">
+                    <!-- 1. 소개문: 30px 가로선 + "SEASONAL RELEASE" + "시즌 한정" (10px 간격) -->
+                    <div class="seasonal-subhead">
+                        <span class="seasonal-subhead-line"></span>
+                        <span class="seasonal-subhead-en">SEASONAL RELEASE</span>
+                        <span class="seasonal-subhead-ko">시즌 한정</span>
+                    </div>
+
+                    <!-- 2. 타이틀: 소개문 하단 15px 간격 (48px) -->
+                    <h2 class="seasonal-title">어텀 에일 — 가을, 잔잔히 머물다</h2>
+
+                    <!-- 3. 설명문: 타이틀 하단 20px 간격 (16px, 줄간격 1.875) -->
+                    <p class="seasonal-desc">
+                        잘 말려 깊어진 가을 햇감의 진한 단맛과 은은한 흙내음을 에일에 담았습니다.<br>
+                        떫은맛은 비우고 가을의 묵직한 풍미를 채운, 계절 한정 수제 맥주입니다.
+                    </p>
+
+                    <!-- 4. 상세 정보: 설명문 하단 38px 간격 (3개 항목, 간격 32px) -->
+                    <div class="seasonal-specs-row">
+                        <!-- 항목 1: 5.2 / ABV -->
+                        <div class="seasonal-spec-item">
+                            <span class="spec-divider-line"></span>
+                            <div class="spec-text-group">
+                                <span class="spec-value">5.2</span>
+                                <span class="spec-label">ABV</span>
+                            </div>
+                        </div>
+
+                        <!-- 항목 2: 18 / IBU -->
+                        <div class="seasonal-spec-item">
+                            <span class="spec-divider-line"></span>
+                            <div class="spec-text-group">
+                                <span class="spec-value">15</span>
+                                <span class="spec-label">IBU</span>
+                            </div>
+                        </div>
+
+                        <!-- 항목 3: 500 / ML -->
+                        <div class="seasonal-spec-item">
+                            <span class="spec-divider-line"></span>
+                            <div class="spec-text-group">
+                                <span class="spec-value">곶감 · 시나몬</span>
+                                <span class="spec-label">NOTES</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. 굿즈 페이지 이동 텍스트 버튼: 상세정보 하단 38px 간격 -->
+                    <div class="seasonal-btn-row">
+                        <a href="./beer.html" class="seasonal-goods-btn">
+                            <span>SEE AUTUMN ALE</span>
+                            <svg class="seasonal-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                                stroke="currentColor">
+                                <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             굿즈 홍보 섹션 (Goods Promo Section)
+             - 상하 여백 80px, 배경색: --color-accent (#AD1931)
+             - 좌측: 소제목 (16px) + 타이틀 (48px) + 설명문 (16px)
+             - 우측 중앙: 180x60 직사각형 버튼 (--color-main 배경, 빛 통과 효과)
+             ========================================================================== -->
+        <section id="goods-promo" class="goods-promo-section">
+            <div class="container goods-promo-container">
+                <!-- 좌측 텍스트 영역 -->
+                <div class="goods-promo-text-col">
+                    <!-- 소제목: --font-en, --text-primary, 16px -->
+                    <span class="goods-promo-subhead">OFFICIAL MERCHANDISE</span>
+
+                    <!-- 타이틀: 소제목 하단 16px 간격, --font-title, --text-primary, 48px -->
+                    <h2 class="goods-promo-title">한 잔의 깊이를 더하는 오브제.</h2>
+
+                    <!-- 설명문: 타이틀 하단 16px 간격, --font-body, --text-primary, 16px -->
+                    <p class="goods-promo-desc">맥주의 아로마와 거품을 가장 잘 살려주는 맥주잔과 정갈한 코스터 컬렉션을 만나보세요.</p>
+                </div>
+
+                <!-- 우측 중앙: 굿즈 페이지 이동 180x60 직사각형 버튼 -->
+                <div class="goods-promo-btn-col">
+                    <a href="./goods.html" class="goods-promo-btn" aria-label="굿즈 페이지로 이동">
+                        <span class="goods-promo-btn-text">GOODS</span>
+                        <svg class="goods-promo-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                            stroke="currentColor">
+                            <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
