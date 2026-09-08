@@ -411,3 +411,354 @@
     font-weight: 500;
 }
 
+/* ==========================================================================
+   양조 공정 섹션 (Brewing Process Section)
+   - 상하 128px 여백
+   - 좌측 상단 소제목 (30px 가로선 + BREWING PROCESS + 양조 공정)
+   - 타이틀: 60px
+   - 공정 6개 템플릿 목록 (타이틀 하단 50px 간격)
+   ========================================================================== */
+.story-process-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 128px 0;
+    /* 상하 128px 여백 */
+    box-sizing: border-box;
+    background-color: var(--color-sub-1);
+}
+
+.story-process-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 1. 소제목: 30px 가로선 + 영문 + 한글 (간격 10px) */
+.process-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    /* 소제목 하단 20px 간격 */
+    white-space: nowrap;
+}
+
+.process-subhead-line {
+    width: 30px;
+    height: 1px;
+    background-color: var(--text-gold-light);
+    display: block;
+    flex-shrink: 0;
+}
+
+.process-subhead-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-gold-light);
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.process-subhead-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+/* 2. 타이틀: --font-title, --text-primary, 60px */
+.process-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 60px;
+    color: var(--text-primary);
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin: 0 0 50px 0;
+    /* 타이틀 하단 50px 간격 */
+}
+
+/* 3. 공정 소개 영역 (6개 템플릿 리스트) */
+.process-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* 개별 공정 아이템: 가로선 하단 32px 간격으로 배치 */
+.process-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    /* 아이콘 우측 32px 간격 */
+    width: 100%;
+    margin-bottom: 32px;
+    /* 가로선 하단 32px 간격 */
+    box-sizing: border-box;
+}
+
+.process-item:last-child {
+    margin-bottom: 0;
+}
+
+/* 좌측 72x72 사각형 아이콘 박스 */
+.process-icon-box {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    border: 1px solid var(--text-gold);
+    /* 테두리 1px 굵기, --text-gold */
+    border-radius: 0;
+    /* 사각형 */
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* 사각형 정 중앙 24px 크기의 아이콘 이미지 (--text-gold 색상 적용) */
+.process-icon-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    /* 흰색 png 아이콘을 --text-gold (#C5A059) 색상으로 필터링 */
+    filter: brightness(0) saturate(100%) invert(67%) sepia(43%) saturate(468%) hue-rotate(5deg) brightness(91%) contrast(87%);
+}
+
+/* 우측 텍스트 영역 (1215px 가로선과 x축 일치) */
+.process-content-col {
+    width: 1215px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* 최상단 타이틀 행 (좌측 3개 텍스트 + 우측 50x26 기간 박스) */
+.process-top-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* 좌측 3개 텍스트: 베이스라인 정렬 + 10px 간격 */
+.process-title-group {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+/* 숫자 텍스트: --font-title, --color-accent, 16px */
+.process-num {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    line-height: 1;
+}
+
+/* 타이틀: --font-title, --text-primary, 36px */
+.process-name {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 36px;
+    color: var(--text-primary);
+    /* --text-primary */
+    line-height: 1;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* 소제목: --font-title, --text-muted, 16px */
+.process-name-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    color: var(--text-muted);
+    /* --text-muted */
+    line-height: 1;
+}
+
+/* 우측 최상단 50x26 기간 박스 */
+.process-duration-badge {
+    width: 50px;
+    height: 26px;
+    flex-shrink: 0;
+    background-color: transparent;
+    /* 배경색 없음 */
+    border: 1px solid var(--text-gold);
+    /* 테두리 굵기 1px, --text-gold */
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.process-duration-badge span {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 10px;
+    /* 10px */
+    color: var(--text-gold);
+    /* --text-gold */
+    line-height: 1;
+    text-align: center;
+}
+
+/* 설명문: 타이틀 하단 18px 간격, --font-body, --text-muted, 16px */
+.process-desc {
+    margin-top: 18px;
+    /* 타이틀 하단 18px 간격 */
+    margin-bottom: 42px;
+    /* 가로선 상단 42px 간격 */
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    color: var(--text-muted);
+    /* --text-muted */
+    line-height: 1.6;
+}
+
+/* 설명문 하단 42px 간격 1215px 가로선 (--text-gold, 1px 굵기) */
+.process-divider-line {
+    width: 1215px;
+    height: 1px;
+    background-color: var(--text-gold);
+    /* --text-gold */
+    display: block;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   철학 인용 및 비어 페이지 이동 섹션 (Philosophy Quote Section)
+   - 상하 128px 여백
+   - 모든 텍스트 중앙 정렬
+   ========================================================================== */
+.story-philosophy-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 128px 0;
+    /* 상하 128px 여백 */
+    box-sizing: border-box;
+}
+
+.story-philosophy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 모든 요소 중앙 정렬 */
+    text-align: center;
+    /* 모든 텍스트 중앙 정렬 */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 1. 중앙 최상단 소제목: --font-en, --text-accent, 16px "KOREAN BREWERY PHILOSOPHY" */
+.philosophy-subhead {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-accent);
+    /* --text-accent (#AD1931) */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    /* 소제목 하단 32px 간격 타이틀 */
+    display: block;
+}
+
+/* 2. 타이틀: --font-title, --text-primary, 36px */
+.philosophy-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 36px;
+    color: var(--text-primary);
+    /* --text-primary */
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    margin: 0 0 32px 0;
+    /* 타이틀 하단 32px 간격 텍스트 */
+}
+
+/* "땅이 좋다는" 부분: --text-accent 색상 적용 */
+.philosophy-title-accent {
+    color: var(--text-accent);
+    /* --text-accent (#AD1931) */
+}
+
+/* 3. 타이틀 하단 32px 간격 텍스트: --font-title, --text-primary, 12px */
+.philosophy-note {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    color: var(--text-primary);
+    /* --text-primary */
+    line-height: 1;
+    margin: 0 0 44px 0;
+    /* 텍스트 하단 44px 간격 텍스트 버튼 */
+    letter-spacing: 0.5px;
+}
+
+/* 4. BEER 페이지 이동 텍스트 버튼: --font-en, --text-primary, 16px, "TAST THE RESULT" */
+.philosophy-beer-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* 우측 10px 간격 화살표 아이콘 */
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    line-height: 1;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.philosophy-btn-text {
+    display: inline-block;
+    line-height: 1;
+}
+
+.philosophy-beer-btn:hover {
+    color: var(--color-accent);
+    /* 호버 시 붉은색 전환 */
+}
+
+/* main.css와 동일 규격 (18x10) 및 수직 정렬 화살표 아이콘 */
+.philosophy-arrow-icon {
+    width: 18px;
+    height: 10px;
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    /* 텍스트 대문자 시각적 중심 일치 */
+    stroke: var(--text-primary);
+    transition: transform var(--transition-fast), stroke var(--transition-fast);
+}
+
+/* main.css와 동일한 호버 효과: 6px 우측 이동 및 붉은색 전환 */
+.philosophy-beer-btn:hover .philosophy-arrow-icon {
+    transform: translateX(6px);
+    stroke: var(--color-accent);
+}

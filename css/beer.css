@@ -2,6 +2,1024 @@
    GOGU BREWERY - BEER 페이지 전용 스타일시트 (Beer CSS)
    ========================================================================== */
 
-.beer-page-section {
-    padding: 80px 0 120px;
+/* 메인 영역 기본 배경 */
+.beer-main {
+    width: 100%;
+    background-color: var(--color-main);
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   BEER 히어로 섹션 (Beer Hero Section)
+   - (300, 200) 위치에서 시작:
+     * 좌측 X: 300px (공통 .container에 의해 자동 300px 패딩)
+     * 상단 Y: 200px (padding-top: 200px 로 화면 상단 기준 정확히 200px 위치)
+   - 하단 여백: 100px 적용 (padding-bottom: 100px)
+   ========================================================================== */
+.beer-hero-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding-top: 200px;
+    /* 화면 상단(0) 기준 Y=200px 위치에서 소제목 시작 */
+    padding-bottom: 0;
+    /* 맥주 카드 영역과의 104px 여백을 위해 0으로 설정 */
+    box-sizing: border-box;
+}
+
+.beer-hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* 1. 소제목: 30px 가로선 + "OUR BEER" + "맥주" (10px 간격) */
+.beer-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 사이 간격 10px */
+    margin-bottom: 20px;
+    /* 소제목 하단 20px 간격 타이틀 */
+    white-space: nowrap;
+}
+
+.beer-subhead-line {
+    width: 30px;
+    /* 30px 가로선 */
+    height: 1px;
+    /* 굵기 1px */
+    background-color: var(--text-gold-light);
+    /* --text-gold-light */
+    display: block;
+    flex-shrink: 0;
+}
+
+.beer-subhead-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-gold-light);
+    /* --text-gold-light */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.beer-subhead-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    /* 12px */
+    color: var(--text-muted);
+    /* --text-muted */
+    line-height: 1;
+}
+
+/* 2. 타이틀: --font-title, --text-primary, 60px */
+.beer-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 60px;
+    /* 60px */
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    line-height: 1.3;
+    font-weight: 400;
+    margin: 0 0 40px 0;
+    /* 타이틀 하단 40px 간격 설명문 */
+    letter-spacing: -0.5px;
+}
+
+/* "시간", "감각" 강조: --text-gold-light */
+.beer-title .text-highlight {
+    color: var(--text-gold-light);
+    /* --text-gold-light (#E5B84C) */
+}
+
+/* 3. 설명문: --font-body, --text-muted, 16px */
+.beer-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    /* 16px */
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1.875;
+    /* 줄간격 1.875 */
+    margin: 0;
+    max-width: 900px;
+}
+
+/* ==========================================================================
+   맥주 카드 영역 (Beer Catalog Section)
+   - 상단 104px 여백
+   - 좌측: 80x40 필터 버튼 4개 (15px 간격)
+   - 우측: "04 BEERS - SMALL BATCH ONLY" (버튼과 중앙정렬)
+   ========================================================================== */
+.beer-catalog-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding-top: 104px;
+    /* 상단 104px 여백 */
+    padding-bottom: 140px;
+    box-sizing: border-box;
+}
+
+.beer-catalog-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 상단 필터 바: 좌측 버튼 4개 + 우측 텍스트 (수직 중앙 정렬) */
+.beer-filter-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* 좌측 버튼 그룹: 15px 간격 */
+.beer-filter-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* 버튼 15px 간격 배치 */
+}
+
+/* 80x40 사각형 버튼 */
+.beer-filter-btn {
+    width: 80px;
+    height: 40px;
+    background-color: transparent;
+    /* 배경색 없음 */
+    border: 1px solid var(--text-primary);
+    /* 테두리 두께 1px, --text-primary 색상 */
+    border-radius: 0;
+    /* 사각형 */
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    /* 텍스트 간격 */
+    padding: 0;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+/* 버튼 1차 텍스트 (ALL, LAGER, ALE, DARK): --font-en, --text-muted, 14px */
+.beer-filter-btn .btn-label {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+/* 버튼 2차 텍스트 (개수 4, 1, 2, 1): --font-title, --text-accent, 10px */
+.beer-filter-btn .btn-count {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 10px;
+    color: var(--text-accent);
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+/* 버튼 활성화(active) 상태:
+   - 배경색: --color-accent
+   - 테두리: 없음 (투명 처리하여 1px 레이아웃 밀림 방지)
+   - 텍스트 색상: 각각 --text-primary, --text-gold-light */
+.beer-filter-btn.active {
+    background-color: var(--color-accent);
+    /* #AD1931 */
+    border-color: transparent;
+    /* 테두리 없음 */
+}
+
+.beer-filter-btn.active .btn-label {
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+}
+
+.beer-filter-btn.active .btn-count {
+    color: var(--text-gold-light);
+    /* --text-gold-light (#E5B84C) */
+}
+
+/* 비활성 버튼 호버 피드백 */
+.beer-filter-btn:not(.active):hover {
+    border-color: var(--color-accent);
+}
+
+.beer-filter-btn:not(.active):hover .btn-label {
+    color: var(--text-primary);
+}
+
+/* 우측 상단 텍스트: --font-title, --text-muted, 10px, 버튼과 중앙정렬 */
+.beer-filter-note {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 10px;
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+/* ==========================================================================
+   맥주 카드 그리드 영역 (Beer Cards Grid)
+   - 카드는 300x650 사이즈, 4개의 카드가 40px 간격으로 배치
+   ========================================================================== */
+.beer-cards-grid {
+    width: 100%;
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    gap: 40px;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* 개별 맥주 카드 (300px x 650px, 배경색 --color-sub-2) */
+.beer-card {
+    width: 300px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    background-color: var(--color-sub-2);
+    /* --color-sub-2 (#2B4135) */
+    border: 1px solid transparent;
+    overflow: hidden;
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.beer-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--text-accent);
+}
+
+/* 필터링에 의해 숨겨진 카드 */
+.beer-card.is-hidden {
+    display: none !important;
+}
+
+/* 1. 이미지 영역 (300px x 400px) */
+.beer-card-img-box {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-main);
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.beer-card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.beer-card:hover .beer-card-img-box img {
+    transform: scale(1.05);
+}
+
+/* 카드 내부 좌측 상단 맥주 종류 태그
+   - 100x30 사이즈, 배경색 --color-main, 테두리색상 --text-gold, 1px 굵기, 투명도 40%
+   - 상하좌우 24px 여백 기준 top: 24px, left: 24px */
+.beer-card-tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 100px;
+    height: 30px;
+    background-color: var(--color-main);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.beer-card-tag span {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    color: var(--text-gold);
+    /* --text-gold */
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* 2. 텍스트 영역 (300px x 250px, 색상 --color-sub-2, 상하좌우 24px 여백) */
+.beer-card-text-box {
+    width: 300px;
+    height: 250px;
+    background-color: var(--color-sub-2);
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* 맥주 이름: --font-en, --text-primary, 24px, "GOGU LAGER" */
+.beer-card-name-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 24px;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* 한글 이름: 이름 텍스트 하단 8px 간격, --font-title, --text-muted, 16px, "곡우 라거" */
+.beer-card-name-ko {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1;
+    margin: 8px 0 0 0;
+}
+
+/* 맥주 성분 및 맥주 색상 표시 행: 한글 이름 하단 32px 여백 */
+.beer-card-specs-row {
+    margin-top: 32px;
+    width: 252px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* 좌측 성분 텍스트 그룹 (베이스 라인 정렬, 10px 간격) */
+.beer-specs-group {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.beer-spec-val {
+    font-family: var(--font-title);
+    font-size: 16px;
+    color: var(--text-gold);
+    line-height: 1;
+}
+
+.beer-spec-lbl {
+    font-family: var(--font-title);
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+/* --text-gold, 1px 굵기, 18px 길이의 세로선 */
+.beer-spec-divider {
+    width: 1px;
+    height: 18px;
+    background-color: var(--text-gold);
+    display: inline-block;
+    align-self: center;
+}
+
+/* 맥주 색상 표시: 16x16 원 배치 */
+.beer-color-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #F0B41D;
+    display: block;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+/* 에일: #FB9F03 */
+.beer-color-circle2 {
+    background-color: #FB9F03;
+}
+
+/* 흑맥주: #2F1105 */
+.beer-color-circle3 {
+    background-color: #2F1105;
+}
+
+/* 어텀 에일: #F0B41D */
+.beer-color-circle4 {
+    background-color: #F0B41D;
+}
+
+/* 성분 텍스트 하단 16px 간격 --text-gold, 굵기 1px, 252px 가로선 */
+.beer-card-divider {
+    width: 252px;
+    height: 1px;
+    background-color: var(--text-gold);
+    margin-top: 16px;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* 가로선 하단 16px 간격 설명문: --font-body, --text-muted, 14px */
+.beer-card-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 16px 0 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 252px;
+}
+
+/* 카드 좌측 최하단 맥주 상세 팝업창 출력 텍스트 버튼:
+   --font-en, --color-accent, 14px, "VIEW BEER" + 화살표 아이콘 (10px 간격) */
+.beer-card-view-btn {
+    margin-top: auto;
+    /* 최하단 배치 (상하좌우 24px 여백 기준) */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* 10px 간격 */
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 14px;
+    color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    letter-spacing: 1.2px;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.beer-card-view-btn span {
+    display: inline-block;
+    line-height: 1;
+}
+
+.beer-card-view-arrow {
+    width: 14px;
+    height: 10px;
+    stroke: var(--color-accent);
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    transition: transform var(--transition-fast);
+}
+
+/* 텍스트 버튼 호버시 화살표가 우측으로 이동하는 효과만 추가 */
+.beer-card-view-btn:hover .beer-card-view-arrow {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   맥주 소개 표 (Beer Intro Feature Table)
+   - 맥주 카드 하단, 상단 126px 여백
+   - 1행 3열, 1칸에 440x220, 배경색 없음
+   - 테두리 --text-gold, 두께 1px, 투명도 40%
+   - 내부 상하 여백 30px
+   ========================================================================== */
+.beer-intro-table {
+    margin-top: 126px;
+    width: 1320px;
+    display: grid;
+    grid-template-columns: repeat(3, 440px);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.beer-intro-col {
+    width: 440px;
+    height: 220px;
+    box-sizing: border-box;
+    padding: 30px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: transparent;
+}
+
+.beer-intro-col:not(:last-child) {
+    border-right: 1px solid rgba(197, 160, 89, 0.4);
+}
+
+/* 좌측 상단 40x40 아이콘 (--color-accent 색상 적용) */
+.beer-intro-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) saturate(100%) invert(18%) sepia(87%) saturate(3475%) hue-rotate(338deg) brightness(88%) contrast(98%);
+}
+
+/* 아이콘 하단 27px 간격 타이틀: --font-title, --text-primary, 20px */
+.beer-intro-title {
+    font-family: var(--font-title);
+    font-size: 20px;
+    color: var(--text-primary);
+    line-height: 1;
+    margin: 27px 0 0 0;
+}
+
+/* 타이틀 하단 25px 간격 설명문: --font-body, --text-muted, 16px */
+.beer-intro-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin: 25px 0 0 0;
+}
+
+/* ==========================================================================
+   양조 철학 소개 섹션 (Brewing Philosophy Promo Section)
+   - 크기: 1920x300, 배경색: --color-sub-1 (#344E41)
+   - 상하 여백: 104px
+   - 좌측: 소제목 ("WHY KOREAN INGREDIENTS?" + "양조 철학") + 타이틀 (48px)
+   - 우측: story 페이지 이동 버튼 ("TO THE STORY" + 화살표)
+   ========================================================================== */
+.beer-philosophy-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: var(--color-sub-1);
+    padding: 104px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.beer-philosophy-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 좌측 소제목 및 타이틀 그룹 */
+.beer-philosophy-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* 타이틀: --font-title, --text-primary, 48px, 소제목 하단 20px (beer-subhead 마진 반영) */
+.beer-philosophy-title {
+    font-family: var(--font-title);
+    font-size: 48px;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* 우측 story 페이지 이동 버튼:
+   --font-en, --text-primary, 20px, "TO THE STORY", 10px 간격 화살표 아이콘 */
+.beer-philosophy-right {
+    display: flex;
+    align-items: center;
+}
+
+.beer-philosophy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-en);
+    font-size: 20px;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 1px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.beer-philosophy-arrow {
+    width: 18px;
+    height: 12px;
+    stroke: currentColor;
+    display: block;
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+}
+
+/* 호버시 --color-accent 색상으로 변경 및 화살표 우측으로 이동 효과 */
+.beer-philosophy-btn:hover {
+    color: var(--color-accent);
+}
+
+.beer-philosophy-btn:hover .beer-philosophy-arrow {
+    transform: translateX(6px);
+}
+
+/* ==========================================================================
+   맥주 상세 정보 팝업 모달 (Beer Detail Modal)
+   - 백그라운드: #000000 투명도 80% (rgba(0, 0, 0, 0.8))
+   - 크기: 1080x788, 배경색: --color-sub-2 (#2B4135), 좌우 24px 여백
+   ========================================================================== */
+.beer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.beer-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 백그라운드 오버레이: #000000 투명도 80% */
+.beer-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+}
+
+/* 1080x788 팝업창 본체 */
+.beer-modal-content {
+    position: relative;
+    z-index: 1;
+    width: 1080px;
+    height: 788px;
+    max-width: 95vw;
+    max-height: 95vh;
+    background-color: var(--color-sub-2);
+    /* --color-sub-2 (#2B4135) */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    transform: scale(0.96);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.beer-modal.is-open .beer-modal-content {
+    transform: scale(1);
+}
+
+/* 팝업창 최상단 제품명 섹션: 1080x48, --color-sub-2, 하단 테두리선 --text-gold 1px 40% */
+.beer-modal-header {
+    width: 100%;
+    height: 48px;
+    background-color: var(--color-sub-2);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    box-sizing: border-box;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+/* 좌측 정렬 텍스트: --font-en, --text-gold, 16px */
+.beer-modal-file-title {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-gold);
+    /* --text-gold */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+/* 닫기 버튼 */
+.beer-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.beer-modal-close:hover {
+    color: var(--color-accent);
+    transform: rotate(90deg);
+}
+
+/* 2. 정보 섹션: 740px 높이, 좌우 24px 여백 */
+.beer-modal-body {
+    width: 100%;
+    height: 740px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding-right: 24px;
+    /* 팝업창 좌우 24px 여백 중 우측 여백 */
+}
+
+/* 정보 섹션 좌측 440x740 해당 카드의 맥주 이미지 출력 (상하여백 해당 x) */
+.beer-modal-img-col {
+    width: 440px;
+    height: 740px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: var(--color-main);
+}
+
+.beer-modal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 정보 섹션 좌측 하단 맥주 색상 배지: 240x30, --color-sub-1, corner radius 20, 테두리 --text-gold 1px 40% */
+.beer-modal-color-badge {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    width: 240px;
+    height: 30px;
+    background-color: var(--color-sub-1);
+    /* --color-sub-1 (#344E41) */
+    border-radius: 20px;
+    /* corner radius 20 */
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    /* 테두리 --text-gold, 1px 굵기, 투명도 40% */
+    box-sizing: border-box;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 10px 간격 */
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 20x20 맥주 색상표시 원 */
+.beer-modal-color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: block;
+    background-color: #DDB86C;
+}
+
+/* 맥주 색상 배지 텍스트: --font-title, --text-gold */
+.beer-modal-color-name {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 13px;
+    color: var(--text-gold);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* 이미지 우측 36px 간격 상세 텍스트 영역 (상하 36px 여백) */
+.beer-modal-info-col {
+    margin-left: 36px;
+    /* 이미지 우측 36px 간격 */
+    padding: 36px 0;
+    /* 정보 섹션 상하 36px 여백 */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* 좌측 상단 소제목: --font-en, --text-accent, 16px "SIGNATURE" */
+.beer-modal-subhead {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-accent);
+    /* --text-accent (#AD1931) */
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* 소제목 하단 14px 간격 타이틀: --font-en, --text-primary, 48px, "GOGU LAGER" */
+.beer-modal-title {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 48px;
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    letter-spacing: 1px;
+    line-height: 1;
+    margin: 14px 0 0 0;
+    /* 소제목 하단 14px 간격 */
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+/* 타이틀 하단 8px 간격 한글 소제목: --font-title, --text-muted, 16px */
+.beer-modal-desc-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 16px;
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1.4;
+    margin: 8px 0 0 0;
+    /* 타이틀 하단 8px 간격 */
+}
+
+/* 한글 소제목 하단 28px 간격 1행 3열 표 (칸 188x80, 내부 상하 16px 여백, 중앙정렬) */
+.beer-modal-specs-table {
+    display: flex;
+    gap: 8px;
+    margin-top: 28px;
+    /* 한글 소제목 하단 28px 간격 */
+    width: 100%;
+}
+
+.beer-modal-spec-cell {
+    width: 188px;
+    /* 표 한 칸: 188x80 */
+    height: 80px;
+    box-sizing: border-box;
+    padding: 16px 0;
+    /* 내부 상하 16px 여백 */
+    background-color: rgba(52, 78, 65, 0.3);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+    /* 표 안 텍스트 중앙정렬 */
+}
+
+/* 1번칸 수치: --font-title, --text-primary, 24px "5.2%" */
+.beer-modal-spec-val {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 24px;
+    color: var(--text-primary);
+    /* --text-primary */
+    line-height: 1;
+    margin-bottom: 4px;
+    /* 하단 4px 여백 */
+}
+
+/* 하단 라벨: --font-en, --text-gold, 14px "ABV" */
+.beer-modal-spec-lbl {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 14px;
+    color: var(--text-gold);
+    /* --text-gold */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   FLAVER PROFILE 섹션 (표 좌측 하단 68px 간격)
+   ========================================================================== */
+.beer-modal-flavor-section {
+    margin-top: 68px;
+    /* 표 좌측 하단 68px 간격 */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* 소제목: --font-en, --text-gold, 14px "FLAVER PROFILE" */
+.beer-modal-flavor-subhead {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 14px;
+    color: var(--text-gold);
+    /* --text-gold */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* 소제목 하단 12px 간격 가로 막대 그래프 섹션 (중앙 정렬) */
+.beer-modal-flavor-bars {
+    margin-top: 12px;
+    /* 소제목 하단 12px 간격 */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+/* 행 단위: 제목, 그래프, 수치 형식 (중앙 정렬) */
+.beer-flavor-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 제목: --font-title, --text-muted, 12px 형식 */
+.beer-flavor-label {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    color: var(--text-muted);
+    /* --text-muted */
+    line-height: 1;
+    width: 56px;
+    flex-shrink: 0;
+    text-align: left;
+}
+
+/* 그래프: 400x5 크기, --color-sub-1 막대 그래프 */
+.beer-flavor-track {
+    width: 400px;
+    /* 400x5 크기 */
+    height: 5px;
+    background-color: var(--color-sub-1);
+    /* --color-sub-1 (#344E41) */
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* 그래프 안 수치를 참고해서 --color-accent 색상의 막대 적용 */
+.beer-flavor-fill {
+    height: 100%;
+    background-color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 수치: --font-title, --text-muted, 12px 형식 */
+.beer-flavor-num {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 12px;
+    color: var(--text-muted);
+    /* --text-muted */
+    line-height: 1;
+    width: 24px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* 그래프 섹션 하단 32px 간격 설명문: --font-body, --text-muted, 16px, 줄간격 1.875 */
+.beer-modal-story-desc {
+    margin-top: 32px;
+    /* 그래프 섹션 하단 32px 간격 */
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1.875;
+    /* 줄간격 1.875 */
+    margin-bottom: 0;
+    max-width: 540px;
 }

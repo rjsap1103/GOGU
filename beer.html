@@ -55,13 +55,303 @@
     </header>
 
     <!-- 메인 콘텐츠 영역 -->
-    <main class="main" style="padding-top: 100px;">
-        <section class="section">
-            <div class="container">
-                <h1 style="font-family: var(--font-en); font-size: 56px; color: var(--text-gold); margin-bottom: 20px; letter-spacing: 2px;">BEER</h1>
-                <p style="font-family: var(--font-body); color: var(--text-muted); font-size: 18px;">
-                    곡우의 맥주 라인업 페이지 기본 틀입니다.
+    <main class="main beer-main">
+        <!-- ==========================================================================
+             BEER 히어로 섹션 (Beer Hero Section)
+             - (300, 200) 위치에서 소제목 시작:
+               * 좌측 X: 300px (공통 .container에 의해 자동 300px 패딩)
+               * 상단 Y: 200px (padding-top: 200px 로 화면 상단 기준 정확히 200px 위치)
+             - 하단 여백: 100px 적용
+             ========================================================================== -->
+        <section class="beer-hero-section">
+            <div class="container beer-hero-container">
+                <!-- 소제목: 30px 가로선 + "OUR BEER" + "맥주" (10px 간격) -->
+                <div class="beer-subhead">
+                    <span class="beer-subhead-line"></span>
+                    <span class="beer-subhead-en">OUR BEER</span>
+                    <span class="beer-subhead-ko">맥주</span>
+                </div>
+
+                <!-- 타이틀: 소제목 하단 20px 간격 (60px) -->
+                <h1 class="beer-title">
+                    취향을 짓는 <span class="text-highlight">시간</span><br>
+                    잔을 채우는 <span class="text-highlight">감각</span>
+                </h1>
+
+                <!-- 설명문: 타이틀 하단 40px 간격 (16px) -->
+                <p class="beer-desc">
+                    엄선된 세 가지 시그니처와 계절 한정 탭. 작은 배치마다 고유한<br>
+                    개성과 디테일을 담아냅니다.
                 </p>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             맥주 카드 영역 (Beer Catalog Section)
+             - 상단 104px 여백
+             - 좌측 상단 80x40 사각형 버튼 4개 (15px 간격, 가운데 정렬)
+               1. ALL (14px, --text-muted) + 4 (10px, --text-accent)
+               2. LAGER (14px, --text-muted) + 1 (10px, --text-accent)
+               3. ALE (14px, --text-muted) + 2 (10px, --text-accent)
+               4. DARK (14px, --text-muted) + 1 (10px, --text-accent)
+             - 버튼 활성화 시 배경색 --color-accent, 테두리 없음, 텍스트 --text-primary / --text-gold-light
+             - 우측 상단 텍스트: "04 BEERS - SMALL BATCH ONLY" (--font-title, --text-muted, 10px, 버튼과 중앙정렬)
+             - 버튼 클릭 시 해당 맥주 카드 필터링 (ALL: 전체, LAGER: 라거, ALE: 에일, DARK: 흑맥주)
+             ========================================================================== -->
+        <section class="beer-catalog-section">
+            <div class="container beer-catalog-container">
+                <!-- 상단 필터 바 -->
+                <div class="beer-filter-bar">
+                    <!-- 좌측: 80x40 사각형 버튼 4개 (15px 간격) -->
+                    <div class="beer-filter-buttons">
+                        <button type="button" class="beer-filter-btn active" data-filter="all" aria-label="전체 맥주">
+                            <span class="btn-label">ALL</span>
+                            <span class="btn-count">4</span>
+                        </button>
+                        <button type="button" class="beer-filter-btn" data-filter="lager" aria-label="라거">
+                            <span class="btn-label">LAGER</span>
+                            <span class="btn-count">1</span>
+                        </button>
+                        <button type="button" class="beer-filter-btn" data-filter="ale" aria-label="에일">
+                            <span class="btn-label">ALE</span>
+                            <span class="btn-count">2</span>
+                        </button>
+                        <button type="button" class="beer-filter-btn" data-filter="dark" aria-label="흑맥주">
+                            <span class="btn-label">DARK</span>
+                            <span class="btn-count">1</span>
+                        </button>
+                    </div>
+
+                    <!-- 우측 상단 텍스트: --font-title, --text-muted, 10px, 버튼과 중앙정렬 -->
+                    <div class="beer-filter-note">04 BEERS - SMALL BATCH ONLY</div>
+                </div>
+
+                <!-- 맥주 카드 그리드 영역 (4개 맥주: 라거, 에일, 흑맥주, 한정) -->
+                <div class="beer-cards-grid" id="beer-cards-grid">
+                    <!-- 1. KOREAN LAGER (라거) -->
+                    <article class="beer-card" data-category="lager" data-beer="lager">
+                        <div class="beer-card-img-box">
+                            <div class="beer-card-tag">
+                                <span>KOREAN LAGER</span>
+                            </div>
+                            <img src="./assets/images/LAGER BEER MOCKUP.jpeg" alt="곡우 라거" loading="lazy">
+                        </div>
+                        <div class="beer-card-text-box">
+                            <h3 class="beer-card-name-en">GOGU LAGER</h3>
+                            <p class="beer-card-name-ko">곡우 라거</p>
+                            <div class="beer-card-specs-row">
+                                <div class="beer-specs-group">
+                                    <span class="beer-spec-val">5.2%</span>
+                                    <span class="beer-spec-lbl">ABV</span>
+                                    <span class="beer-spec-divider"></span>
+                                    <span class="beer-spec-val">18</span>
+                                    <span class="beer-spec-lbl">IBU</span>
+                                </div>
+                                <div class="beer-color-circle beer-color-circle1"></div>
+                            </div>
+                            <div class="beer-card-divider"></div>
+                            <p class="beer-card-desc">청량한 탄산 • 은은한 곡물향 • 깨끗한 피니시</p>
+                            <button type="button" class="beer-card-view-btn" aria-label="곡우 라거 상세 보기">
+                                <span>VIEW BEER</span>
+                                <svg class="beer-card-view-arrow" viewBox="0 0 14 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 2. KOREAN PALE ALE (에일) -->
+                    <article class="beer-card" data-category="ale" data-beer="ale">
+                        <div class="beer-card-img-box">
+                            <div class="beer-card-tag">
+                                <span>KOREAN PALE ALE</span>
+                            </div>
+                            <img src="./assets/images/PALE ALE MOCKUP.jpeg" alt="곡우 에일" loading="lazy">
+                        </div>
+                        <div class="beer-card-text-box">
+                            <h3 class="beer-card-name-en">GOGU PALE ALE</h3>
+                            <p class="beer-card-name-ko">곡우 페일 에일</p>
+                            <div class="beer-card-specs-row">
+                                <div class="beer-specs-group">
+                                    <span class="beer-spec-val">5.8%</span>
+                                    <span class="beer-spec-lbl">ABV</span>
+                                    <span class="beer-spec-divider"></span>
+                                    <span class="beer-spec-val">35</span>
+                                    <span class="beer-spec-lbl">IBU</span>
+                                </div>
+                                <div class="beer-color-circle beer-color-circle2"></div>
+                            </div>
+                            <div class="beer-card-divider"></div>
+                            <p class="beer-card-desc">감귤 시트러스 • 솔잎 향 • 부드러운 몰트</p>
+                            <button type="button" class="beer-card-view-btn" aria-label="곡우 맥주 상세 보기">
+                                <span>VIEW BEER</span>
+                                <svg class="beer-card-view-arrow" viewBox="0 0 14 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 3. KOREAN DARK ALE (흑맥주) -->
+                    <article class="beer-card" data-category="dark" data-beer="dark">
+                        <div class="beer-card-img-box">
+                            <div class="beer-card-tag">
+                                <span>KOREAN DARK ALE</span>
+                            </div>
+                            <img src="./assets/images/DARK BEER MOCKUP.jpeg" alt="곡우 흑맥주" loading="lazy">
+                        </div>
+                        <div class="beer-card-text-box">
+                            <h3 class="beer-card-name-en">GOGU DARK ALE</h3>
+                            <p class="beer-card-name-ko">곡우 흑맥주</p>
+                            <div class="beer-card-specs-row">
+                                <div class="beer-specs-group">
+                                    <span class="beer-spec-val">6.5%</span>
+                                    <span class="beer-spec-lbl">ABV</span>
+                                    <span class="beer-spec-divider"></span>
+                                    <span class="beer-spec-val">28</span>
+                                    <span class="beer-spec-lbl">IBU</span>
+                                </div>
+                                <div class="beer-color-circle beer-color-circle3"></div>
+                            </div>
+                            <div class="beer-card-divider"></div>
+                            <p class="beer-card-desc">다크 초콜릿 • 볶은 곡물 • 흑당 카라멜</p>
+                            <button type="button" class="beer-card-view-btn" aria-label="곡우 맥주 상세 보기">
+                                <span>VIEW BEER</span>
+                                <svg class="beer-card-view-arrow" viewBox="0 0 14 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 4. SEASONAL • AUTUMN (한정 판매 맥주) -->
+                    <article class="beer-card" data-category="ale" data-beer="seasonal">
+                        <div class="beer-card-img-box">
+                            <div class="beer-card-tag">
+                                <span>SEASONAL • AUTUMN</span>
+                            </div>
+                            <img src="./assets/images/감맥주 콘셉트 이미지 3ㄷ4.jpeg" alt="곡우 시즌 에일" loading="lazy">
+                        </div>
+                        <div class="beer-card-text-box">
+                            <h3 class="beer-card-name-en">GOGU AUTUMN</h3>
+                            <p class="beer-card-name-ko">곡우 어텀 에일</p>
+                            <div class="beer-card-specs-row">
+                                <div class="beer-specs-group">
+                                    <span class="beer-spec-val">5.2%</span>
+                                    <span class="beer-spec-lbl">ABV</span>
+                                    <span class="beer-spec-divider"></span>
+                                    <span class="beer-spec-val">15</span>
+                                    <span class="beer-spec-lbl">IBU</span>
+                                </div>
+                                <div class="beer-color-circle beer-color-circle4"></div>
+                            </div>
+                            <div class="beer-card-divider"></div>
+                            <p class="beer-card-desc">곶감 • 진한 단맛 • 시나몬 향</p>
+                            <button type="button" class="beer-card-view-btn" aria-label="곡우 맥주 상세 보기">
+                                <span>VIEW BEER</span>
+                                <svg class="beer-card-view-arrow" viewBox="0 0 14 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 맥주 카드 하단 맥주 소개 표 (상단 126px 여백, 1행 3열, 440x220) -->
+                <div class="beer-intro-table">
+                    <!-- 1열: 첨부 이미지 아이콘 (맥주잔) -->
+                    <div class="beer-intro-col">
+                        <img src="./assets/icons/icon_glass.png" alt="소배치 양조" class="beer-intro-icon">
+                        <h4 class="beer-intro-title">소배치 양조</h4>
+                        <p class="beer-intro-desc">한 배치 1,200리터. 숫자를 늘리기보다 배치마다 관능 검사<br>점수를 남깁니다.</p>
+                    </div>
+
+                    <!-- 2열: icon_snowflake.png (눈꽃) -->
+                    <div class="beer-intro-col">
+                        <img src="./assets/icons/icon_snowflake.png" alt="저온 숙성" class="beer-intro-icon">
+                        <h4 class="beer-intro-title">소배치 양조</h4>
+                        <p class="beer-intro-desc">한 배치 1,200리터. 숫자를 늘리기보다 배치마다 관능 검사<br>점수를 남깁니다.</p>
+                    </div>
+
+                    <!-- 3열: icon_bottle.png (병) -->
+                    <div class="beer-intro-col">
+                        <img src="./assets/icons/icon_bottle.png" alt="품질 병입" class="beer-intro-icon">
+                        <h4 class="beer-intro-title">소배치 양조</h4>
+                        <p class="beer-intro-desc">한 배치 1,200리터. 숫자를 늘리기보다 배치마다 관능 검사<br>점수를 남깁니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             양조 철학 소개 섹션 (Brewing Philosophy Promo Section)
+             - 크기: 1920x300, 배경색: --color-sub-1 (#344E41), 상하 여백: 104px
+             - 좌측: 소제목 ("WHY KOREAN INGREDIENTS?" + "양조 철학") + 타이틀 ("이 잔이 어떻게 만들어 졌는지 궁금하다면,")
+             - 우측: story 페이지 이동 텍스트 버튼 ("TO THE STORY" + 화살표)
+             ========================================================================== -->
+        <section class="beer-philosophy-section">
+            <div class="container beer-philosophy-container">
+                <!-- 좌측: 소제목 + 타이틀 -->
+                <div class="beer-philosophy-left">
+                    <div class="beer-subhead">
+                        <span class="beer-subhead-line"></span>
+                        <span class="beer-subhead-en">WHY KOREAN INGREDIENTS?</span>
+                        <span class="beer-subhead-ko">양조 철학</span>
+                    </div>
+                    <h2 class="beer-philosophy-title">이 잔이 어떻게 만들어 졌는지 궁금하다면,</h2>
+                </div>
+
+                <!-- 우측 중간: story 페이지 이동 버튼 -->
+                <div class="beer-philosophy-right">
+                    <a href="./story.html" class="beer-philosophy-btn">
+                        <span>TO THE STORY</span>
+                        <svg class="beer-philosophy-arrow" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             굿즈 홍보 섹션 (Goods Promo Section)
+             - 상하 여백 80px, 배경색: --color-accent (#AD1931)
+             - 좌측: 소제목 (16px) + 타이틀 (48px) + 설명문 (16px)
+             - 우측 중앙: 180x60 직사각형 버튼 (--color-main 배경, 빛 통과 효과)
+             ========================================================================== -->
+        <section id="goods-promo" class="goods-promo-section">
+            <div class="container goods-promo-container">
+                <!-- 좌측 텍스트 영역 -->
+                <div class="goods-promo-text-col">
+                    <!-- 소제목: --font-en, --text-primary, 16px -->
+                    <span class="goods-promo-subhead">OFFICIAL MERCHANDISE</span>
+
+                    <!-- 타이틀: 소제목 하단 16px 간격, --font-title, --text-primary, 48px -->
+                    <h2 class="goods-promo-title">한 잔의 깊이를 더하는 오브제.</h2>
+
+                    <!-- 설명문: 타이틀 하단 16px 간격, --font-body, --text-primary, 16px -->
+                    <p class="goods-promo-desc">맥주의 아로마와 거품을 가장 잘 살려주는 맥주잔과 정갈한 코스터 컬렉션을 만나보세요.</p>
+                </div>
+
+                <!-- 우측 중앙: 굿즈 페이지 이동 180x60 직사각형 버튼 -->
+                <div class="goods-promo-btn-col">
+                    <a href="./goods.html" class="goods-promo-btn" aria-label="굿즈 페이지로 이동">
+                        <span class="goods-promo-btn-text">GOODS</span>
+                        <svg class="goods-promo-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                            stroke="currentColor">
+                            <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -95,7 +385,8 @@
                     <!-- 3. AI 자산 안내 박스 (소개 하단 24px 간격, 340x37) -->
                     <div class="footer-ai-badge">
                         <svg class="footer-film-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z" />
                         </svg>
                         <span class="footer-ai-text">
                             <span class="text-muted-part">이 웹사이트의 모든 이미지 필름은</span>
@@ -147,7 +438,8 @@
                     <div class="footer-col footer-contact-col">
                         <h4 class="footer-col-title">CONTACT</h4>
                         <div class="footer-info-list">
-                            <a href="mailto:brewery@gogu.beer" class="footer-info-item footer-link">brewery@gogu.beer</a>
+                            <a href="mailto:brewery@gogu.beer"
+                                class="footer-info-item footer-link">brewery@gogu.beer</a>
                             <a href="tel:063-462-2019" class="footer-info-item footer-link">063 - 462 - 2019</a>
                         </div>
                     </div>
@@ -170,6 +462,126 @@
             </div>
         </div>
     </footer>
+
+    <!-- ==========================================================================
+         맥주 상세 정보 팝업 모달 (Beer Detail Modal)
+         - 배경: #000000 투명도 80% (rgba(0, 0, 0, 0.8))
+         - 크기: 1080x788, 배경색: --color-sub-2 (#2B4135)
+         ========================================================================== -->
+    <div id="beer-modal" class="beer-modal" aria-hidden="true" role="dialog" aria-label="맥주 상세 정보">
+        <div class="beer-modal-backdrop"></div>
+        <div class="beer-modal-content">
+            <!-- 1. 팝업창 최상단 제품명 섹션: 1080x48, --color-sub-2, 하단 테두리 --text-gold 1px 40% -->
+            <div class="beer-modal-header">
+                <span id="beer-modal-file-title" class="beer-modal-file-title">PRODUCT FILE - KOREAN LAGER</span>
+                <button type="button" class="beer-modal-close" aria-label="팝업 닫기">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 2. 정보 섹션: 상하 36px 여백, 좌우 24px 여백 -->
+            <div class="beer-modal-body">
+                <!-- 정보 섹션 좌측 440x740 맥주 이미지 출력 (여백 해당 x) -->
+                <div class="beer-modal-img-col">
+                    <img id="beer-modal-img" src="./assets/images/LAGER BEER MOCKUP.jpeg" alt="맥주 이미지"
+                        class="beer-modal-img">
+
+                    <!-- 정보 섹션 좌측 하단 맥주 색상 배지: 240x30, --color-sub-1, corner radius 20, 테두리 --text-gold 1px 40% -->
+                    <div class="beer-modal-color-badge">
+                        <span id="beer-modal-color-dot" class="beer-modal-color-dot"></span>
+                        <span id="beer-modal-color-name" class="beer-modal-color-name">라이트 골드 - BEER COLOR</span>
+                    </div>
+                </div>
+
+                <!-- 이미지 우측 36px 간격 상세 텍스트 영역 -->
+                <div class="beer-modal-info-col">
+                    <!-- 좌측 상단 소제목: --font-en, --text-accent, 16px "SIGNATURE" -->
+                    <span id="beer-modal-subhead" class="beer-modal-subhead">SIGNATURE</span>
+
+                    <!-- 소제목 하단 14px 간격 타이틀: --font-en, --text-primary, 48px, "GOGU LAGER" -->
+                    <h2 id="beer-modal-title" class="beer-modal-title">GOGU LAGER</h2>
+
+                    <!-- 타이틀 하단 8px 간격 한글 소제목 추가: --font-title, --text-muted, 16px -->
+                    <p id="beer-modal-desc-title" class="beer-modal-desc-title">곡우 라거 • Korean Highland Helles</p>
+
+                    <!-- 한글 소제목 하단 28px 간격 1행 3열 표 생성 (한칸 188x80, 내부 상하 16px 여백, 중앙정렬) -->
+                    <div class="beer-modal-specs-table">
+                        <!-- 1번칸: 24px "5.2%", 4px 여백, 14px "ABV" -->
+                        <div class="beer-modal-spec-cell">
+                            <span id="beer-modal-spec-abv" class="beer-modal-spec-val">5.2%</span>
+                            <span class="beer-modal-spec-lbl">ABV</span>
+                        </div>
+
+                        <!-- 2번칸: IBU (동일 형식) -->
+                        <div class="beer-modal-spec-cell">
+                            <span id="beer-modal-spec-ibu" class="beer-modal-spec-val">18</span>
+                            <span class="beer-modal-spec-lbl">IBU</span>
+                        </div>
+
+                        <!-- 3번칸: STYLE (동일 형식) -->
+                        <div class="beer-modal-spec-cell">
+                            <span id="beer-modal-spec-extra" class="beer-modal-spec-val">HELLES</span>
+                            <span id="beer-modal-spec-extra-lbl" class="beer-modal-spec-lbl">STYLE</span>
+                        </div>
+                    </div>
+
+                    <!-- 표 좌측 하단 68px 간격 소제목: --font-en, --text-gold, 14px "FLAVER PROFILE" -->
+                    <div class="beer-modal-flavor-section">
+                        <span class="beer-modal-flavor-subhead">FLAVER PROFILE</span>
+
+                        <!-- 소제목 하단 12px 간격 가로 막대 그래프 섹션 (중앙 정렬) -->
+                        <div class="beer-modal-flavor-bars">
+                            <!-- 1. 탄산감 -->
+                            <div class="beer-flavor-row">
+                                <span class="beer-flavor-label">탄산감</span>
+                                <div class="beer-flavor-track">
+                                    <div id="beer-flavor-bar-1" class="beer-flavor-fill" style="width: 82%;"></div>
+                                </div>
+                                <span id="beer-flavor-val-1" class="beer-flavor-num">82</span>
+                            </div>
+
+                            <!-- 2. 몰트 단맛 -->
+                            <div class="beer-flavor-row">
+                                <span class="beer-flavor-label">몰트 단맛</span>
+                                <div class="beer-flavor-track">
+                                    <div id="beer-flavor-bar-2" class="beer-flavor-fill" style="width: 38%;"></div>
+                                </div>
+                                <span id="beer-flavor-val-2" class="beer-flavor-num">38</span>
+                            </div>
+
+                            <!-- 3. 홉 쓴맛 -->
+                            <div class="beer-flavor-row">
+                                <span class="beer-flavor-label">홉 쓴맛</span>
+                                <div class="beer-flavor-track">
+                                    <div id="beer-flavor-bar-3" class="beer-flavor-fill" style="width: 24%;"></div>
+                                </div>
+                                <span id="beer-flavor-val-3" class="beer-flavor-num">24</span>
+                            </div>
+
+                            <!-- 4. 바디감 -->
+                            <div class="beer-flavor-row">
+                                <span class="beer-flavor-label">바디감</span>
+                                <div class="beer-flavor-track">
+                                    <div id="beer-flavor-bar-4" class="beer-flavor-fill" style="width: 30%;"></div>
+                                </div>
+                                <span id="beer-flavor-val-4" class="beer-flavor-num">30</span>
+                            </div>
+                        </div>
+
+                        <!-- 그래프 섹션 하단 32px 간격 설명문: --font-body, --text-muted, 16px, 줄간격 1.875 -->
+                        <p id="beer-modal-story-desc" class="beer-modal-story-desc">
+                            첫 모금에 투명한 탄산감이 지나가고, 겉보리 특유의 고소한 단맛이 짧게 남습니다.<br>
+                            끝은 미련 없이 깨끗하게 잘려 나가는, 식탁을 위한 라거입니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main JavaScript -->
     <script src="./js/main.js"></script>

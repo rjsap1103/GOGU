@@ -311,6 +311,251 @@
                 </div>
             </div>
         </section>
+
+        <!-- ==========================================================================
+             양조 공정 섹션 (Brewing Process Section)
+             - 상하 128px 여백
+             - 좌측 상단 소제목 (30px 가로선 + BREWING PROCESS + 양조 공정)
+             - 타이틀: "여섯 번의 공정, 30일의 숙성" (60px)
+             - 공정 6개 템플릿 목록 (타이틀 하단 50px 간격)
+             ========================================================================== -->
+        <section class="story-process-section">
+            <div class="container story-process-container">
+                <!-- 1. 좌측 상단 소제목: 30px 가로선 + "BREWING PROCESS" + "양조 공정" (10px 간격) -->
+                <div class="process-subhead">
+                    <span class="process-subhead-line"></span>
+                    <span class="process-subhead-en">BREWING PROCESS</span>
+                    <span class="process-subhead-ko">양조 공정</span>
+                </div>
+
+                <!-- 2. 타이틀: 소제목 하단 20px 간격 (60px) -->
+                <h2 class="process-title">여섯 번의 공정, 30일의 숙성</h2>
+
+                <!-- 3. 공정 소개 영역: 타이틀 하단 50px 간격, 6개 템플릿 -->
+                <div class="process-list">
+                    <!-- 템플릿 01 -->
+                    <div class="process-item">
+                        <!-- 좌측 72x72 사각형 아이콘 (정 중앙 24px icon_barley.png) -->
+                        <div class="process-icon-box">
+                            <img src="./assets/icons/icon_barley.png" alt="재맥 아이콘" class="process-icon-img">
+                        </div>
+
+                        <!-- 아이콘 우측 32px 간격 텍스트 영역 -->
+                        <div class="process-content-col">
+                            <div class="process-top-row">
+                                <!-- 좌측 타이틀 그룹 (3개 텍스트 베이스라인 정렬, 10px 간격) -->
+                                <div class="process-title-group">
+                                    <span class="process-num">01</span>
+                                    <h3 class="process-name">MALTING</h3>
+                                    <span class="process-name-ko">재맥</span>
+                                </div>
+
+                                <!-- 우측 최상단: 50x26 박스 (테두리 1px, --text-gold, 10px 텍스트 "7일") -->
+                                <div class="process-duration-badge">
+                                    <span>7일</span>
+                                </div>
+                            </div>
+
+                            <!-- 타이틀 하단 18px 간격 설명문 -->
+                            <p class="process-desc">
+                                국산 보리를 물에 불려 싹을 틔운 뒤, 저온에서 말려 맥아의 성격을 결정합니다.
+                            </p>
+
+                            <!-- 설명문 하단 42px 간격 1215px 가로선 -->
+                            <div class="process-divider-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- 템플릿 02 (가로선 하단 32px 간격) -->
+                    <div class="process-item">
+                        <div class="process-icon-box">
+                            <img src="./assets/icons/icon_hop.png" alt="재맥 아이콘" class="process-icon-img">
+                        </div>
+                        <div class="process-content-col">
+                            <div class="process-top-row">
+                                <div class="process-title-group">
+                                    <span class="process-num">02</span>
+                                    <h3 class="process-name">MASHING</h3>
+                                    <span class="process-name-ko">당화</span>
+                                </div>
+                                <div class="process-duration-badge">
+                                    <span>3시간</span>
+                                </div>
+                            </div>
+                            <p class="process-desc">
+                                분쇄한 맥아를 암반수와 섞어 온도 램프로 올립니다. 전분이 당으로 바뀌는 구간입니다.
+                            </p>
+                            <div class="process-divider-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- 템플릿 03 -->
+                    <div class="process-item">
+                        <div class="process-icon-box">
+                            <img src="./assets/icons/icon_boiling.png" alt="자비 아이콘" class="process-icon-img">
+                        </div>
+                        <div class="process-content-col">
+                            <div class="process-top-row">
+                                <div class="process-title-group">
+                                    <span class="process-num">03</span>
+                                    <h3 class="process-name">BOLING</h3>
+                                    <span class="process-name-ko">자비 • 홉 투입</span>
+                                </div>
+                                <div class="process-duration-badge">
+                                    <span>90분</span>
+                                </div>
+                            </div>
+                            <p class="process-desc">
+                                맥즙을 끓이며 쓴맛을 내기 위해 초반에 넣고, 풍부한 향을 살리기 위해 후반에도 넣어 총 두 번을 넣습니다.
+                            </p>
+                            <div class="process-divider-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- 템플릿 04 -->
+                    <div class="process-item">
+                        <div class="process-icon-box">
+                            <img src="./assets/icons/icon_yeast.png" alt="재맥 아이콘" class="process-icon-img">
+                        </div>
+                        <div class="process-content-col">
+                            <div class="process-top-row">
+                                <div class="process-title-group">
+                                    <span class="process-num">04</span>
+                                    <h3 class="process-name">FERMENTING</h3>
+                                    <span class="process-name-ko">발효</span>
+                                </div>
+                                <div class="process-duration-badge">
+                                    <span>7~10일</span>
+                                </div>
+                            </div>
+                            <p class="process-desc">
+                                하우스 효모가 당을 먹고 알코올과 향을 만듭니다. 곡우에서 가장 시끄럽고 아름다운 시간.
+                            </p>
+                            <div class="process-divider-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- 템플릿 05 -->
+                    <div class="process-item">
+                        <div class="process-icon-box">
+                            <img src="./assets/icons/icon_snowflake.png" alt="저온 숙성 아이콘" class="process-icon-img">
+                        </div>
+                        <div class="process-content-col">
+                            <div class="process-top-row">
+                                <div class="process-title-group">
+                                    <span class="process-num">05</span>
+                                    <h3 class="process-name">LAGERING</h3>
+                                    <span class="process-name-ko">저온 숙성</span>
+                                </div>
+                                <div class="process-duration-badge">
+                                    <span>14~21일</span>
+                                </div>
+                            </div>
+                            <p class="process-desc">
+                                0°C에 가깝게 온도를 낮춰 효모와 입자를 가라앉힙니다. 기다림이 맛의 결을 만듭니다.
+                            </p>
+                            <div class="process-divider-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- 템플릿 06 -->
+                    <div class="process-item">
+                        <div class="process-icon-box">
+                            <img src="./assets/icons/icon_bottle.png" alt="병입 아이콘" class="process-icon-img">
+                        </div>
+                        <div class="process-content-col">
+                            <div class="process-top-row">
+                                <div class="process-title-group">
+                                    <span class="process-num">06</span>
+                                    <h3 class="process-name">PACKAGING</h3>
+                                    <span class="process-name-ko">병입</span>
+                                </div>
+                                <div class="process-duration-badge">
+                                    <span>당일</span>
+                                </div>
+                            </div>
+                            <p class="process-desc">
+                                산소 접촉을 최소화하며 병에 담습니다. 출하 전 모든 배치의 관능 검사를 거칩니다.
+                            </p>
+                            <div class="process-divider-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             철학 인용 및 비어 페이지 이동 섹션 (Philosophy Quote Section)
+             - 상하 128px 여백
+             - 모든 텍스트 중앙 정렬
+             - 중앙 최상단 소제목: --font-en, --text-accent, 16px "KOREAN BREWERY PHILOSOPHY"
+             - 소제목 하단 32px 간격 타이틀: --font-title, --text-primary, 36px
+               “좋은 맥주는 재료가 좋고,
+               좋은 재료는 땅이 좋다는 증거입니다.” ("땅이 좋다는" --text-accent)
+             - 타이틀 하단 32px 간격 텍스트: --font-title, --text-primary, 12px
+               "- 브루어리 곡우 팀 첫 배치 노트 중 -"
+             - 텍스트 하단 44px 간격 텍스트 버튼: --font-en, --text-primary, 16px "TAST THE RESULT"
+               (우측 10px 간격 화살표 아이콘, main.css 와 동일 규격 및 호버 효과)
+             ========================================================================== -->
+        <section class="story-philosophy-section">
+            <div class="container story-philosophy-container">
+                <!-- 1. 중앙 최상단 소제목 -->
+                <span class="philosophy-subhead">KOREAN BREWERY PHILOSOPHY</span>
+
+                <!-- 2. 타이틀: 소제목 하단 32px 간격 -->
+                <h2 class="philosophy-title">
+                    “좋은 맥주는 재료가 좋고,<br>
+                    좋은 재료는 <span class="philosophy-title-accent">땅이 좋다는</span> 증거입니다.”
+                </h2>
+
+                <!-- 3. 첫 배치 노트 텍스트: 타이틀 하단 32px 간격 -->
+                <p class="philosophy-note">- 브루어리 곡우 팀 첫 배치 노트 중 -</p>
+
+                <!-- 4. BEER 페이지 이동 텍스트 버튼: 텍스트 하단 44px 간격 -->
+                <a href="./beer.html" class="philosophy-beer-btn" aria-label="BEER 페이지로 이동">
+                    <span class="philosophy-btn-text">TAST THE RESULT</span>
+                    <svg class="philosophy-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                        stroke="currentColor">
+                        <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             굿즈 홍보 섹션 (Goods Promo Section)
+             - 상하 여백 80px, 배경색: --color-accent (#AD1931)
+             - 좌측: 소제목 (16px) + 타이틀 (48px) + 설명문 (16px)
+             - 우측 중앙: 180x60 직사각형 버튼 (--color-main 배경, 빛 통과 효과)
+             ========================================================================== -->
+        <section id="goods-promo" class="goods-promo-section">
+            <div class="container goods-promo-container">
+                <!-- 좌측 텍스트 영역 -->
+                <div class="goods-promo-text-col">
+                    <!-- 소제목: --font-en, --text-primary, 16px -->
+                    <span class="goods-promo-subhead">OFFICIAL MERCHANDISE</span>
+
+                    <!-- 타이틀: 소제목 하단 16px 간격, --font-title, --text-primary, 48px -->
+                    <h2 class="goods-promo-title">한 잔의 깊이를 더하는 오브제.</h2>
+
+                    <!-- 설명문: 타이틀 하단 16px 간격, --font-body, --text-primary, 16px -->
+                    <p class="goods-promo-desc">맥주의 아로마와 거품을 가장 잘 살려주는 맥주잔과 정갈한 코스터 컬렉션을 만나보세요.</p>
+                </div>
+
+                <!-- 우측 중앙: 굿즈 페이지 이동 180x60 직사각형 버튼 -->
+                <div class="goods-promo-btn-col">
+                    <a href="./goods.html" class="goods-promo-btn" aria-label="굿즈 페이지로 이동">
+                        <span class="goods-promo-btn-text">GOODS</span>
+                        <svg class="goods-promo-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                            stroke="currentColor">
+                            <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- ==========================================================================

@@ -671,3 +671,342 @@ h6 {
     /* 우측 정렬 */
     line-height: 1;
 }
+
+/* ==========================================================================
+   8. 굿즈 홍보 섹션 (Goods Promo Section - Shared Component)
+   - 상하 여백 80px, 배경색: --color-accent (#AD1931)
+   - 좌측: 소제목 (16px) + 타이틀 (48px) + 설명문 (16px)
+   - 우측 중앙: 180x60 직사각형 버튼 (--color-main 배경, 빛 통과 효과)
+   ========================================================================== */
+.goods-promo-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: var(--color-accent);
+    padding: 80px 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.goods-promo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+/* 좌측 텍스트 그룹 */
+.goods-promo-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+}
+
+/* 소제목: --font-en, --text-primary, 16px */
+.goods-promo-subhead {
+    font-family: var(--font-en);
+    font-size: 16px;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+/* 타이틀: 소제목 하단 16px 간격, --font-title, --text-primary, 48px */
+.goods-promo-title {
+    font-family: var(--font-title);
+    font-size: 48px;
+    color: var(--text-primary);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px 0;
+}
+
+/* 설명문: 타이틀 하단 16px 간격, --font-body, --text-primary, 16px */
+.goods-promo-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 우측 중앙 버튼 컨테이너 */
+.goods-promo-btn-col {
+    flex-shrink: 0;
+}
+
+/* 180x60 직사각형 버튼 (--color-main 배경) */
+.goods-promo-btn {
+    width: 180px;
+    height: 60px;
+    background-color: var(--color-main);
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* 빛이 대각선으로 지나가는 반사광 효과 가상 요소 */
+.goods-promo-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    transition: none;
+}
+
+/* 호버 시: 버튼 배경색은 변경되지 않고, 빛만 좌→우로 통과 */
+.goods-promo-btn:hover {
+    background-color: var(--color-main);
+    transform: translateY(-3px);
+}
+
+.goods-promo-btn:hover::before {
+    left: 160%;
+    transition: left 0.65s ease-in-out;
+}
+
+/* 버튼 텍스트: --font-en, --text-primary, 16px */
+.goods-promo-btn-text {
+    font-family: var(--font-en);
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+/* 버튼 화살표 아이콘: 18x10 동일 규격 + 수직 센터링 */
+.goods-promo-arrow-icon {
+    width: 18px;
+    height: 10px;
+    stroke: var(--text-primary);
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    transition: transform var(--transition-fast);
+}
+
+.goods-promo-btn:hover .goods-promo-arrow-icon {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   9. 한정상품 광고 섹션 (Seasonal Release Section - Shared Component)
+   - 배경색: --color-sub-1 (#344E41), 상하 128px 여백
+   - 좌측: 600x400 이미지 프레임 (brand_film_thumb.jpeg)
+   - 우측: 90px 간격, 상하 50px 여백의 설명문 영역
+   ========================================================================== */
+.seasonal-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: var(--color-sub-1);
+    padding: 128px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.seasonal-container {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+    box-sizing: border-box;
+}
+
+/* 좌측 600x400 이미지 프레임 */
+.seasonal-img-frame {
+    width: 600px;
+    height: 400px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    background-color: var(--color-main);
+}
+
+.seasonal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.seasonal-img-frame:hover .seasonal-img {
+    transform: scale(1.04);
+}
+
+/* 우측 설명문 영역 (상하 50px 여백 추가) */
+.seasonal-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px 0;
+    box-sizing: border-box;
+}
+
+/* 1. 소개문: 30px 가로선 + 영문 + 한글 (간격 10px) */
+.seasonal-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    white-space: nowrap;
+}
+
+.seasonal-subhead-line {
+    width: 30px;
+    height: 1px;
+    background-color: var(--text-gold-light);
+    display: block;
+    flex-shrink: 0;
+}
+
+.seasonal-subhead-en {
+    font-family: var(--font-en);
+    font-size: 16px;
+    color: var(--text-gold-light);
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.seasonal-subhead-ko {
+    font-family: var(--font-title);
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+/* 2. 타이틀: --font-title, --text-primary, 48px */
+.seasonal-title {
+    font-family: var(--font-title);
+    font-size: 48px;
+    color: var(--text-primary);
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+}
+
+/* 3. 설명문: --font-body, --text-gold, 16px, 줄간격 1.875 */
+.seasonal-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-gold);
+    line-height: 1.875;
+    margin: 0 0 38px 0;
+}
+
+/* 4. 상세 정보 행 (3개 상세 정보, 항목 간 간격 32px) */
+.seasonal-specs-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 38px;
+}
+
+/* 개별 상세 정보: 40px 세로선 + 16px 간격 + 텍스트 그룹 */
+.seasonal-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.spec-divider-line {
+    width: 2px;
+    height: 40px;
+    background-color: var(--text-accent);
+    display: block;
+    flex-shrink: 0;
+}
+
+.spec-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.spec-value {
+    font-family: var(--font-title);
+    font-size: 28px;
+    color: var(--text-primary);
+    line-height: 1;
+    font-weight: 400;
+}
+
+.spec-label {
+    font-family: var(--font-en);
+    font-size: 8px;
+    color: var(--text-gold);
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* 5. 굿즈/맥주 페이지 이동 텍스트 버튼 행 */
+.seasonal-btn-row {
+    width: 100%;
+}
+
+.seasonal-goods-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-en);
+    font-size: 16px;
+    line-height: 1;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.seasonal-goods-btn span {
+    display: inline-block;
+    line-height: 1;
+}
+
+.seasonal-goods-btn:hover {
+    color: var(--color-accent);
+}
+
+.seasonal-arrow-icon {
+    width: 18px;
+    height: 10px;
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    stroke: var(--text-primary);
+    transition: transform var(--transition-fast), stroke var(--transition-fast);
+}
+
+.seasonal-goods-btn:hover .seasonal-arrow-icon {
+    transform: translateX(6px);
+    stroke: var(--color-accent);
+}
