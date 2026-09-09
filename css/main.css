@@ -523,6 +523,9 @@
     background-color: var(--color-accent);
     /* 포인트 붉은색 (#AD1931) */
     display: block;
+    flex-shrink: 0;
+    transform: translateY(-2px);
+    /* 우측 텍스트 중심과 일치하도록 정렬 */
 }
 
 .intro-subhead-en {
@@ -747,6 +750,9 @@
     background-color: var(--text-gold-light);
     /* --text-gold-light (#E5B84C) */
     display: inline-block;
+    flex-shrink: 0;
+    transform: translateY(-2px);
+    /* 우측 텍스트 중심과 일치하도록 정렬 */
 }
 
 .subhead-en {
@@ -1140,6 +1146,8 @@
     background-color: var(--color-accent);
     display: block;
     flex-shrink: 0;
+    transform: translateY(-2px);
+    /* 우측 텍스트 중심과 일치하도록 정렬 */
 }
 
 .ingredients-subhead-en {
@@ -1266,7 +1274,7 @@
     line-height: 1;
     color: transparent;
     /* 텍스트 배경색 없음 (글자 내부 투명) */
-    -webkit-text-stroke: 1px rgba(244, 244, 242, 0.4);
+    -webkit-text-stroke: 1px rgba(244, 244, 242, 0.7);
     /* 테두리 색상 --text-primary (#F4F4F2), 1px, 40% 투명도 */
     background: transparent;
     border: none;
@@ -1461,6 +1469,8 @@
     /* --color-accent (#AD1931) */
     display: block;
     flex-shrink: 0;
+    transform: translateY(-2px);
+    /* 우측 텍스트 중심과 일치하도록 정렬 */
 }
 
 .film-title-en {
@@ -1595,6 +1605,8 @@
     /* --text-accent (#AD1931) */
     display: block;
     flex-shrink: 0;
+    transform: translateY(-2px);
+    /* 우측 텍스트 중심과 일치하도록 정렬 */
 }
 
 .gallery-subhead-en {
@@ -1931,6 +1943,8 @@
     /* --text-gold-light */
     display: block;
     flex-shrink: 0;
+    transform: translateY(-2px);
+    /* 우측 텍스트 중심과 일치하도록 정렬 */
 }
 
 .seasonal-subhead-en {

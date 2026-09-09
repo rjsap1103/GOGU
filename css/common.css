@@ -882,6 +882,8 @@ h6 {
     background-color: var(--text-gold-light);
     display: block;
     flex-shrink: 0;
+    transform: translateY(-2px);
+    /* 우측 텍스트 중심과 일치하도록 정렬 */
 }
 
 .seasonal-subhead-en {
