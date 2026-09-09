@@ -171,6 +171,29 @@
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
+/* 코스터 카드 좌측 상단 50x30 사이즈 사각형 배지 (중앙 정렬 "BEST") */
+.goods-card-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 50px;
+    height: 30px;
+    background-color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+    line-height: 1;
+}
+
 /* 카드 400x400 이미지 프레임 (이미지 미정 프레임 틀) */
 .goods-card-img-frame {
     width: 400px;

@@ -1811,6 +1811,7 @@
     height: 520px;
 }
 
+
 /* [2, 3, 4] 중단 세로형 프레임 (각 2열씩 총 6열 차지, 높이 500px) */
 .gallery-frame-md {
     grid-column: span 2;
