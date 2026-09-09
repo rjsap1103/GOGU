@@ -2,6 +2,711 @@
    GOGU BREWERY - GOODS 페이지 전용 스타일시트 (Goods CSS)
    ========================================================================== */
 
-.goods-page-section {
-    padding: 80px 0 120px;
+/* 메인 영역 기본 배경 */
+.goods-main {
+    width: 100%;
+    background-color: var(--color-main);
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   GOODS 히어로 섹션 (Goods Hero Section)
+   - (300, 200) 위치에서 소제목 시작:
+     * 좌측 X: 300px (공통 .container의 --page-padding-x: 300px 로 정확히 300px 위치)
+     * 상단 Y: 200px (padding-top: 200px 로 화면 상단 기준 정확히 200px 위치)
+   - 하단 80px 여백: padding-bottom: 80px
+   ========================================================================== */
+.goods-hero-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding-top: 200px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+}
+
+.goods-hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* 1. 소제목: 30px 가로선 + "AI CREATIVE ARCHIVE" + "아카이브" (10px 간격) */
+.goods-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 10px 간격 */
+    margin-bottom: 20px;
+    /* 소제목 하단 20px 간격으로 타이틀 작성 */
+    white-space: nowrap;
+}
+
+/* --text-gold-light, 2px 두께, 30px 가로선 */
+.goods-subhead-line {
+    width: 30px;
+    /* 30px 가로선 */
+    height: 2px;
+    /* 2px 두께 */
+    background-color: var(--text-gold-light);
+    /* --text-gold-light (#E5B84C) */
+    display: block;
+    flex-shrink: 0;
+}
+
+/* --font-en, --text-gold-light, 16px, "AI CREATIVE ARCHIVE" */
+.goods-subhead-en {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-gold-light);
+    /* --text-gold-light */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* --font-en, --text-muted, 12px, "아카이브" */
+.goods-subhead-ko {
+    font-family: var(--font-en);
+    font-size: 12px;
+    color: var(--text-muted);
+    /* --text-muted */
+    line-height: 1;
+}
+
+/* 2. 타이틀: 소제목 하단 20px 간격, --font-title, --text-primary, 60px */
+.goods-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 60px;
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    line-height: 1.3;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* "브랜드"는 --text-gold-light로 강조 */
+.goods-title .text-highlight {
+    color: var(--text-gold-light);
+    /* --text-gold-light (#E5B84C) */
+}
+
+/* 3. 타이틀 하단 20px 간격 설명문: --font-body, --text-muted, 16px, 줄간격 1.875 */
+.goods-desc {
+    margin-top: 20px;
+    /* 타이틀 하단 20px 간격 */
+    margin-bottom: 0;
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 16px;
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1.875;
+    /* 줄간격 1.875 */
+    max-width: 620px;
+}
+
+/* ==========================================================================
+   GOODS 상품 카드 섹션 (Goods List Section)
+   - 상하 100px 여백 (padding: 100px 0)
+   - 배경 색상: --color-sub-2, 투명도 30% (rgba(43, 65, 53, 0.3))
+   - 테두리: 1px 굵기, --text-gold, 투명도 40% (rgba(197, 160, 89, 0.4))
+   ========================================================================== */
+.goods-list-section {
+    width: 100%;
+    padding: 100px 0;
+    /* 상하 100px 여백 */
+    background-color: rgba(43, 65, 53, 0.3);
+    /* --color-sub-2 (#2B4135) 투명도 30% */
+    box-sizing: border-box;
+}
+
+.goods-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 400x600 사이즈 굿즈 카드 3개 가운데 정렬 (60px 간격) */
+.goods-cards-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 400x600 사이즈, --color-sub-2 굿즈 카드 */
+.goods-card {
+    width: 400px;
+    height: 600px;
+    background-color: var(--color-sub-2);
+    /* --color-sub-2 */
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    /* 테두리 1px 굵기, --text-gold, 투명도 40% */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.goods-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-accent);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* 카드 400x400 이미지 프레임 (이미지 미정 프레임 틀) */
+.goods-card-img-frame {
+    width: 400px;
+    height: 400px;
+    background-color: rgba(24, 35, 31, 0.4);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 이미지 가이드 플레이스홀더 */
+.goods-img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.goods-img-placeholder .placeholder-tag {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--text-gold);
+}
+
+.goods-img-placeholder .placeholder-size {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* 추후 실제 이미지 삽입 시 사용할 클래스 */
+.goods-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 곡우 코스터 카드 이미지 위치 보정 (하단 잘림 방지 및 수직 균형 정렬) */
+.goods-img-coaster {
+    transform: translateY(-16px) scale(1.08);
+    transform-origin: center center;
+}
+
+
+/* 400x200 텍스트 영역: 상하좌우 24px 여백, 배경색 --color-sub-2 */
+.goods-card-text-box {
+    width: 400px;
+    height: 200px;
+    padding: 24px;
+    /* 상하좌우 24px 여백 */
+    background-color: var(--color-sub-2);
+    /* 배경색 --color-sub-2 */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* 상단 행: 좌측 굿즈 타이틀 & 우측 가격 */
+.goods-card-header-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+/* 텍스트 영역 좌측 상단: --font-title, --text-primary, 20px 굿즈 타이틀 텍스트 */
+.goods-card-title {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 20px;
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    line-height: 1.2;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* 우측 상단: --font-title, --text-gold, 20px 가격 텍스트 */
+.goods-card-price {
+    font-family: var(--font-title);
+    /* 국민대 성곡 세리프 */
+    font-size: 20px;
+    color: var(--text-gold);
+    /* --text-gold (#C5A059) */
+    line-height: 1.2;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* 굿즈 타이틀 텍스트 하단 10px 간격 영문 타이틀: --font-en, --font-title, 12px */
+.goods-card-subtitle {
+    font-family: var(--font-en), var(--font-title);
+    /* Bebas Neue & 국민대 성곡 세리프 */
+    font-size: 12px;
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    letter-spacing: 1px;
+    line-height: 1;
+    margin: 10px 0 0 0;
+    /* 굿즈 타이틀 텍스트 하단 10px 간격 */
+    text-transform: uppercase;
+}
+
+/* 영문 텍스트 하단 30px 간격 설명문: --font-body, --text-primary, 14px */
+.goods-card-desc {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 14px;
+    color: var(--text-primary);
+    /* --text-primary (#F4F4F2) */
+    line-height: 1.5;
+    margin: 30px 0 0 0;
+    /* 영문 텍스트 하단 30px 간격 */
+}
+
+/* ==========================================================================
+   맥주 홍보 섹션 (Beer Promo Section)
+   - 크기: 1920x300, 상하 90px 여백, 배경색: --color-sub-1 (#344E41)
+   - 좌측: 소제목(30px 가로선 + 16px 영문 + 12px 국문, 10px 간격) + 하단 20px 간격 타이틀(48px)
+   - 우측 중간: 텍스트 버튼 ("CHECK OUR BEER" 20px + 화살표 아이콘, 호버시 --color-accent & 우측 이동)
+   ========================================================================== */
+.beer-promo-section {
+    width: 100%;
+    max-width: var(--container-max-width);
+    height: 300px;
+    margin: 0 auto;
+    background-color: var(--color-sub-1);
+    padding: 90px 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.beer-promo-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* 좌측 소제목 및 타이틀 그룹 */
+.beer-promo-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* 좌측 상단 소제목: 10px 간격 */
+.beer-promo-subhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    /* 소제목 하단 20px 간격 */
+    white-space: nowrap;
+}
+
+/* --text-gold-light, 2px 두께, 30px 가로선 */
+.beer-promo-subhead-line {
+    width: 30px;
+    height: 2px;
+    background-color: var(--text-gold-light);
+    display: block;
+    flex-shrink: 0;
+}
+
+/* --font-en, --text-gold-light, 16px, "PAIRING WITH GOOD GOODS" */
+.beer-promo-subhead-en {
+    font-family: var(--font-en);
+    font-size: 16px;
+    color: var(--text-gold-light);
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* --font-en, --text-muted, 12px, "좋은 굿즈와 페어링" */
+.beer-promo-subhead-ko {
+    font-family: var(--font-en), var(--font-body);
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+/* 소제목 하단 20px 간격 타이틀: --font-title, --text-primary, 48px */
+.beer-promo-title {
+    font-family: var(--font-title);
+    font-size: 48px;
+    color: var(--text-primary);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* 섹션 우측 중간 버튼 영역 */
+.beer-promo-btn-col {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* 텍스트 버튼: --font-en, --text-primary, 20px, 10px 간격 */
+.beer-promo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+}
+
+.beer-promo-btn-text {
+    font-family: var(--font-en);
+    font-size: 20px;
+    color: inherit;
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+/* 화살표 아이콘 */
+.beer-promo-arrow-icon {
+    width: 18px;
+    height: 10px;
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    top: -1px;
+    stroke: currentColor;
+    transition: transform var(--transition-fast), stroke var(--transition-fast);
+}
+
+/* 텍스트 버튼 호버시 색상 --color-accent 로 바뀌며, 화살표 우측으로 이동 */
+.beer-promo-btn:hover {
+    color: var(--color-accent);
+}
+
+.beer-promo-btn:hover .beer-promo-arrow-icon {
+    transform: translateX(6px);
+}
+
+/* ==========================================================================
+   굿즈 상세 모달 팝업 3종 (Goods Detail Modals)
+   - 크기: 1080x480, 배경색: --color-sub-2 (#2B4135), 백그라운드 #000000 80% 투명도
+   - 상단 16px, 좌우 24px, 하단 36px 여백 설정
+   ========================================================================== */
+.goods-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.goods-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.goods-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+}
+
+.goods-modal-content {
+    width: 1080px;
+    height: 480px;
+    background-color: var(--color-sub-2);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 1;
+    padding: 16px 24px 36px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateY(20px) scale(0.98);
+    transition: transform var(--transition-normal);
+}
+
+.goods-modal.is-open .goods-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+/* 상단 헤더: 좌측 프로파일 텍스트 & 우측 닫기 버튼 */
+.goods-modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+    /* 텍스트 하단 36px 간격, 굿즈 상세 섹션 */
+}
+
+/* --font-en, --text-gold, 16px, "GOODS PROFILE - COASTER" */
+.goods-modal-profile {
+    font-family: var(--font-en);
+    font-size: 16px;
+    color: var(--text-gold);
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* 닫기 버튼 */
+.goods-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.goods-modal-close:hover {
+    color: var(--color-accent);
+    transform: scale(1.1);
+}
+
+/* 굿즈 상세 섹션 바디 */
+.goods-modal-body {
+    width: 100%;
+    height: 360px;
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+    /* 이미지 우측 36px 간격 */
+    box-sizing: border-box;
+}
+
+/* 섹션 좌측 360x360 사이즈 이미지 프레임 */
+.goods-modal-img-frame {
+    width: 360px;
+    height: 360px;
+    background-color: rgba(24, 35, 31, 0.5);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.goods-modal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity var(--transition-fast);
+}
+
+/* 이미지 우측 36px 간격 텍스트 문구 섹션 */
+.goods-modal-info-col {
+    flex: 1;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.goods-modal-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* 좌측 상단 굿즈 타이틀: --font-en, --text-primary, 48px */
+.goods-modal-title {
+    font-family: var(--font-en);
+    font-size: 48px;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* 타이틀 하단 14px 간격 소제목: --font-title, --text-primary, 16px */
+.goods-modal-subtitle {
+    font-family: var(--font-title);
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 14px 0 0 0;
+    /* 타이틀 하단 14px 간격 */
+    font-weight: 400;
+}
+
+/* 소제목 하단 30px 간격 본문 텍스트: --font-body, --text-muted, 14px, 줄간격 1.875 */
+.goods-modal-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.875;
+    margin: 30px 0 0 0;
+    /* 소제목 하단 30px 간격 */
+    letter-spacing: -0.2px;
+}
+
+/* 코스터 팝업 전용: 본문 하단 58px에 코스터 색상 고를 수 있는 원형 색상 버튼 */
+.goods-modal-colors {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 58px;
+    /* 본문 하단 58px */
+}
+
+/* 30x30px 사이즈 원 6가지, 버튼 테두리는 1px 굵기, --text-gold, 투명도 40% */
+.goods-color-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    position: relative;
+}
+
+.goods-color-btn:hover {
+    transform: scale(1.15);
+    border-color: var(--text-gold);
+}
+
+.goods-color-btn.active {
+    border: 2px solid var(--text-gold);
+    box-shadow: 0 0 0 2px var(--color-sub-2), 0 0 0 4px var(--text-gold);
+    transform: scale(1.1);
+}
+
+/* 텍스트 문구 섹션 중앙 최하단 200x40 사이즈 버튼 2개 생성 (사이 간격 30px) */
+.goods-modal-btn-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: auto;
+    /* 중앙 최하단 배치 */
+}
+
+/* 1번 버튼: --color-accent, 박스 안에 중앙 정렬 텍스트 --font-title, --text-primary, 16px, "구매하기" */
+.goods-modal-btn-buy {
+    width: 200px;
+    height: 40px;
+    background-color: var(--color-accent);
+    color: var(--text-primary);
+    border: 1px solid var(--color-accent);
+    font-family: var(--font-title);
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* 1번 버튼은 호버시 텍스트와 배경색 반전 효과 */
+.goods-modal-btn-buy:hover {
+    background-color: var(--text-primary);
+    color: var(--color-accent);
+    border-color: var(--text-primary);
+}
+
+/* 2번 버튼: 배경색 없음, 테두리 --text-muted, 굵기 1px, 20x20 쇼핑카트 아이콘 10px 간격, "장바구니" */
+.goods-modal-btn-cart {
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    font-family: var(--font-title);
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.goods-modal-btn-cart .cart-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-accent);
+    display: block;
+    flex-shrink: 0;
+    transition: stroke var(--transition-fast);
+}
+
+/* 2번 버튼은 호버시 박스 테두리 색상과 텍스트 색상이 --color-accent 로 변경 */
+.goods-modal-btn-cart:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }

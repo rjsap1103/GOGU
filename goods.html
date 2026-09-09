@@ -47,7 +47,7 @@
             </a>
 
             <!-- 우측 메뉴 2: GOODS -->
-            <a href="./goods.html" class="nav-item">
+            <a href="./goods.html" class="nav-item active">
                 <span class="nav-text-en">GOODS</span>
                 <span class="nav-text-ko">굿즈</span>
             </a>
@@ -55,13 +55,142 @@
     </header>
 
     <!-- 메인 콘텐츠 영역 -->
-    <main class="main" style="padding-top: 100px;">
-        <section class="section">
-            <div class="container">
-                <h1 style="font-family: var(--font-en); font-size: 56px; color: var(--text-gold); margin-bottom: 20px; letter-spacing: 2px;">GOODS</h1>
-                <p style="font-family: var(--font-body); color: var(--text-muted); font-size: 18px;">
-                    곡우 전용 글래스 및 브랜드 굿즈 페이지 기본 틀입니다.
+    <main class="main goods-main">
+        <!-- ==========================================================================
+             GOODS 히어로 섹션 (Goods Hero Section)
+             - (300, 200) 위치에서 소제목 시작:
+               * 좌측 X: 300px (공통 .container 패딩에 의해 정확히 300px 위치)
+               * 상단 Y: 200px (padding-top: 200px 로 화면 상단 기준 정확히 200px 위치)
+             - 하단 80px 여백 (padding-bottom: 80px)
+             ========================================================================== -->
+        <section class="goods-hero-section">
+            <div class="container goods-hero-container">
+                <!-- 1. 소제목: 30px 가로선 + "AI CREATIVE ARCHIVE" + "아카이브" (10px 간격) -->
+                <div class="goods-subhead">
+                    <span class="goods-subhead-line"></span>
+                    <span class="goods-subhead-en">AI CREATIVE ARCHIVE</span>
+                    <span class="goods-subhead-ko">아카이브</span>
+                </div>
+
+                <!-- 2. 타이틀: 소제목 하단 20px 간격, --font-title, --text-primary, 60px, "브랜드" 강조 -->
+                <h1 class="goods-title">
+                    잔이 비어도,<br>
+                    <span class="text-highlight">브랜드</span>는 남는다
+                </h1>
+
+                <!-- 3. 설명문: 타이틀 하단 20px 간격, --font-body, --text-muted, 16px, 줄간격 1.875 -->
+                <p class="goods-desc">
+                    잔을 채우는 황금빛 탄산과 짙은 녹음의 조화, 렌즈를 통해 포착한<br>
+                    곡우만의 감각적인 비주얼을 선보입니다.
                 </p>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             GOODS 상품 카드 섹션 (Goods List Section)
+             - 상하 100px 여백, 배경 색상: --color-sub-2 30%, 테두리 1px --text-gold 40%
+             - 400x600 사이즈, --color-sub-2 굿즈 카드 3개 존재, 가운데 정렬
+             ========================================================================== -->
+        <section class="goods-list-section">
+            <div class="container goods-list-container">
+                <div class="goods-cards-grid">
+                    <!-- 굿즈 카드 1 -->
+                    <article class="goods-card" data-goods="coaster" tabindex="0" role="button" aria-label="곡우 코스터 상세 정보 열기">
+                        <!-- 400x400 이미지 프레임 -->
+                        <div class="goods-card-img-frame">
+                            <img src="./assets/images/coaster(6).jpeg" alt="곡우 코스터(6종)" class="goods-card-img goods-img-coaster">
+                        </div>
+
+                        <!-- 400x200 텍스트 영역 (상하좌우 24px 여백, --color-sub-2) -->
+                        <div class="goods-card-text-box">
+                            <!-- 상단 행: 좌측 굿즈 타이틀 20px / 우측 가격 20px -->
+                            <div class="goods-card-header-row">
+                                <h3 class="goods-card-title">곡우 코스터 (6종)</h3>
+                                <span class="goods-card-price">₩ 12,000</span>
+                            </div>
+                            <!-- 굿즈 타이틀 하단 10px 간격 영문 타이틀: 12px -->
+                            <p class="goods-card-subtitle">GOGU COASTER (6 types)</p>
+                            <!-- 영문 텍스트 하단 30px 간격 설명문: 14px -->
+                            <p class="goods-card-desc">머무는 잔 아래 깃든 브랜드의 잔향. <br>
+                                여섯 가지 결로 빚어낸 고요하고 단정한 휴식을 전합니다.</p>
+                        </div>
+                    </article>
+
+                    <!-- 굿즈 카드 2 -->
+                    <article class="goods-card" data-goods="glass" tabindex="0" role="button" aria-label="바이젠 글라스 상세 정보 열기">
+                        <!-- 400x400 이미지 프레임 -->
+                        <div class="goods-card-img-frame">
+                            <img src="./assets/images/weizen 2.jpeg" alt="바이젠 글라스" class="goods-card-img">
+                        </div>
+
+                        <!-- 400x200 텍스트 영역 -->
+                        <div class="goods-card-text-box">
+                            <div class="goods-card-header-row">
+                                <h3 class="goods-card-title">바이젠 글라스</h3>
+                                <span class="goods-card-price">₩ 23,000</span>
+                            </div>
+                            <p class="goods-card-subtitle">GOGU WEIZEN GLASS</p>
+                            <p class="goods-card-desc">섬세한 립 라인과 편안한 그립감으로, 한 모금마다 맥주의 풍성한
+                                <br> 풍미를 깊이 있게 전달합니다.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- 굿즈 카드 3 -->
+                    <article class="goods-card" data-goods="mug" tabindex="0" role="button" aria-label="비어 머그 상세 정보 열기">
+                        <!-- 400x400 이미지 프레임 -->
+                        <div class="goods-card-img-frame">
+                            <img src="./assets/images/beer mug 1.jpeg" alt="비어 머그" class="goods-card-img">
+                        </div>
+
+                        <!-- 400x200 텍스트 영역 -->
+                        <div class="goods-card-text-box">
+                            <div class="goods-card-header-row">
+                                <h3 class="goods-card-title">비어 머그</h3>
+                                <span class="goods-card-price">₩ 20,000</span>
+                            </div>
+                            <p class="goods-card-subtitle">GOGU BEER MUG</p>
+                            <p class="goods-card-desc">투명한 유리 속 청량한 탄산과 풍성한 헤드를 넉넉하게 품어내는 <br>
+                                클래식 비어 머그입니다.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             맥주 홍보 섹션 (Beer Promo Section)
+             - 크기: 1920x300 크기, 상하 90px 여백, --color-sub-1 배경색
+             - 좌측 상단 소제목: 30px 가로선 + "PAIRING WITH GOOD GOODS" + "좋은 굿즈와 페어링" (10px 간격)
+             - 소제목 하단 20px 간격 타이틀: 48px "굿즈와 어울리는 맥주를 알고 싶다면"
+             - 섹션 우측 중간 텍스트 버튼: "CHECK OUR BEER" (20px, 10px 간격, 화살표 아이콘, 호버시 --color-accent 및 우측 이동)
+             ========================================================================== -->
+        <section class="beer-promo-section">
+            <div class="container beer-promo-container">
+                <!-- 좌측 그룹: 소제목 및 타이틀 -->
+                <div class="beer-promo-text-col">
+                    <!-- 소제목: 30px 가로선 + "PAIRING WITH GOOD GOODS" + "좋은 굿즈와 페어링" (10px 간격) -->
+                    <div class="beer-promo-subhead">
+                        <span class="beer-promo-subhead-line"></span>
+                        <span class="beer-promo-subhead-en">PAIRING WITH GOOD GOODS</span>
+                        <span class="beer-promo-subhead-ko">좋은 굿즈와 페어링</span>
+                    </div>
+
+                    <!-- 소제목 하단 20px 간격 타이틀: 48px -->
+                    <h2 class="beer-promo-title">굿즈와 어울리는 맥주를 알고 싶다면</h2>
+                </div>
+
+                <!-- 섹션 우측 중간: 텍스트 버튼 -->
+                <div class="beer-promo-btn-col">
+                    <a href="./beer.html" class="beer-promo-btn">
+                        <span class="beer-promo-btn-text">CHECK OUR BEER</span>
+                        <svg class="beer-promo-arrow-icon" width="18" height="10" viewBox="0 0 18 10" fill="none"
+                            stroke="currentColor">
+                            <path d="M1 5H17M17 5L13 1M17 5L13 9" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -96,7 +225,8 @@
                     <div class="footer-ai-badge">
                         <!-- 12x12 필름 아이콘 SVG -->
                         <svg class="footer-film-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4 2C2.89543 2 2 2.89543 2 4V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H4ZM4 4H6V6H4V4ZM6 8H4V10H6V8ZM4 12H6V14H4V12ZM6 16H4V18H6V16ZM4 20H6V20.5C6 20.7761 5.77614 21 5.5 21H4V20ZM8 4H16V11H8V4ZM8 13H16V20H8V13ZM18 4H20V6H18V4ZM20 8H18V10H20V8ZM18 12H20V14H18V12ZM20 16H18V18H20V16ZM18 20H20V20.5C20 20.7761 19.7761 21 19.5 21H18V20Z" />
                         </svg>
                         <span class="footer-ai-text">
                             <span class="text-muted-part">이 웹사이트의 모든 이미지 필름은</span>
@@ -148,7 +278,8 @@
                     <div class="footer-col footer-contact-col">
                         <h4 class="footer-col-title">CONTACT</h4>
                         <div class="footer-info-list">
-                            <a href="mailto:brewery@gogu.beer" class="footer-info-item footer-link">brewery@gogu.beer</a>
+                            <a href="mailto:brewery@gogu.beer"
+                                class="footer-info-item footer-link">brewery@gogu.beer</a>
                             <a href="tel:063-462-2019" class="footer-info-item footer-link">063 - 462 - 2019</a>
                         </div>
                     </div>
@@ -171,6 +302,184 @@
             </div>
         </div>
     </footer>
+
+    <!-- ==========================================================================
+         굿즈 상세 모달 팝업 3종 (Goods Detail Modals)
+         - 팝업 크기: 1080x480, 배경색: --color-sub-2 (#2B4135), 백그라운드 오버레이: #000000 80%
+         - 여백: 상단 16px, 좌우 24px, 하단 36px
+         - 구성:
+           * 상단: 굿즈 프로파일 텍스트 ("GOODS PROFILE - ...", 16px, --text-gold) + 닫기 버튼, 하단 36px 간격
+           * 상세 섹션: 좌측 360x360 이미지 프레임 + 우측 텍스트 문구 섹션 (36px 간격)
+           * 텍스트: 타이틀 48px, 소제목 16px (14px 간격), 본문 14px (30px 간격, 줄간격 1.875)
+           * 최하단: 구매하기 & 장바구니 200x40 버튼 2개 (30px 간격, 중앙 정렬)
+           * 코스터 팝업 전용: 본문 하단 58px 코스터 색상 선택 30x30 원형 버튼 6개 (14px 간격)
+         ========================================================================== -->
+
+    <!-- 1. 곡우 코스터 상세 모달 -->
+    <div id="goods-modal-coaster" class="goods-modal" aria-hidden="true" role="dialog" aria-label="곡우 코스터 상세 정보">
+        <div class="goods-modal-backdrop"></div>
+        <div class="goods-modal-content">
+            <!-- 좌측 상단 굿즈 프로파일 텍스트 & 우측 닫기 버튼 -->
+            <div class="goods-modal-header">
+                <span class="goods-modal-profile">GOODS PROFILE - COASTER</span>
+                <button type="button" class="goods-modal-close" aria-label="팝업 닫기">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 굿즈 상세 섹션: 좌측 360x360 이미지 + 우측 텍스트 문구 섹션 (36px 간격) -->
+            <div class="goods-modal-body">
+                <!-- 좌측 360x360 사이즈 이미지 프레임 -->
+                <div class="goods-modal-img-frame">
+                    <img id="coaster-modal-img" src="./assets/images/Forest Green COASTER.jpeg" alt="곡우 코스터" class="goods-modal-img">
+                </div>
+
+                <!-- 이미지 우측 36px 간격 텍스트 문구 섹션 -->
+                <div class="goods-modal-info-col">
+                    <div class="goods-modal-text-group">
+                        <!-- 좌측 상단 굿즈 타이틀: --font-en, --text-primary, 48px, "GOGU COASTER" -->
+                        <h2 class="goods-modal-title">GOGU COASTER</h2>
+
+                        <!-- 타이틀 하단 14px 간격 소제목: --font-title, --text-primary, 16px, "곡우 코스터" -->
+                        <p class="goods-modal-subtitle">곡우 코스터</p>
+
+                        <!-- 소제목 하단 30px 간격 본문 텍스트: --font-body, --text-muted, 14px, 줄간격 1.875 -->
+                        <p class="goods-modal-desc">
+                            곡우(GOGU)의 고유한 감성을 담은 일러스트로, 취향에 따라 테이블에 다채로운 분위기를 더해줍니다.<br>
+                            탁월한 흡수력과 내구성을 갖추어, 잔 아래 맺힌 물방울을 깔끔하게 잡아주고 테이블을 안전하게 보호합니다.<br>
+                            공간에 차분하게 스며드는 톤 앤 매너로, 일상 속 홈술 타임이나 다이닝 공간에 단정한 품격을 선사합니다.
+                        </p>
+
+                        <!-- 코스터 팝업 전용: 본문 하단 58px 코스터 색상 선택 원형 버튼 (30x30, 14px 간격) -->
+                        <div class="goods-modal-colors">
+                            <button type="button" class="goods-color-btn active" data-color="Forest Green" data-img="./assets/images/Forest Green COASTER.jpeg" style="background-color: #35513A;" aria-label="포레스트 그린 코스터 선택"></button>
+                            <button type="button" class="goods-color-btn" data-color="Cream White" data-img="./assets/images/Cream White COASTER.jpeg" style="background-color: #EDDCCC;" aria-label="크림 화이트 코스터 선택"></button>
+                            <button type="button" class="goods-color-btn" data-color="Seoul Red" data-img="./assets/images/Seoul Red COASTER.jpeg" style="background-color: #812D2B;" aria-label="서울 레드 코스터 선택"></button>
+                            <button type="button" class="goods-color-btn" data-color="Terracotta" data-img="./assets/images/Terracotta COASTER.jpeg" style="background-color: #934B35;" aria-label="테라코타 코스터 선택"></button>
+                            <button type="button" class="goods-color-btn" data-color="Charcoal Gray" data-img="./assets/images/Charcoal Gray COASTER.jpeg" style="background-color: #534E4A;" aria-label="차콜 그레이 코스터 선택"></button>
+                            <button type="button" class="goods-color-btn" data-color="Navy Blue" data-img="./assets/images/Navy Blue COASTER.jpeg" style="background-color: #1F3F4A;" aria-label="네이비 블루 코스터 선택"></button>
+                        </div>
+                    </div>
+
+                    <!-- 텍스트 문구 섹션 중앙 최하단 버튼 2개 (200x40, 30px 간격) -->
+                    <div class="goods-modal-btn-row">
+                        <!-- 1번 버튼: --color-accent, "구매하기", 호버시 텍스트/배경 반전 -->
+                        <button type="button" class="goods-modal-btn-buy">구매하기</button>
+                        <!-- 2번 버튼: 배경 투명, 테두리 --text-muted, 장바구니 아이콘 + "장바구니", 호버시 테두리/텍스트 --color-accent -->
+                        <button type="button" class="goods-modal-btn-cart">
+                            <svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>장바구니</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 바이젠 글라스 상세 모달 -->
+    <div id="goods-modal-glass" class="goods-modal" aria-hidden="true" role="dialog" aria-label="바이젠 글라스 상세 정보">
+        <div class="goods-modal-backdrop"></div>
+        <div class="goods-modal-content">
+            <!-- 좌측 상단 굿즈 프로파일 텍스트 & 우측 닫기 버튼 -->
+            <div class="goods-modal-header">
+                <span class="goods-modal-profile">GOODS PROFILE - WEIZEN GLASS</span>
+                <button type="button" class="goods-modal-close" aria-label="팝업 닫기">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 굿즈 상세 섹션 -->
+            <div class="goods-modal-body">
+                <div class="goods-modal-img-frame">
+                    <img src="./assets/images/weizen 2.jpeg" alt="바이젠 글라스" class="goods-modal-img">
+                </div>
+
+                <div class="goods-modal-info-col">
+                    <div class="goods-modal-text-group">
+                        <h2 class="goods-modal-title">GOGU WEIZEN GLASS</h2>
+                        <p class="goods-modal-subtitle">바이젠 글라스</p>
+                        <p class="goods-modal-desc">
+                            섬세한 립 라인과 편안한 그립감으로, 한 모금마다 밀맥주 특유의 풍성한 바나나 향과 정향의 아로마를 극대화합니다.<br>
+                            상단으로 갈수록 은은하게 퍼지는 유려한 곡선 디자인은 조밀하고 크리미한 거품을 오랫동안 지속시켜 줍니다.<br>
+                            투명한 크리스탈 글라스에 담긴 황금빛 곡우 맥주의 깊은 풍미와 함께, 매일의 일상을 특별한 미식의 순간으로 완성해 보세요.
+                        </p>
+                    </div>
+
+                    <!-- 최하단 200x40 버튼 2개 (30px 간격, 중앙 정렬) -->
+                    <div class="goods-modal-btn-row">
+                        <button type="button" class="goods-modal-btn-buy">구매하기</button>
+                        <button type="button" class="goods-modal-btn-cart">
+                            <svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>장바구니</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 비어 머그 상세 모달 -->
+    <div id="goods-modal-mug" class="goods-modal" aria-hidden="true" role="dialog" aria-label="비어 머그 상세 정보">
+        <div class="goods-modal-backdrop"></div>
+        <div class="goods-modal-content">
+            <!-- 좌측 상단 굿즈 프로파일 텍스트 & 우측 닫기 버튼 -->
+            <div class="goods-modal-header">
+                <span class="goods-modal-profile">GOODS PROFILE - BEER MUG</span>
+                <button type="button" class="goods-modal-close" aria-label="팝업 닫기">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 굿즈 상세 섹션 -->
+            <div class="goods-modal-body">
+                <div class="goods-modal-img-frame">
+                    <img src="./assets/images/beer mug 1.jpeg" alt="비어 머그" class="goods-modal-img">
+                </div>
+
+                <div class="goods-modal-info-col">
+                    <div class="goods-modal-text-group">
+                        <h2 class="goods-modal-title">GOGU BEER MUG</h2>
+                        <p class="goods-modal-subtitle">비어 머그</p>
+                        <p class="goods-modal-desc">
+                            투명한 프리미엄 글라스 속에 청량한 탄산과 풍성한 헤드를 넉넉하게 품어내는 곡우의 시그니처 클래식 비어 머그입니다.<br>
+                            두터운 핸들과 균형 잡힌 무게감으로 차가운 온도를 오래 유지하며, 편안하고 안정적인 그립감을 선사합니다.<br>
+                            시원한 라거부터 짙은 흑맥주까지, 언제 어디서나 시원한 한 잔의 즐거움과 여유로운 휴식을 함께 느껴보세요.
+                        </p>
+                    </div>
+
+                    <!-- 최하단 200x40 버튼 2개 (30px 간격, 중앙 정렬) -->
+                    <div class="goods-modal-btn-row">
+                        <button type="button" class="goods-modal-btn-buy">구매하기</button>
+                        <button type="button" class="goods-modal-btn-cart">
+                            <svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>장바구니</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main JavaScript -->
     <script src="./js/main.js"></script>

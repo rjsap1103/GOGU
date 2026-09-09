@@ -261,7 +261,7 @@ h6 {
 .nav-item::after {
     content: '';
     position: absolute;
-    bottom: -1px;
+    bottom: 6px;
     /* 글자 아래 1px 위치 */
     left: 0;
     width: 0;

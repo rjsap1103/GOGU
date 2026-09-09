@@ -498,8 +498,8 @@
     transition: transform var(--transition-fast);
 }
 
-/* 텍스트 버튼 호버시 화살표가 우측으로 이동하는 효과만 추가 */
-.beer-card-view-btn:hover .beer-card-view-arrow {
+/* 맥주 카드 호버 시 텍스트 버튼 화살표가 우측으로 이동 */
+.beer-card:hover .beer-card-view-arrow {
     transform: translateX(4px);
 }
 
@@ -791,6 +791,7 @@
     padding: 0 12px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     /* 10px 간격 */
     z-index: 2;
@@ -1022,4 +1023,88 @@
     /* 줄간격 1.875 */
     margin-bottom: 0;
     max-width: 540px;
+}
+
+/* ==========================================================================
+   설명문 하단 32px 간격 원료(ingredients) 및 음식 페어링(FOOD PAIRING) 섹션
+   ========================================================================== */
+.beer-modal-sub-details {
+    margin-top: 32px;
+    /* 설명문 하단 32px 간격 */
+    display: flex;
+    flex-direction: row;
+    gap: 208px;
+    /* 우측 208px 간격 */
+    width: 100%;
+}
+
+.beer-modal-sub-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* 좌측상단 / 우측 소제목: --font-en, --text-gold, 16px */
+.beer-modal-sub-title {
+    font-family: var(--font-en);
+    /* Bebas Neue */
+    font-size: 16px;
+    color: var(--text-gold);
+    /* --text-gold */
+    letter-spacing: 1.5px;
+    line-height: 1;
+    margin: 0 0 20px 0;
+    /* 하단 20px 간격 본문 출력 */
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+/* 본문 리스트 (10px 간격 배치) */
+.beer-modal-sub-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* 10px 간격으로 배치 */
+}
+
+/* 개별 행 아이템 */
+.beer-modal-sub-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+}
+
+/* 16x16 사이즈 아이콘 공통 */
+.beer-modal-sub-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* 16x16 사이즈, --color-accent, 체크 표시 아이콘 */
+.beer-modal-sub-icon.icon-check {
+    color: var(--color-accent);
+    /* --color-accent (#AD1931) */
+}
+
+/* 16x16 사이즈, --text-gold, 4개 꼭짓점 별 아이콘 */
+.beer-modal-sub-icon.icon-star {
+    color: var(--text-gold);
+    /* --text-gold (#C5A059) */
+}
+
+/* 본문 텍스트: --font-body, --text-muted, 14px */
+.beer-modal-sub-text {
+    font-family: var(--font-body);
+    /* Pretendard */
+    font-size: 14px;
+    color: var(--text-muted);
+    /* --text-muted (#A3B0A7) */
+    line-height: 1.2;
+    white-space: nowrap;
 }

@@ -822,6 +822,9 @@
     border: 1px solid transparent;
     /* 호버 시 레이아웃 밀림 방지를 위한 투명 1px 테두리 */
     overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
     transition: transform var(--transition-normal), border-color var(--transition-normal);
 }
 
@@ -1005,7 +1008,8 @@
     /* 맥주 설명문 하단 24px 간격 */
 }
 
-/* BEER 페이지 버튼: --color-accent, --font-en, 14px, "VIEW BEER" + 14x14 화살표 (10px 간격) */
+/* BEER 페이지 버튼: --color-accent, --font-en, 14px, "VIEW BEER" + 14x14 화살표 (10px 간격)
+   기본 상태에서는 보이지 않다가, 카드 호버 시 부드럽게 나타남 */
 .beer-card-btn {
     display: inline-flex;
     align-items: center;
@@ -1021,7 +1025,17 @@
     line-height: 1;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: opacity var(--transition-fast);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity var(--transition-normal), visibility var(--transition-normal), transform var(--transition-normal);
+}
+
+/* 카드에 호버 시 텍스트 버튼 나타남 */
+.beer-card:hover .beer-card-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .beer-card-btn .btn-text {
@@ -1047,6 +1061,8 @@
     transition: transform var(--transition-fast);
 }
 
+/* 카드 호버 시 화살표 살짝 우측 이동 */
+.beer-card:hover .beer-btn-arrow,
 .beer-card-btn:hover .beer-btn-arrow {
     transform: translateX(4px);
     /* 마우스 올렸을 때 화살표 살짝 우측 이동 */

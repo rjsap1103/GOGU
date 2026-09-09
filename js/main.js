@@ -146,7 +146,17 @@ document.addEventListener('DOMContentLoaded', () => {
             ibu: '18',
             extra: 'HELLES',
             flavor: [82, 38, 24, 30],
-            story: '첫 모금에 투명한 탄산감이 지나가고, 겉보리 특유의 고소한 단맛이 짧게 남습니다.<br>끝은 미련 없이 깨끗하게 잘려 나가는, 식탁을 위한 라거입니다.'
+            story: '첫 모금에 투명한 탄산감이 지나가고, 겉보리 특유의 고소한 단맛이 짧게 남습니다.<br>끝은 미련 없이 깨끗하게 잘려 나가는, 식탁을 위한 라거입니다.',
+            ingredients: [
+                '국산 겉보리 맥아 100%',
+                '대관령 청정 암반수',
+                '강원 홍천 홉',
+                '저온 장기 숙성 라거 효모'
+            ],
+            foodPairing: [
+                '해물 파전',
+                '바삭한 먹태구이'
+            ]
         },
         ale: {
             fileTitle: 'PRODUCT FILE - KOREAN PALE ALE',
@@ -159,8 +169,18 @@ document.addEventListener('DOMContentLoaded', () => {
             abv: '5.8%',
             ibu: '35',
             extra: 'PALE ALE',
-            flavor: [65, 45, 70, 55],
-            story: '감귤과 자몽의 화사한 시트러스 아로마 뒤로 솔잎의 상쾌함이 스칩니다.<br>기분 좋은 쌉싸름함이 입안을 정돈하는 페일 에일입니다.'
+            flavor: [65, 52, 58, 55],
+            story: '감귤의 화사한 시트러스 아로마 뒤로 솔잎의 상쾌함이 스칩니다.<br>기분 좋은 쌉싸름함이 입안을 정돈하는 페일 에일입니다.',
+            ingredients: [
+                '국산 겉보리 맥아',
+                '제주 영귤 껍질 (시트러스)',
+                '캐스케이드 & 시트라 홉',
+                '상면 발효 에일 효모'
+            ],
+            foodPairing: [
+                '매콤한 닭강정',
+                '미나리 새우전'
+            ]
         },
         dark: {
             fileTitle: 'PRODUCT FILE - KOREAN DARK ALE',
@@ -173,8 +193,18 @@ document.addEventListener('DOMContentLoaded', () => {
             abv: '6.5%',
             ibu: '28',
             extra: 'DARK ALE',
-            flavor: [40, 68, 55, 78],
-            story: '볶은 보리와 맥아의 묵직한 카카오 풍미, 은은하게 퍼지는 흑당의 단맛이<br>긴 여운을 남기는 깊고 짙은 흑맥주입니다.'
+            flavor: [38, 70, 43, 82],
+            story: '볶은 보리와 맥아의 묵직한 카카오 풍미, 은은하게 퍼지는 흑당의 단맛이<br>긴 여운을 남기는 깊고 짙은 흑맥주입니다.',
+            ingredients: [
+                '군산 검정보리 맥아',
+                '고온 로스팅 볶은 보리',
+                '지리산 천연 흑당',
+                '다크 에일 전용 효모'
+            ],
+            foodPairing: [
+                '훈제 숯불 갈비구이',
+                '다크 초콜릿 브라우니'
+            ]
         },
         seasonal: {
             fileTitle: 'PRODUCT FILE - SEASONAL • AUTUMN',
@@ -187,8 +217,18 @@ document.addEventListener('DOMContentLoaded', () => {
             abv: '5.2%',
             ibu: '15',
             extra: 'PERSIMMON',
-            flavor: [50, 75, 30, 65],
-            story: '군산 곶감의 달콤한 농후함과 시나몬의 따스한 온기.<br>가을의 정취를 잔 속에 그대로 빚어낸 한정 맥주입니다.'
+            flavor: [67, 60, 12, 45],
+            story: '군산 곶감의 달콤한 농후함과 시나몬의 따스한 온기.<br>가을의 정취를 잔 속에 그대로 빚어낸 한정 맥주입니다.',
+            ingredients: [
+                '상주 완숙 곶감',
+                '국산 겉보리 맥아',
+                '시나몬 & 넛맥 스파이스',
+                '가을 야생화 꿀'
+            ],
+            foodPairing: [
+                '곶감 호두말이',
+                '단호박 치즈구이'
+            ]
         }
     };
 
@@ -202,6 +242,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const num3 = document.getElementById('beer-flavor-val-3');
         const num4 = document.getElementById('beer-flavor-val-4');
         const storyDesc = document.getElementById('beer-modal-story-desc');
+        const ingredientEls = beerModal.querySelectorAll('.beer-modal-ingredient');
+        const pairingEls = beerModal.querySelectorAll('.beer-modal-pairing');
 
         beerCardsList.forEach(card => {
             card.addEventListener('click', () => {
@@ -239,6 +281,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     storyDesc.innerHTML = data.story;
                 }
 
+                // 원료 및 음식 페어링 텍스트 업데이트
+                if (data.ingredients && ingredientEls.length > 0) {
+                    data.ingredients.forEach((text, i) => {
+                        if (ingredientEls[i]) ingredientEls[i].textContent = text;
+                    });
+                }
+                if (data.foodPairing && pairingEls.length > 0) {
+                    data.foodPairing.forEach((text, i) => {
+                        if (pairingEls[i]) pairingEls[i].textContent = text;
+                    });
+                }
+
                 beerModal.classList.add('is-open');
                 beerModal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
@@ -264,4 +318,85 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==========================================================================
+    // GOODS 페이지 굿즈 상세 모달 팝업 및 코스터 색상 전환 기능
+    // ==========================================================================
+    const goodsCards = document.querySelectorAll('.goods-card');
+    const goodsModals = document.querySelectorAll('.goods-modal');
+
+    if (goodsCards.length > 0 && goodsModals.length > 0) {
+        // 모든 굿즈 모달 닫기
+        const closeAllGoodsModals = () => {
+            goodsModals.forEach(modal => {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+            });
+            document.body.style.overflow = '';
+        };
+
+        // 카드 클릭 및 키보드 엔터 시 해당 모달 열기
+        goodsCards.forEach(card => {
+            const openModal = () => {
+                const goodsType = card.getAttribute('data-goods');
+                const targetModal = document.getElementById(`goods-modal-${goodsType}`);
+                if (targetModal) {
+                    closeAllGoodsModals();
+                    targetModal.classList.add('is-open');
+                    targetModal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
+            };
+
+            card.addEventListener('click', openModal);
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+        });
+
+        // 닫기 버튼 및 백드롭 클릭
+        goodsModals.forEach(modal => {
+            const closeBtn = modal.querySelector('.goods-modal-close');
+            const backdrop = modal.querySelector('.goods-modal-backdrop');
+
+            if (closeBtn) closeBtn.addEventListener('click', closeAllGoodsModals);
+            if (backdrop) backdrop.addEventListener('click', closeAllGoodsModals);
+        });
+
+        // ESC 키로 닫기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const hasOpenModal = Array.from(goodsModals).some(m => m.classList.contains('is-open'));
+                if (hasOpenModal) {
+                    closeAllGoodsModals();
+                }
+            }
+        });
+
+        // 코스터 색상 선택 원형 버튼 클릭 시 이미지 전환
+        const colorBtns = document.querySelectorAll('.goods-color-btn');
+        const coasterModalImg = document.getElementById('coaster-modal-img');
+
+        if (colorBtns.length > 0 && coasterModalImg) {
+            colorBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    colorBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const newImgSrc = btn.getAttribute('data-img');
+                    if (newImgSrc) {
+                        coasterModalImg.style.opacity = '0';
+                        setTimeout(() => {
+                            coasterModalImg.src = newImgSrc;
+                            coasterModalImg.style.opacity = '1';
+                        }, 150);
+                    }
+                });
+            });
+        }
+    }
 });
+
