@@ -761,8 +761,215 @@
     transition: transform var(--transition-fast), stroke var(--transition-fast);
 }
 
-/* main.css와 동일한 호버 효과: 6px 우측 이동 및 붉은색 전환 */
 .philosophy-beer-btn:hover .philosophy-arrow-icon {
     transform: translateX(6px);
     stroke: var(--color-accent);
+}
+
+/* ==========================================================================
+   스토리 반응형 미디어 쿼리 (Story Responsive Styles)
+   ========================================================================== */
+
+/* 1200px 이하: 대형 태블릿 및 랩탑 */
+@media (max-width: 1200px) {
+    .story-manifesto-section {
+        padding-top: calc(var(--header-height) + 50px);
+    }
+
+    .ingredient-row {
+        gap: 60px;
+        margin-bottom: 80px;
+    }
+
+    .ingredient-img-col {
+        width: 460px;
+    }
+
+    .ingredient-img-frame {
+        width: 100%;
+        height: 350px;
+    }
+
+    .process-content-col {
+        width: 100%;
+        flex: 1;
+        flex-shrink: 1;
+    }
+
+    .process-divider-line {
+        width: 100%;
+    }
+}
+
+/* 1024px 이하: 태블릿 */
+@media (max-width: 1024px) {
+    .story-manifesto-section {
+        padding-top: calc(var(--header-height) + 40px);
+        padding-bottom: 60px;
+    }
+
+    .story-title {
+        font-size: 48px;
+    }
+
+    .process-title {
+        font-size: 48px;
+    }
+
+    .philosophy-title {
+        font-size: 42px;
+    }
+
+    .ingredient-row {
+        gap: 40px;
+        margin-bottom: 64px;
+    }
+
+    .ingredient-img-col {
+        width: 380px;
+    }
+
+    .ingredient-img-frame {
+        height: 300px;
+    }
+}
+
+/* 768px 이하: 태블릿 세로 및 대형 모바일 */
+@media (max-width: 768px) {
+    .story-manifesto-section {
+        padding-top: calc(var(--header-height) + 32px);
+        padding-bottom: 40px;
+    }
+
+    .story-title {
+        font-size: 38px;
+    }
+
+    .story-desc {
+        font-size: 15px;
+    }
+
+    .story-ingredients-section {
+        padding: 60px 0;
+    }
+
+    /* 재료 소개 행 모바일: 1열 스택 및 지그재그 통일 */
+    .ingredient-row,
+    .ingredient-row:nth-child(even) {
+        flex-direction: column !important;
+        gap: 24px;
+        margin-bottom: 54px;
+    }
+
+    .ingredient-img-col {
+        width: 100%;
+    }
+
+    .ingredient-img-frame {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/10;
+        max-width: 540px;
+    }
+
+    .ingredient-text-col {
+        width: 100%;
+        padding: 0;
+    }
+
+    .ingredient-title-row {
+        gap: 12px;
+    }
+
+    .ingredient-title-ko {
+        font-size: 36px;
+    }
+
+    .ingredient-desc {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    /* 공정 섹션 */
+    .story-process-section {
+        padding: 60px 0;
+    }
+
+    .process-title {
+        font-size: 36px;
+        margin-bottom: 36px;
+    }
+
+    .process-item {
+        gap: 20px;
+        margin-bottom: 24px;
+    }
+
+    .process-icon-box {
+        width: 56px;
+        height: 56px;
+    }
+
+    .process-icon-img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .process-title-text {
+        font-size: 22px;
+    }
+
+    .process-desc {
+        margin-bottom: 24px;
+        font-size: 14px;
+    }
+
+    /* 철학 섹션 */
+    .story-philosophy-section {
+        padding: 80px 0;
+    }
+
+    .philosophy-title {
+        font-size: 32px;
+        margin: 24px 0 20px 0;
+    }
+
+    .philosophy-quote {
+        font-size: 16px;
+    }
+}
+
+/* 480px 이하: 소형 모바일 */
+@media (max-width: 480px) {
+    .story-title {
+        font-size: 28px;
+    }
+
+    .ingredient-title-ko {
+        font-size: 28px;
+    }
+
+    .ingredient-detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .ingredient-detail-line {
+        display: none;
+    }
+
+    .process-item {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .process-title-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .philosophy-title {
+        font-size: 26px;
+    }
 }

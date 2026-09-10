@@ -12,6 +12,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================================================
+    // 모바일 햄버거 메뉴 및 네비게이션 드로어 제어
+    // ==========================================================================
+    const navToggle = document.getElementById('navToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    const closeMobileMenu = () => {
+        if (navToggle && mobileDrawer) {
+            navToggle.classList.remove('is-active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            mobileDrawer.classList.remove('is-active');
+            mobileDrawer.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('menu-open');
+        }
+    };
+
+    const openMobileMenu = () => {
+        if (navToggle && mobileDrawer) {
+            navToggle.classList.add('is-active');
+            navToggle.setAttribute('aria-expanded', 'true');
+            mobileDrawer.classList.add('is-active');
+            mobileDrawer.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('menu-open');
+        }
+    };
+
+    if (navToggle && mobileDrawer) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = mobileDrawer.classList.contains('is-active');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        if (drawerBackdrop) {
+            drawerBackdrop.addEventListener('click', closeMobileMenu);
+        }
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileDrawer.classList.contains('is-active')) {
+                closeMobileMenu();
+            }
+        });
+    }
+
     // BEER 페이지 맥주 카드 카테고리 필터링
     const beerFilterBtns = document.querySelectorAll('.beer-filter-btn');
     const beerCards = document.querySelectorAll('.beer-cards-grid .beer-card');
@@ -369,6 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ESC 키로 닫기
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
+                closeMobileMenu();
                 const hasOpenModal = Array.from(goodsModals).some(m => m.classList.contains('is-open'));
                 if (hasOpenModal) {
                     closeAllGoodsModals();

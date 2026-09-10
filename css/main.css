@@ -2270,3 +2270,377 @@
     transform: translateX(4px);
     /* 호버 시 화살표 살짝 우측 이동 */
 }
+
+/* ==========================================================================
+   반응형 미디어 쿼리 (Main Responsive Styles)
+   ========================================================================== */
+
+/* 1200px 이하: 대형 태블릿 및 랩탑 */
+@media (max-width: 1200px) {
+    .hero-section {
+        height: 960px;
+    }
+
+    .hero-rotate-text {
+        right: 40px;
+        left: auto;
+    }
+
+    .hero-content {
+        left: var(--page-padding-x);
+        top: 420px;
+    }
+
+    .hero-btn-group {
+        left: var(--page-padding-x);
+        top: 680px;
+    }
+
+    .hero-divider-line {
+        left: var(--page-padding-x);
+        width: calc(100% - (var(--page-padding-x) * 2));
+        top: 800px;
+    }
+
+    .hero-info-left {
+        left: var(--page-padding-x);
+        top: 820px;
+    }
+
+    .hero-scroll-indicator {
+        top: 820px;
+    }
+
+    .hero-info-right {
+        right: var(--page-padding-x);
+        left: auto;
+        top: 820px;
+    }
+
+    .intro-container {
+        gap: 40px;
+    }
+
+    .intro-stats-table {
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .beer-cards-group {
+        gap: 30px;
+        justify-content: center;
+    }
+
+    .beer-card {
+        width: calc((100% - 60px) / 3);
+        max-width: 380px;
+    }
+
+    .beer-card-img-box {
+        width: 100%;
+    }
+
+    .ingredients-boxes-area {
+        width: 500px;
+    }
+
+    .ingredient-box {
+        width: 100%;
+    }
+}
+
+/* 1024px 이하: 태블릿 */
+@media (max-width: 1024px) {
+    .hero-section {
+        height: 840px;
+    }
+
+    .hero-content {
+        top: 360px;
+    }
+
+    .hero-main-title {
+        font-size: 150px;
+        margin-bottom: 20px;
+    }
+
+    .hero-btn-group {
+        top: 600px;
+    }
+
+    .hero-divider-line {
+        top: 720px;
+    }
+
+    .hero-info-left,
+    .hero-scroll-indicator,
+    .hero-info-right {
+        top: 740px;
+    }
+
+    .intro-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 48px;
+    }
+
+    .intro-text-col {
+        max-width: 100%;
+    }
+
+    .intro-stats-table {
+        max-width: 100%;
+    }
+
+    .beer-cards-group {
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+
+    .beer-card {
+        width: calc((100% - 32px) / 2);
+        max-width: 400px;
+    }
+
+    .ingredients-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 48px;
+    }
+
+    .ingredients-text-area {
+        max-width: 100%;
+    }
+
+    .ingredients-boxes-area {
+        width: 100%;
+    }
+
+    /* 갤러리 프리뷰 그리드 태블릿 */
+    .gallery-preview-section .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .gallery-preview-section .gallery-frame-hero {
+        grid-column: span 2;
+        height: 380px;
+    }
+
+    .gallery-preview-section .gallery-frame-md {
+        grid-column: span 1;
+        height: 320px;
+    }
+
+    .gallery-preview-section .gallery-frame-lg {
+        grid-column: span 1;
+        height: 300px;
+    }
+}
+
+/* 768px 이하: 태블릿 세로 및 대형 모바일 */
+@media (max-width: 768px) {
+    .hero-section {
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: calc(var(--header-height) + 40px);
+        padding-bottom: 40px;
+        padding-left: var(--page-padding-x);
+        padding-right: var(--page-padding-x);
+        box-sizing: border-box;
+    }
+
+    .hero-badge-film {
+        position: static;
+        margin-bottom: 24px;
+    }
+
+    .hero-rotate-text {
+        display: none;
+    }
+
+    .hero-content {
+        position: static;
+        margin-bottom: 32px;
+    }
+
+    .hero-main-title {
+        font-size: clamp(80px, 18vw, 130px);
+        margin-bottom: 20px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        margin-bottom: 28px;
+    }
+
+    .hero-btn-group {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .hero-btn {
+        flex: 1;
+        min-width: 140px;
+        height: 54px;
+        font-size: 18px;
+    }
+
+    .hero-divider-line {
+        position: static;
+        width: 100%;
+        margin-top: auto;
+        margin-bottom: 16px;
+    }
+
+    .hero-info-left {
+        position: static;
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .hero-info-right {
+        position: static;
+        font-size: 12px;
+    }
+
+    .hero-scroll-indicator {
+        display: none;
+    }
+
+    .intro-manifesto-section,
+    .signature-section,
+    .ingredients-section,
+    .gallery-preview-section {
+        padding: 80px 0;
+    }
+
+    .intro-title,
+    .signature-title,
+    .ingredients-title,
+    .gallery-title {
+        font-size: 36px;
+    }
+
+    .beer-cards-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .beer-card {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 540px;
+    }
+
+    .brand-film-section {
+        height: 380px;
+    }
+
+    .gallery-preview-section .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-preview-section .gallery-frame-hero,
+    .gallery-preview-section .gallery-frame-md,
+    .gallery-preview-section .gallery-frame-lg {
+        grid-column: span 1;
+        height: 260px;
+    }
+}
+
+/* 480px 이하: 모바일 기본 */
+@media (max-width: 480px) {
+    .hero-main-title {
+        font-size: 72px;
+    }
+
+    .hero-btn-group {
+        flex-direction: column;
+    }
+
+    .hero-btn {
+        width: 100%;
+    }
+
+    .intro-manifesto-section,
+    .signature-section,
+    .ingredients-section,
+    .gallery-preview-section {
+        padding: 60px 0;
+    }
+
+    .intro-title,
+    .signature-title,
+    .ingredients-title,
+    .gallery-title {
+        font-size: 28px;
+    }
+
+    .intro-stats-table {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 20px;
+    }
+
+    .stat-cell {
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(163, 176, 167, 0.2);
+    }
+
+    .stat-cell:last-child {
+        border-bottom: none;
+    }
+
+    .ingredient-box {
+        height: auto;
+        min-height: 90px;
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .ingredient-num {
+        font-size: 32px;
+        min-width: 36px;
+    }
+
+    .ingredient-img-box {
+        width: 60px;
+        height: 60px;
+        margin-left: 0;
+    }
+
+    .ingredient-name-ko {
+        font-size: 18px;
+    }
+
+    .brand-film-section {
+        height: 300px;
+    }
+
+    .brand-film-header {
+        top: 60px;
+        gap: 8px;
+    }
+
+    .film-title-en {
+        font-size: 12px;
+    }
+
+    .film-title-ko {
+        font-size: 10px;
+    }
+
+    .brand-film-play-btn {
+        width: 50px;
+        height: 50px;
+    }
+}

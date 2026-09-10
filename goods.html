@@ -23,35 +23,82 @@
          ========================================================================== -->
     <header class="header">
         <nav class="nav-container">
-            <!-- 좌측 메뉴 1: BEER -->
-            <a href="./beer.html" class="nav-item">
-                <span class="nav-text-en">BEER</span>
-                <span class="nav-text-ko">맥주</span>
-            </a>
-
-            <!-- 좌측 메뉴 2: STORY -->
-            <a href="./story.html" class="nav-item">
-                <span class="nav-text-en">STORY</span>
-                <span class="nav-text-ko">이야기</span>
-            </a>
+            <!-- 좌측 메뉴 (데스크톱) -->
+            <div class="nav-left">
+                <a href="./beer.html" class="nav-item">
+                    <span class="nav-text-en">BEER</span>
+                    <span class="nav-text-ko">맥주</span>
+                </a>
+                <a href="./story.html" class="nav-item">
+                    <span class="nav-text-en">STORY</span>
+                    <span class="nav-text-ko">이야기</span>
+                </a>
+            </div>
 
             <!-- 중앙 브랜드 로고 (60x60) -->
             <a href="./index.html" class="nav-logo" aria-label="홈으로 이동">
                 <img src="./assets/images/brand_logo(nontext).png" alt="브랜드 로고" class="logo-img">
             </a>
 
-            <!-- 우측 메뉴 1: GALLERY -->
-            <a href="./gallery.html" class="nav-item">
-                <span class="nav-text-en">GALLERY</span>
-                <span class="nav-text-ko">갤러리</span>
-            </a>
+            <!-- 우측 메뉴 (데스크톱) -->
+            <div class="nav-right">
+                <a href="./gallery.html" class="nav-item">
+                    <span class="nav-text-en">GALLERY</span>
+                    <span class="nav-text-ko">갤러리</span>
+                </a>
+                <a href="./goods.html" class="nav-item active">
+                    <span class="nav-text-en">GOODS</span>
+                    <span class="nav-text-ko">굿즈</span>
+                </a>
+            </div>
 
-            <!-- 우측 메뉴 2: GOODS -->
-            <a href="./goods.html" class="nav-item active">
-                <span class="nav-text-en">GOODS</span>
-                <span class="nav-text-ko">굿즈</span>
-            </a>
+            <!-- 모바일 햄버거 토글 버튼 -->
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="모바일 메뉴 열기/닫기" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </nav>
+
+        <!-- 모바일 드로어 메뉴 오버레이 -->
+        <div class="mobile-nav-drawer" id="mobileDrawer" aria-hidden="true">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <span class="mobile-nav-brand">GOGU BREWERY</span>
+                </div>
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item">
+                        <a href="./beer.html" class="mobile-nav-link">
+                            <span class="link-en">BEER</span>
+                            <span class="link-ko">맥주</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="./story.html" class="mobile-nav-link">
+                            <span class="link-en">STORY</span>
+                            <span class="link-ko">이야기</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="./gallery.html" class="mobile-nav-link">
+                            <span class="link-en">GALLERY</span>
+                            <span class="link-ko">갤러리</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="./goods.html" class="mobile-nav-link active">
+                            <span class="link-en">GOODS</span>
+                            <span class="link-ko">굿즈</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="mobile-nav-footer">
+                    <p class="mobile-nav-desc">한국의 들판에서 당신의 잔까지<br>이 땅의 보리, 홉, 물, 효모로 빚은 크래프트 비어</p>
+                    <span class="mobile-nav-badge">EST. 2019 GUNSAN</span>
+                </div>
+            </div>
+            <div class="mobile-nav-backdrop" id="drawerBackdrop"></div>
+        </div>
     </header>
 
     <!-- 메인 콘텐츠 영역 -->
