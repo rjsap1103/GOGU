@@ -645,10 +645,10 @@
     }
 }
 
-/* 768px 이하: 태블릿 세로 및 대형 모바일 */
-@media (max-width: 768px) {
+/* 376px ~ 768px: 태블릿 전용 기준 치수 (유동형 레이아웃 적용) */
+@media (min-width: 376px) and (max-width: 768px) {
     .gallery-hero-section {
-        padding-top: calc(var(--header-height) + 36px);
+        padding-top: calc(var(--header-height) + 32px);
     }
 
     .gallery-title-row {
@@ -658,69 +658,29 @@
     }
 
     .gallery-title {
-        font-size: 38px;
+        font-size: clamp(28px, 6vw, 36px);
+        word-break: keep-all;
     }
 
     .gallery-ai-notice {
         text-align: left;
         padding-bottom: 0;
-        font-size: 14px;
+        font-size: 12px;
     }
 
+    /* 2px 축소 가이드라인 적용: 16px -> 14px */
     .gallery-desc {
-        margin-top: 24px;
-        font-size: 15px;
+        margin-top: 22px;
+        font-size: clamp(13px, 3.4vw, 14px);
+        line-height: 1.7;
+        word-break: keep-all;
+        overflow-wrap: break-word;
     }
 
     .gallery-tabs-row {
-        margin-top: 32px;
+        margin-top: 30px;
         gap: 12px;
-    }
-
-    .gallery-content-section {
-        padding: 50px 0 80px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .gallery-frame-hero,
-    .gallery-frame-md,
-    .gallery-frame-lg {
-        grid-column: span 1;
-        height: 280px;
-    }
-
-    .frame-overlay {
-        padding: 20px;
-    }
-
-    .gallery-modal-content {
-        max-width: 92%;
-        max-height: 90vh;
-    }
-
-    .gallery-modal-img {
-        max-height: 65vh;
-    }
-}
-
-/* 540px 이하: 모바일 기본 */
-@media (max-width: 540px) {
-    .gallery-title {
-        font-size: 30px;
-    }
-
-    .gallery-tabs-row {
-        flex-direction: column;
-    }
-
-    .gallery-tab-btn {
-        width: 100%;
-        max-width: 100%;
-        height: 52px;
+        flex-wrap: wrap;
     }
 
     .gallery-tab-label {
@@ -728,16 +688,243 @@
     }
 
     .gallery-tab-count {
-        font-size: 15px;
+        font-size: 14px;
+    }
+
+    .gallery-content-section {
+        padding: 48px 0 72px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: 100%;
     }
 
     .gallery-frame-hero,
     .gallery-frame-md,
     .gallery-frame-lg {
-        height: 220px;
+        grid-column: span 1;
+        height: auto;
+        aspect-ratio: 16/10;
+        min-height: 220px;
+        width: 100%;
+    }
+
+    .frame-overlay {
+        padding: 20px;
     }
 
     .frame-title {
         font-size: 16px;
+        word-break: keep-all;
+    }
+
+    .frame-desc {
+        font-size: 13px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .gallery-video-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .gallery-video-title {
+        font-size: 18px;
+        word-break: keep-all;
+    }
+
+    .gallery-video-desc {
+        font-size: 13px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .gallery-modal-content {
+        width: min(92vw, 800px);
+        max-width: 92%;
+        max-height: 90vh;
+    }
+
+    .gallery-modal-close {
+        top: -42px;
+        right: 0;
+        width: 36px;
+        height: 36px;
+    }
+
+    .gallery-modal-img-wrap {
+        max-height: 60vh;
+    }
+
+    .gallery-modal-img {
+        max-height: 60vh;
+    }
+
+    .gallery-modal-caption {
+        margin-top: 12px;
+        gap: 2px;
+    }
+
+    /* 2px 축소: 14px -> 12px */
+    .gallery-modal-tag {
+        font-size: 12px;
+    }
+
+    /* 2px 축소: 18px -> 16px */
+    .gallery-modal-title {
+        font-size: 16px;
+        word-break: keep-all;
+    }
+}
+
+/* 0 ~ 375px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
+@media (max-width: 375px) {
+    .gallery-hero-section {
+        padding-top: calc(var(--header-height) + 24px);
+    }
+
+    .gallery-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .gallery-title {
+        font-size: clamp(24px, 6vw, 28px);
+        word-break: keep-all;
+    }
+
+    .gallery-ai-notice {
+        text-align: left;
+        padding-bottom: 0;
+        font-size: 11px;
+    }
+
+    .gallery-desc {
+        margin-top: 16px;
+        font-size: clamp(12px, 3.4vw, 13px);
+        line-height: 1.65;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .gallery-tabs-row {
+        flex-direction: column;
+        margin-top: 22px;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .gallery-tab-btn {
+        width: 100%;
+        max-width: 100%;
+        height: 48px;
+    }
+
+    .gallery-tab-label {
+        font-size: 14px;
+    }
+
+    .gallery-tab-count {
+        font-size: 13px;
+    }
+
+    .gallery-content-section {
+        padding: 36px 0 54px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .gallery-frame-hero,
+    .gallery-frame-md,
+    .gallery-frame-lg {
+        grid-column: span 1;
+        height: auto;
+        aspect-ratio: 16/10;
+        min-height: 200px;
+        width: 100%;
+    }
+
+    .frame-overlay {
+        padding: 16px;
+    }
+
+    .frame-title {
+        font-size: 15px;
+        word-break: keep-all;
+    }
+
+    .frame-desc {
+        font-size: 12px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .gallery-video-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        width: 100%;
+    }
+
+    .gallery-video-info {
+        padding: 18px;
+    }
+
+    .gallery-video-tag {
+        font-size: 12px;
+    }
+
+    .gallery-video-title {
+        font-size: 16px;
+        word-break: keep-all;
+    }
+
+    .gallery-video-desc {
+        font-size: 12px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    /* 갤러리 모달 375px 추가 2px 축소 (유동형) */
+    .gallery-modal-content {
+        width: min(92vw, 800px);
+        max-width: 92%;
+        max-height: 90vh;
+    }
+
+    .gallery-modal-close {
+        top: -38px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .gallery-modal-img-wrap {
+        max-height: 52vh;
+    }
+
+    .gallery-modal-img {
+        max-height: 52vh;
+    }
+
+    .gallery-modal-caption {
+        margin-top: 10px;
+        gap: 2px;
+    }
+
+    .gallery-modal-tag {
+        font-size: 11px;
+    }
+
+    .gallery-modal-title {
+        font-size: 14px;
+        word-break: keep-all;
     }
 }

@@ -2438,8 +2438,8 @@
     }
 }
 
-/* 768px 이하: 태블릿 기준 치수 */
-@media (max-width: 768px) {
+/* 376px ~ 768px: 태블릿 전용 기준 치수 (요소 겹침 방지 및 태블릿 핏) */
+@media (min-width: 376px) and (max-width: 768px) {
     .hero-section {
         height: auto;
         min-height: 100vh;
@@ -2468,29 +2468,48 @@
     }
 
     .hero-main-title {
-        font-size: clamp(76px, 18vw, 130px);
+        font-size: clamp(52px, 13vw, 84px);
         margin-bottom: 20px;
+        word-break: keep-all;
     }
 
     .hero-description {
-        font-size: 16px;
+        font-size: clamp(13px, 3.5vw, 15px);
+        line-height: 1.65;
         margin-bottom: 28px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
     }
 
     .hero-btn-group {
         position: static;
         display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
+        flex-direction: column;
+        gap: 12px;
         width: 100%;
-        margin-bottom: 40px;
+        max-width: 420px;
+        margin-bottom: 36px;
+    }
+
+    @media (min-width: 521px) {
+        .hero-btn-group {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
     }
 
     .hero-btn {
-        flex: 1;
-        min-width: 140px;
-        height: 54px;
-        font-size: 18px;
+        width: 100%;
+        height: 52px;
+        font-size: 15px;
+    }
+
+    @media (min-width: 521px) {
+        .hero-btn {
+            flex: 1;
+            min-width: 140px;
+        }
     }
 
     .hero-divider-line {
@@ -2519,131 +2538,55 @@
     .signature-section,
     .ingredients-section,
     .gallery-preview-section {
-        padding: 80px 0;
+        padding: 70px 0;
+    }
+
+    .intro-container,
+    .signature-container,
+    .ingredients-row {
+        flex-direction: column;
+        gap: 32px;
+        width: 100%;
     }
 
     .intro-title,
     .signature-title,
     .ingredients-title,
     .gallery-title {
-        font-size: 36px;
+        font-size: clamp(26px, 5.5vw, 36px);
+        word-break: keep-all;
     }
 
-    /* 양조 철학 2행 2열 표 형식 완벽 유지 (태블릿) */
+    /* 본문/설명문 2px 축소 및 유동형 (16px -> 13~14px) */
+    .intro-desc,
+    .signature-desc,
+    .ingredients-desc,
+    .gallery-desc {
+        font-size: clamp(13px, 3.4vw, 14px);
+        line-height: 1.7;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    /* 버튼 및 링크 텍스트 2px 축소 (16px -> 14px) */
+    .intro-story-btn span,
+    .ingredients-story-btn span,
+    .gallery-archive-btn span {
+        font-size: 14px;
+    }
+
+    /* 소제목 영문 (16px -> 14px) */
+    .intro-subhead-en,
+    .signature-subhead-en,
+    .ingredients-subhead-en,
+    .gallery-subhead-en {
+        font-size: 14px;
+    }
+
+    /* 양조 철학 2행 2열 표 형식 완벽 유지 (태블릿 유동형) */
     .intro-table-col {
         width: 100%;
-    }
-
-    .intro-stats-table {
-        width: 100%;
-        max-width: 480px;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        border: 1px solid rgba(197, 160, 89, 0.4);
-    }
-
-    .stat-cell {
-        padding: 22px 16px;
-        gap: 8px;
-    }
-
-    .stat-cell:nth-child(odd) {
-        border-right: 1px solid rgba(197, 160, 89, 0.4);
-    }
-
-    .stat-cell:nth-child(even) {
-        border-right: none;
-    }
-
-    .stat-cell:nth-child(1),
-    .stat-cell:nth-child(2) {
-        border-bottom: 1px solid rgba(197, 160, 89, 0.4);
-    }
-
-    .stat-cell:nth-child(3),
-    .stat-cell:nth-child(4) {
-        border-bottom: none;
-    }
-
-    .stat-num {
-        font-size: 36px;
-    }
-
-    .stat-label-ko {
-        font-size: 15px;
-    }
-
-    .stat-label-en {
-        font-size: 12px;
-    }
-
-    .beer-cards-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .beer-card {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        min-height: 540px;
-    }
-
-    .brand-film-section {
-        height: 380px;
-    }
-
-    .gallery-preview-section .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-preview-section .gallery-frame-hero,
-    .gallery-preview-section .gallery-frame-md,
-    .gallery-preview-section .gallery-frame-lg {
-        grid-column: span 1;
-        height: 260px;
-    }
-}
-
-/* 375px 이하: 모바일 기준 치수 최적화 */
-@media (max-width: 375px) {
-    :root {
-        --page-padding-x: 16px;
-    }
-
-    .hero-main-title {
-        font-size: 64px;
-    }
-
-    .hero-btn-group {
-        flex-direction: column;
-    }
-
-    .hero-btn {
-        width: 100%;
-        height: 50px;
-        font-size: 16px;
-    }
-
-    .intro-manifesto-section,
-    .signature-section,
-    .ingredients-section,
-    .gallery-preview-section {
-        padding: 50px 0;
-    }
-
-    .intro-title,
-    .signature-title,
-    .ingredients-title,
-    .gallery-title {
-        font-size: 26px;
-    }
-
-    /* 양조 철학 2행 2열 표 형식 완벽 유지 (375px 모바일) */
-    .intro-table-col {
-        width: 100%;
+        max-width: 100%;
     }
 
     .intro-stats-table {
@@ -2657,8 +2600,9 @@
     }
 
     .stat-cell {
-        padding: 14px 10px;
-        gap: 4px;
+        padding: clamp(12px, 3vw, 22px) clamp(8px, 2.5vw, 16px);
+        gap: clamp(4px, 1.2vw, 8px);
+        box-sizing: border-box;
     }
 
     .stat-cell:nth-child(odd) {
@@ -2680,24 +2624,280 @@
     }
 
     .stat-num {
-        font-size: 26px;
+        font-size: clamp(26px, 6vw, 36px);
         line-height: 1;
     }
 
     .stat-label-ko {
-        font-size: 12px;
-        line-height: 1.2;
-        white-space: nowrap;
+        font-size: clamp(12px, 2.8vw, 15px);
+        word-break: keep-all;
     }
 
     .stat-label-en {
-        font-size: 9px;
+        font-size: clamp(9px, 2.2vw, 12px);
+        letter-spacing: 0.5px;
+    }
+
+    .beer-cards-group {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .beer-card {
+        width: 100%;
+        max-width: min(100%, 380px);
+        height: auto;
+        min-height: 540px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .beer-card-korean-desc {
+        font-size: 14px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .beer-card-feature {
+        font-size: 13px;
+    }
+
+    .beer-card-btn span {
+        font-size: 14px;
+    }
+
+    .brand-film-section {
+        height: 380px;
+        width: 100%;
+    }
+
+    .gallery-preview-section .gallery-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .gallery-preview-section .gallery-frame-hero,
+    .gallery-preview-section .gallery-frame-md,
+    .gallery-preview-section .gallery-frame-lg {
+        grid-column: span 1;
+        height: auto;
+        aspect-ratio: 16/10;
+        min-height: 220px;
+        width: 100%;
+    }
+}
+
+/* 0 ~ 375px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
+@media (max-width: 375px) {
+    :root {
+        --page-padding-x: clamp(14px, 4vw, 16px);
+    }
+
+    .hero-section {
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: calc(var(--header-height) + 24px);
+        padding-bottom: 28px;
+        padding-left: var(--page-padding-x);
+        padding-right: var(--page-padding-x);
+        box-sizing: border-box;
+    }
+
+    .hero-badge-film {
+        position: static;
+        margin-bottom: 16px;
+    }
+
+    .hero-rotate-text {
+        display: none;
+    }
+
+    .hero-content {
+        position: static;
+        margin-bottom: 22px;
+    }
+
+    .hero-main-title {
+        font-size: clamp(44px, 13vw, 58px);
+        margin-bottom: 16px;
+        word-break: keep-all;
+    }
+
+    .hero-description {
+        font-size: clamp(12px, 3.4vw, 13px);
+        line-height: 1.6;
+        margin-bottom: 22px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .hero-btn-group {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        margin-bottom: 26px;
+    }
+
+    .hero-btn {
+        width: 100%;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .hero-divider-line {
+        position: static;
+        width: 100%;
+        margin-top: auto;
+        margin-bottom: 12px;
+    }
+
+    .hero-info-left {
+        position: static;
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+
+    .hero-info-right {
+        position: static;
+        font-size: 11px;
+    }
+
+    .hero-scroll-indicator {
+        display: none;
+    }
+
+    .intro-manifesto-section,
+    .signature-section,
+    .ingredients-section,
+    .gallery-preview-section {
+        padding: 48px 0;
+    }
+
+    .intro-container,
+    .signature-container,
+    .ingredients-row {
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .intro-title,
+    .signature-title,
+    .ingredients-title,
+    .gallery-title {
+        font-size: clamp(22px, 6vw, 26px);
+        word-break: keep-all;
+    }
+
+    /* 본문 2px 축소 및 유동형 (16px -> 12~13px) */
+    .intro-desc,
+    .signature-desc,
+    .ingredients-desc,
+    .gallery-desc {
+        font-size: clamp(12px, 3.4vw, 13px);
+        line-height: 1.65;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .intro-story-btn span,
+    .ingredients-story-btn span,
+    .gallery-archive-btn span {
+        font-size: 13px;
+    }
+
+    .beer-cards-group {
+        width: 100%;
+    }
+
+    .beer-card {
+        width: 100%;
+        max-width: min(100%, 360px);
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .beer-card-korean-desc {
+        font-size: 13px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .beer-card-feature {
+        font-size: 12px;
+    }
+
+    .beer-card-btn span {
+        font-size: 13px;
+    }
+
+    /* 양조 철학 2행 2열 표 형식 완벽 유지 (375px 모바일 유동형) */
+    .intro-table-col {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .intro-stats-table {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        border: 1px solid rgba(197, 160, 89, 0.4);
+    }
+
+    .stat-cell {
+        padding: clamp(10px, 2.5vw, 14px) clamp(6px, 2vw, 10px);
+        gap: 4px;
+        box-sizing: border-box;
+    }
+
+    .stat-cell:nth-child(odd) {
+        border-right: 1px solid rgba(197, 160, 89, 0.4);
+    }
+
+    .stat-cell:nth-child(even) {
+        border-right: none;
+    }
+
+    .stat-cell:nth-child(1),
+    .stat-cell:nth-child(2) {
+        border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    }
+
+    .stat-cell:nth-child(3),
+    .stat-cell:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .stat-num {
+        font-size: clamp(22px, 6.5vw, 26px);
         line-height: 1;
-        white-space: nowrap;
+    }
+
+    .stat-label-ko {
+        font-size: clamp(11px, 3vw, 12px);
+        line-height: 1.25;
+        word-break: keep-all;
+    }
+
+    .stat-label-en {
+        font-size: clamp(8px, 2.2vw, 9px);
+        line-height: 1;
         letter-spacing: 0.5px;
     }
 
     .ingredient-box {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
         height: auto;
         min-height: 84px;
         padding: 10px 12px;
@@ -2716,7 +2916,8 @@
     }
 
     .ingredient-name-ko {
-        font-size: 16px;
+        font-size: 15px;
+        word-break: keep-all;
     }
 
     .ingredient-name-en {

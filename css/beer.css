@@ -1147,14 +1147,17 @@
         font-size: 48px;
     }
 
-    .beer-modal-container {
+    .beer-modal-content {
         max-width: 800px;
         width: 90%;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 }
 
-/* 768px 이하: 태블릿 세로 및 대형 모바일 */
-@media (max-width: 768px) {
+/* 376px ~ 768px: 태블릿 전용 기준 치수 (요소 겹침 방지 및 태블릿 핏) */
+@media (min-width: 376px) and (max-width: 768px) {
     .beer-hero-section {
         padding-top: calc(var(--header-height) + 32px);
     }
@@ -1166,7 +1169,356 @@
     }
 
     .beer-title {
-        font-size: 38px;
+        font-size: clamp(28px, 6vw, 38px);
+        word-break: keep-all;
+    }
+
+    .beer-badge-line {
+        text-align: left;
+        padding-bottom: 0;
+    }
+
+    /* 2px 축소 가이드라인 적용: 16px -> 14px */
+    .beer-desc {
+        margin-top: 24px;
+        font-size: clamp(13px, 3.4vw, 14px);
+        line-height: 1.7;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .beer-filter-section {
+        padding: 40px 0 60px;
+    }
+
+    .beer-filter-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* 모바일/태블릿 화면에서 우측 상단 "04 BEERS - SMALL BATCH ONLY" 텍스트 제거 */
+    .beer-filter-note {
+        display: none !important;
+    }
+
+    .beer-filter-buttons {
+        flex-wrap: wrap;
+        gap: clamp(6px, 1.8vw, 10px);
+        width: 100%;
+    }
+
+    .beer-filter-btn {
+        flex: 0 1 auto;
+        min-width: 68px;
+        height: 38px;
+        padding: 0 10px;
+    }
+
+    .beer-filter-btn .btn-label {
+        font-size: 12px;
+    }
+
+    .beer-filter-btn .btn-count {
+        font-size: 10px;
+    }
+
+    .beer-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-top: 36px;
+        width: 100%;
+    }
+
+    .beer-card {
+        width: 100%;
+        max-width: min(100%, 380px);
+        margin: 0 auto;
+        height: auto;
+        min-height: 560px;
+        box-sizing: border-box;
+    }
+
+    .beer-card-img-box {
+        width: 100%;
+        height: 340px;
+    }
+
+    .beer-card-text-box {
+        width: 100%;
+        height: auto;
+        padding: 22px;
+    }
+
+    .beer-card-name-en {
+        font-size: clamp(20px, 5vw, 22px);
+    }
+
+    .beer-card-name-ko {
+        font-size: 14px;
+    }
+
+    .beer-card-specs-row {
+        width: 100%;
+        margin-top: 22px;
+    }
+
+    .beer-spec-val {
+        font-size: 14px;
+    }
+
+    .beer-card-divider {
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    /* 2px 축소 가이드라인 적용: 14px -> 12px/13px */
+    .beer-card-desc {
+        font-size: clamp(12px, 3.2vw, 13px);
+        width: 100%;
+        margin-top: 14px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .beer-card-view-btn {
+        margin-top: 20px;
+        font-size: 13px;
+    }
+
+    /* 맥주 소개 특징 표 모바일 반응형 (1열 스택) */
+    .beer-intro-table {
+        margin-top: 56px;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        border: 1px solid rgba(197, 160, 89, 0.4);
+        box-sizing: border-box;
+    }
+
+    .beer-intro-col {
+        width: 100%;
+        height: auto;
+        padding: 24px 20px;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+        box-sizing: border-box;
+    }
+
+    .beer-intro-col:last-child {
+        border-bottom: none;
+    }
+
+    .beer-intro-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .beer-intro-title {
+        font-size: 18px;
+        margin: 18px 0 0 0;
+        word-break: keep-all;
+    }
+
+    .beer-intro-desc {
+        font-size: clamp(13px, 3.4vw, 14px);
+        line-height: 1.6;
+        margin: 14px 0 0 0;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    /* 양조 철학 소개 섹션 반응형 설정 (Brewing Philosophy Promo Section) */
+    .beer-philosophy-section {
+        padding: 56px 0;
+    }
+
+    .beer-philosophy-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 26px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .beer-philosophy-title {
+        font-size: clamp(22px, 5.5vw, 30px);
+        white-space: normal;
+        word-break: keep-all;
+        line-height: 1.3;
+    }
+
+    .beer-philosophy-btn {
+        font-size: 16px;
+    }
+
+    /* 맥주 상세 모달 모바일/태블릿 반응형 */
+    .beer-modal-content {
+        width: min(92vw, 480px);
+        max-width: 480px;
+        height: auto;
+        max-height: 88vh;
+        overflow-y: auto;
+    }
+
+    .beer-modal-header {
+        padding: 0 18px;
+        height: 44px;
+    }
+
+    /* 2px 축소 가이드라인 적용: 16px -> 14px */
+    .beer-modal-file-title {
+        font-size: 14px;
+    }
+
+    .beer-modal-body {
+        flex-direction: column;
+        height: auto;
+        padding-right: 0;
+    }
+
+    .beer-modal-img-col {
+        width: 100%;
+        height: 240px;
+    }
+
+    .beer-modal-color-badge {
+        left: 16px;
+        bottom: 16px;
+        max-width: calc(100% - 32px);
+        height: 28px;
+    }
+
+    /* 2px 축소: 13px -> 11px */
+    .beer-modal-color-name {
+        font-size: 11px;
+    }
+
+    .beer-modal-info-col {
+        margin-left: 0;
+        padding: 20px 18px 28px;
+        width: 100%;
+    }
+
+    /* 2px 축소: 16px -> 14px */
+    .beer-modal-subhead {
+        font-size: 14px;
+    }
+
+    .beer-modal-title {
+        font-size: 30px;
+        margin-top: 8px;
+    }
+
+    /* 2px 축소: 16px -> 14px */
+    .beer-modal-desc-title {
+        font-size: 14px;
+        margin-top: 6px;
+    }
+
+    .beer-modal-specs-table {
+        margin-top: 20px;
+        gap: 6px;
+    }
+
+    .beer-modal-spec-cell {
+        flex: 1;
+        min-width: 70px;
+        height: 68px;
+        padding: 10px 0;
+    }
+
+    .beer-modal-spec-val {
+        font-size: 20px;
+    }
+
+    /* 2px 축소: 14px -> 12px */
+    .beer-modal-spec-lbl {
+        font-size: 12px;
+    }
+
+    .beer-modal-flavor-section {
+        margin-top: 32px;
+    }
+
+    /* 2px 축소: 14px -> 12px */
+    .beer-modal-flavor-subhead {
+        font-size: 12px;
+    }
+
+    .beer-modal-flavor-bars {
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .beer-flavor-row {
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* 2px 축소: 12px -> 11px/10px */
+    .beer-flavor-label {
+        font-size: 11px;
+        width: 48px;
+    }
+
+    .beer-flavor-track {
+        flex: 1;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .beer-flavor-num {
+        font-size: 11px;
+        width: 20px;
+    }
+
+    /* 2px 축소: 16px -> 14px */
+    .beer-modal-story-desc {
+        margin-top: 24px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .beer-modal-sub-details {
+        margin-top: 24px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* 2px 축소: 16px -> 14px */
+    .beer-modal-sub-title {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .beer-modal-sub-list {
+        gap: 8px;
+    }
+
+    /* 2px 축소: 14px -> 12px */
+    .beer-modal-sub-text {
+        font-size: 12px;
+        white-space: normal;
+        line-height: 1.35;
+    }
+}
+
+/* 0 ~ 375px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
+@media (max-width: 375px) {
+    .beer-hero-section {
+        padding-top: calc(var(--header-height) + 24px);
+    }
+
+    .beer-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .beer-title {
+        font-size: clamp(24px, 6.5vw, 28px);
+        word-break: keep-all;
     }
 
     .beer-badge-line {
@@ -1175,90 +1527,322 @@
     }
 
     .beer-desc {
-        margin-top: 24px;
-        font-size: 15px;
+        margin-top: 18px;
+        font-size: clamp(12px, 3.4vw, 13px);
+        line-height: 1.65;
+        word-break: keep-all;
+        overflow-wrap: break-word;
     }
 
     .beer-filter-section {
-        padding: 40px 0 60px;
+        padding: 30px 0 44px;
     }
 
-    .beer-filter-group {
+    .beer-filter-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* 모바일 화면에서 우측 상단 텍스트 제거 */
+    .beer-filter-note {
+        display: none !important;
+    }
+
+    .beer-filter-buttons {
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
+        width: 100%;
     }
 
     .beer-filter-btn {
-        padding: 8px 16px;
-        font-size: 14px;
+        flex: 0 1 auto;
+        min-width: 66px;
+        height: 36px;
+        padding: 0 8px;
+    }
+
+    .beer-filter-btn .btn-label {
+        font-size: 11px;
+    }
+
+    .beer-filter-btn .btn-count {
+        font-size: 9px;
     }
 
     .beer-cards-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
-        margin-top: 36px;
+        gap: 24px;
+        margin-top: 28px;
+        width: 100%;
     }
 
     .beer-card {
         width: 100%;
-        max-width: 400px;
+        max-width: min(100%, 360px);
         margin: 0 auto;
         height: auto;
-        min-height: 580px;
+        min-height: 500px;
+        box-sizing: border-box;
     }
 
     .beer-card-img-box {
         width: 100%;
-        height: 380px;
+        height: 280px;
     }
 
-    /* 맥주 상세 모달 모바일 반응형 */
-    .beer-modal-container {
+    .beer-card-text-box {
+        width: 100%;
+        height: auto;
+        padding: 18px;
+    }
+
+    .beer-card-name-en {
+        font-size: 20px;
+    }
+
+    .beer-card-name-ko {
+        font-size: 13px;
+    }
+
+    .beer-card-specs-row {
+        width: 100%;
+        margin-top: 18px;
+    }
+
+    .beer-spec-val {
+        font-size: 13px;
+    }
+
+    .beer-card-divider {
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .beer-card-desc {
+        font-size: 12px;
+        width: 100%;
+        margin-top: 12px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .beer-card-view-btn {
+        margin-top: 18px;
+        font-size: 12px;
+    }
+
+    /* 맥주 소개 특징 표 모바일 전용 (유동형) */
+    .beer-intro-table {
+        margin-top: 44px;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        border: 1px solid rgba(197, 160, 89, 0.4);
+        box-sizing: border-box;
+    }
+
+    .beer-intro-col {
+        width: 100%;
+        height: auto;
+        padding: 20px 16px;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+        box-sizing: border-box;
+    }
+
+    .beer-intro-col:last-child {
+        border-bottom: none;
+    }
+
+    .beer-intro-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .beer-intro-title {
+        font-size: 16px;
+        margin: 14px 0 0 0;
+        word-break: keep-all;
+    }
+
+    .beer-intro-desc {
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 10px 0 0 0;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    /* 양조 철학 소개 섹션 모바일 전용 (유동형) */
+    .beer-philosophy-section {
+        padding: 44px 0;
+    }
+
+    .beer-philosophy-container {
         flex-direction: column;
-        width: 92%;
+        align-items: flex-start;
+        gap: 22px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .beer-philosophy-title {
+        font-size: clamp(20px, 6vw, 24px);
+        white-space: normal;
+        word-break: keep-all;
+        line-height: 1.3;
+    }
+
+    .beer-philosophy-btn {
+        font-size: 14px;
+    }
+
+    /* 모달 375px 모바일 전용 (유동형) */
+    .beer-modal-content {
+        width: min(92vw, 480px);
         max-width: 480px;
+        height: auto;
         max-height: 88vh;
         overflow-y: auto;
     }
 
-    .beer-modal-img-col {
-        width: 100%;
-        height: 240px;
-        flex-shrink: 0;
+    .beer-modal-header {
+        padding: 0 16px;
+        height: 42px;
     }
 
-    .beer-modal-content-col {
-        padding: 24px;
+    .beer-modal-file-title {
+        font-size: 12px;
+    }
+
+    .beer-modal-body {
+        flex-direction: column;
+        height: auto;
+        padding-right: 0;
+    }
+
+    .beer-modal-img-col {
+        width: 100%;
+        height: 200px;
+    }
+
+    .beer-modal-color-badge {
+        left: 12px;
+        bottom: 12px;
+        max-width: calc(100% - 24px);
+        height: 26px;
+    }
+
+    .beer-modal-color-name {
+        font-size: 10px;
+    }
+
+    .beer-modal-info-col {
+        margin-left: 0;
+        padding: 18px 16px 24px;
+        width: 100%;
+    }
+
+    .beer-modal-subhead {
+        font-size: 12px;
     }
 
     .beer-modal-title {
-        font-size: 32px;
+        font-size: clamp(20px, 6vw, 24px);
+        margin-top: 6px;
+        word-break: keep-all;
     }
 
-    .beer-modal-specs {
+    .beer-modal-desc-title {
+        font-size: 13px;
+        margin-top: 4px;
+        word-break: keep-all;
+    }
+
+    .beer-modal-specs-table {
+        margin-top: 16px;
+        gap: 6px;
+    }
+
+    .beer-modal-spec-cell {
+        flex: 1;
+        min-width: 60px;
+        height: 62px;
+        padding: 8px 0;
+    }
+
+    .beer-modal-spec-val {
+        font-size: 18px;
+    }
+
+    .beer-modal-spec-lbl {
+        font-size: 10px;
+    }
+
+    .beer-modal-flavor-section {
+        margin-top: 24px;
+    }
+
+    .beer-modal-flavor-subhead {
+        font-size: 11px;
+    }
+
+    .beer-modal-flavor-bars {
+        margin-top: 8px;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .beer-flavor-row {
+        gap: 8px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .beer-flavor-label {
+        font-size: 10px;
+        width: 44px;
+    }
+
+    .beer-flavor-track {
+        flex: 1;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .beer-flavor-num {
+        font-size: 10px;
+        width: 18px;
+    }
+
+    .beer-modal-story-desc {
+        margin-top: 20px;
+        font-size: 13px;
+        line-height: 1.6;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .beer-modal-sub-details {
+        margin-top: 20px;
+        flex-direction: column;
         gap: 16px;
     }
-}
 
-/* 480px 이하: 소형 모바일 */
-@media (max-width: 480px) {
-    .beer-title {
-        font-size: 30px;
+    .beer-modal-sub-title {
+        font-size: 12px;
+        margin-bottom: 10px;
     }
 
-    .beer-card {
-        min-height: 540px;
+    .beer-modal-sub-list {
+        gap: 6px;
     }
 
-    .beer-card-img-box {
-        height: 320px;
-    }
-
-    .beer-card-text-box {
-        padding: 20px;
-    }
-
-    .beer-card-title {
-        font-size: 24px;
+    .beer-modal-sub-text {
+        font-size: 11px;
+        white-space: normal;
+        line-height: 1.35;
     }
 }
