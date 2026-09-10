@@ -609,77 +609,45 @@
    갤러리 반응형 미디어 쿼리 (Gallery Responsive Styles)
    ========================================================================== */
 
-/* 1024px 이하: 태블릿 */
-@media (max-width: 1024px) {
+/* 768px ~ 1024px: 태블릿 전용 (데스크톱 웹페이지 양식 완벽 계승 및 유동형 맞춤) */
+@media (min-width: 768px) and (max-width: 1024px) {
     .gallery-hero-section {
-        padding-top: calc(var(--header-height) + 50px);
+        padding-top: calc(var(--header-height) + 40px);
     }
 
-    .gallery-title {
-        font-size: 48px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-
-    .gallery-frame-hero {
-        grid-column: span 2;
-        height: 380px;
-    }
-
-    .gallery-frame-md {
-        grid-column: span 1;
-        height: 320px;
-    }
-
-    .gallery-frame-lg {
-        grid-column: span 1;
-        height: 300px;
-    }
-
-    .gallery-video-grid {
-        grid-template-columns: 1fr;
+    /* 데스크톱 웹페이지 양식: 좌측 타이틀 + 우측 AI 안내 문구 가로 배치 */
+    .gallery-title-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
         gap: 24px;
     }
-}
-
-/* 376px ~ 768px: 태블릿 전용 기준 치수 (유동형 레이아웃 적용) */
-@media (min-width: 376px) and (max-width: 768px) {
-    .gallery-hero-section {
-        padding-top: calc(var(--header-height) + 32px);
-    }
-
-    .gallery-title-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
 
     .gallery-title {
-        font-size: clamp(28px, 6vw, 36px);
+        font-size: clamp(32px, 4.5vw, 42px);
         word-break: keep-all;
     }
 
     .gallery-ai-notice {
-        text-align: left;
+        text-align: right;
         padding-bottom: 0;
-        font-size: 12px;
+        font-size: 13px;
+        white-space: nowrap;
     }
 
-    /* 2px 축소 가이드라인 적용: 16px -> 14px */
     .gallery-desc {
         margin-top: 22px;
-        font-size: clamp(13px, 3.4vw, 14px);
+        font-size: clamp(13px, 1.8vw, 15px);
         line-height: 1.7;
         word-break: keep-all;
         overflow-wrap: break-word;
+        max-width: 600px;
     }
 
     .gallery-tabs-row {
-        margin-top: 30px;
-        gap: 12px;
+        margin-top: 36px;
+        gap: 16px;
         flex-wrap: wrap;
     }
 
@@ -692,22 +660,37 @@
     }
 
     .gallery-content-section {
-        padding: 48px 0 72px;
+        padding: clamp(48px, 6vw, 72px) 0;
     }
 
+    /* 갤러리 그리드: 데스크톱 2열 비대칭 그리드 */
     .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
         width: 100%;
     }
 
-    .gallery-frame-hero,
-    .gallery-frame-md,
+    .gallery-frame-hero {
+        grid-column: span 2;
+        height: 380px;
+        aspect-ratio: auto;
+    }
+
+    .gallery-frame-md {
+        grid-column: span 1;
+        height: 320px;
+        aspect-ratio: auto;
+    }
+
     .gallery-frame-lg {
         grid-column: span 1;
-        height: auto;
-        aspect-ratio: 16/10;
-        min-height: 220px;
+        height: 300px;
+        aspect-ratio: auto;
+    }
+
+    .gallery-video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
         width: 100%;
     }
 
@@ -781,8 +764,8 @@
     }
 }
 
-/* 0 ~ 375px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
-@media (max-width: 375px) {
+/* 0 ~ 767px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
+@media (max-width: 767px) {
     .gallery-hero-section {
         padding-top: calc(var(--header-height) + 24px);
     }

@@ -1082,8 +1082,8 @@ body.menu-open {
    - 480px: 소형 모바일
    ========================================================================== */
 
-/* 1200px 이하: 랩탑 및 대형 태블릿 */
-@media (max-width: 1200px) {
+/* 1025px ~ 1200px: 랩탑 및 소형 데스크톱 */
+@media (min-width: 1025px) and (max-width: 1200px) {
     :root {
         --page-padding-x: 80px;
         --header-height: 90px;
@@ -1116,199 +1116,66 @@ body.menu-open {
     }
 }
 
-/* 1024px 이하: 태블릿 */
-@media (max-width: 1024px) {
+/* 768px ~ 1024px: 태블릿 전용 (데스크톱 웹페이지 양식 완벽 계승 및 유동형 맞춤) */
+@media (min-width: 768px) and (max-width: 1024px) {
     :root {
-        --page-padding-x: 48px;
+        --page-padding-x: clamp(24px, 4vw, 48px);
         --header-height: 80px;
     }
 
+    /* GNB 데스크톱 웹페이지 양식 유지 */
     .nav-container {
-        gap: 32px;
+        justify-content: center;
+        padding: 0 var(--page-padding-x);
+        gap: clamp(24px, 3.5vw, 44px);
     }
 
     .nav-left,
     .nav-right {
-        gap: 32px;
+        display: flex !important;
+        align-items: center;
+        gap: clamp(20px, 3vw, 36px);
+    }
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
     }
 
     .nav-text-en {
-        font-size: 20px;
+        font-size: clamp(16px, 1.8vw, 19px);
     }
 
-    .footer-top {
-        gap: 40px;
+    .nav-text-ko {
+        font-size: 11px;
     }
 
-    .footer-info-group {
-        gap: 50px;
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .footer-giant-title {
-        font-size: 120px;
+    .logo-img {
+        width: clamp(46px, 5vw, 54px);
+        height: clamp(46px, 5vw, 54px);
     }
 
-    .seasonal-title {
-        font-size: 40px;
-    }
-
-    .goods-promo-title {
-        font-size: 38px;
-    }
-}
-
-/* 376px ~ 768px: 태블릿 전용 기준 치수 (유동형 설정 적용) */
-@media (min-width: 376px) and (max-width: 768px) {
-    :root {
-        --page-padding-x: clamp(16px, 4vw, 24px);
-        --header-height: clamp(62px, 8vw, 70px);
-    }
-
-    /* GNB 모바일/태블릿 전환 */
-    .nav-container {
-        justify-content: space-between;
-        padding: 0 var(--page-padding-x);
-        gap: 0;
-    }
-
-    .nav-left,
-    .nav-right {
+    /* 햄버거 토글 및 드로어 숨김 (데스크톱 양식) */
+    .nav-toggle {
         display: none !important;
     }
 
-    .nav-toggle {
-        display: flex;
-    }
-
-    /* 태블릿 드로어 메뉴 스타일 */
     .mobile-nav-drawer {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1050;
-        pointer-events: none;
-        visibility: hidden;
-        transition: visibility 0.35s ease;
+        display: none !important;
     }
 
-    .mobile-nav-drawer.is-active {
-        pointer-events: auto;
-        visibility: visible;
-    }
-
-    .mobile-nav-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(10, 15, 13, 0.75);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        opacity: 0;
-        transition: opacity 0.35s ease;
-    }
-
-    .mobile-nav-drawer.is-active .mobile-nav-backdrop {
-        opacity: 1;
-    }
-
-    .mobile-nav-content {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: min(85vw, 320px);
-        max-width: 85%;
-        height: 100%;
-        background-color: var(--color-main);
-        border-left: 1px solid var(--border-color);
-        padding: 85px 28px 36px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transform: translateX(100%);
-        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 2;
-        overflow-y: auto;
-    }
-
-    .mobile-nav-drawer.is-active .mobile-nav-content {
-        transform: translateX(0);
-    }
-
-    .mobile-nav-brand {
-        font-family: var(--font-en);
-        font-size: 16px;
-        letter-spacing: 2px;
-        color: var(--text-gold-light);
-        display: block;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .mobile-nav-list {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        flex: 1;
-        margin-top: 24px;
-    }
-
-    .mobile-nav-link {
-        display: flex;
-        align-items: baseline;
-        gap: 12px;
-        text-decoration: none;
-        padding: 6px 0;
-        transition: transform var(--transition-fast);
-    }
-
-    .mobile-nav-link .link-en {
-        font-family: var(--font-en);
-        font-size: 28px;
-        color: var(--text-primary);
-        letter-spacing: 1.5px;
-        line-height: 1;
-        transition: color var(--transition-fast);
-    }
-
-    .mobile-nav-link .link-ko {
-        font-family: var(--font-title);
-        font-size: 13px;
-        color: var(--text-gold);
-        line-height: 1;
-    }
-
-    .mobile-nav-link:hover .link-en,
-    .mobile-nav-link.active .link-en {
-        color: var(--color-accent);
-    }
-
-    .mobile-nav-footer {
-        padding-top: 24px;
-        border-top: 1px solid var(--border-color);
-    }
-
-    .mobile-nav-desc {
-        font-family: var(--font-body);
-        font-size: 12px;
-        color: var(--text-muted);
-        line-height: 1.6;
-        margin-bottom: 10px;
-    }
-
-    .mobile-nav-badge {
-        font-family: var(--font-en);
-        font-size: 11px;
-        color: var(--text-gold);
-        letter-spacing: 1px;
-    }
-
-    /* 푸터 태블릿 - 유동형 레이아웃 */
+    /* 푸터 태블릿 - 데스크톱 웹페이지 양식 (좌측 브랜드 + 우측 3단 정보 가로 분할) */
     .footer {
         min-height: auto;
-        padding-top: 48px;
+        padding-top: clamp(48px, 6vw, 64px);
     }
 
     .footer-desc {
@@ -1317,19 +1184,25 @@ body.menu-open {
     }
 
     .footer-top {
-        flex-direction: column;
-        gap: 36px;
-        margin-bottom: 36px;
-    }
-
-    /* 모바일/태블릿에서도 메뉴 버튼, 위치, 연락처 영역 그룹 가로 정렬 */
-    .footer-info-group {
-        width: 100%;
-        display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
-        gap: clamp(12px, 2.5vw, 32px);
+        gap: clamp(32px, 4vw, 56px);
+        margin-bottom: clamp(32px, 4vw, 44px);
+    }
+
+    .footer-brand-col {
+        flex: 1;
+        max-width: clamp(260px, 35vw, 340px);
+    }
+
+    .footer-info-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: clamp(20px, 3vw, 40px);
+        flex: 1.2;
     }
 
     .footer-col {
@@ -1338,7 +1211,7 @@ body.menu-open {
     }
 
     .footer-col-title {
-        font-size: clamp(13px, 2.2vw, 15px);
+        font-size: clamp(13px, 1.8vw, 15px);
         margin-bottom: 14px;
         letter-spacing: 1px;
         white-space: nowrap;
@@ -1356,11 +1229,11 @@ body.menu-open {
     }
 
     .footer-menu-en {
-        font-size: clamp(12px, 2vw, 14px);
+        font-size: clamp(12px, 1.6vw, 14px);
     }
 
     .footer-menu-ko {
-        font-size: clamp(11px, 1.8vw, 13px);
+        font-size: clamp(11px, 1.4vw, 13px);
     }
 
     .footer-info-list {
@@ -1368,7 +1241,7 @@ body.menu-open {
     }
 
     .footer-info-item {
-        font-size: clamp(11px, 1.8vw, 13px);
+        font-size: clamp(11px, 1.5vw, 13px);
         white-space: normal;
         word-break: keep-all;
         overflow-wrap: break-word;
@@ -1387,7 +1260,7 @@ body.menu-open {
     }
 
     .footer-giant-title {
-        font-size: clamp(56px, 12vw, 96px);
+        font-size: clamp(72px, 11vw, 110px);
         line-height: 0.82;
         margin: 0 0 -0.09em 0;
         letter-spacing: 1.5px;
@@ -1396,10 +1269,10 @@ body.menu-open {
     }
 
     .footer-bottom-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 16px 0;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 0;
     }
 
     .footer-bottom-left,
@@ -1407,33 +1280,31 @@ body.menu-open {
         font-size: 14px;
     }
 
-    .footer-bottom-right {
-        text-align: left;
-    }
-
-    /* 공유 컴포넌트: Seasonal 태블릿 - 유동형 레이아웃 */
+    /* 공유 컴포넌트: Seasonal 태블릿 - 데스크톱 웹페이지 양식 (가로 2단 분할) */
     .seasonal-section {
-        padding: 60px 0;
+        padding: clamp(56px, 7vw, 76px) 0;
     }
 
     .seasonal-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 28px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: clamp(32px, 4vw, 56px);
         width: 100%;
         max-width: 100%;
     }
 
     .seasonal-img-frame {
-        width: 100%;
+        width: 48%;
+        max-width: 480px;
         height: auto;
         aspect-ratio: 16/10;
-        max-width: 100%;
+        flex-shrink: 0;
     }
 
     .seasonal-content {
+        flex: 1;
         padding: 0;
-        width: 100%;
     }
 
     .seasonal-subhead-en {
@@ -1441,12 +1312,12 @@ body.menu-open {
     }
 
     .seasonal-title {
-        font-size: clamp(26px, 5.5vw, 34px);
+        font-size: clamp(28px, 4vw, 36px);
         word-break: keep-all;
     }
 
     .seasonal-desc {
-        font-size: clamp(13px, 3.4vw, 14px);
+        font-size: clamp(13px, 1.8vw, 14px);
         line-height: 1.7;
         margin: 0 0 24px 0;
         word-break: keep-all;
@@ -1463,17 +1334,22 @@ body.menu-open {
         font-size: 14px;
     }
 
-    /* 공유 컴포넌트: Goods Promo 태블릿 - 유동형 레이아웃 */
+    /* 공유 컴포넌트: Goods Promo 태블릿 - 데스크톱 웹페이지 양식 (가로 2단 분할) */
     .goods-promo-section {
-        padding: 56px 0;
+        padding: clamp(50px, 6vw, 68px) 0;
     }
 
     .goods-promo-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: clamp(24px, 3.5vw, 44px);
         width: 100%;
         max-width: 100%;
+    }
+
+    .goods-promo-text-col {
+        flex: 1;
     }
 
     .goods-promo-subhead {
@@ -1481,18 +1357,18 @@ body.menu-open {
     }
 
     .goods-promo-title {
-        font-size: clamp(24px, 5.5vw, 30px);
+        font-size: clamp(26px, 3.8vw, 32px);
         word-break: keep-all;
     }
 
     .goods-promo-desc {
-        font-size: clamp(13px, 3.4vw, 14px);
+        font-size: clamp(13px, 1.8vw, 14px);
         line-height: 1.7;
         word-break: keep-all;
         overflow-wrap: break-word;
     }
 
-    /* 굿즈 페이지 이동 버튼 기본 직사각형 형식 유지 (유동형 안전) */
+    /* 굿즈 페이지 이동 버튼 기본 180px 직사각형 유지 */
     .goods-promo-btn {
         width: 180px;
         max-width: 100%;
@@ -1505,11 +1381,11 @@ body.menu-open {
     }
 }
 
-/* 0 ~ 375px: 모바일 전용 기준 치수 (요소 충돌 방지 및 2px 축소 최적화) */
-@media (max-width: 375px) {
+/* 0 ~ 767px: 모바일 스마트폰 전용 기준 치수 (햄버거 메뉴 및 유동형 레이아웃) */
+@media (max-width: 767px) {
     :root {
-        --page-padding-x: 16px;
-        --header-height: 62px;
+        --page-padding-x: clamp(16px, 4vw, 24px);
+        --header-height: 64px;
     }
 
     /* GNB 모바일 전용 */

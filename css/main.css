@@ -815,6 +815,7 @@
 /* 맥주 카드 단일 아이템 (400px x 581px) */
 .beer-card {
     width: 400px;
+    max-width: 100%;
     /* 가로 400px */
     height: 581px;
     /* 세로 581px */
@@ -843,7 +844,8 @@
 
 /* 배경용 이미지 박스 (400px x 470px) */
 .beer-card-img-box {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 470px;
     position: relative;
     overflow: hidden;
@@ -941,7 +943,8 @@
 
 /* 텍스트 박스 (400px x 168px, 57px만큼 겹쳐짐, z-index로 상단 배치) */
 .beer-card-text-box {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 168px;
     margin-top: -57px;
     /* 이미지 박스와 57px 겹침 */
@@ -990,8 +993,8 @@
 
 /* 중앙 정렬 가로선: --text-gold, 1px 굵기, 352px 길이 */
 .beer-card-divider {
-    width: 352px;
-    /* 352px */
+    width: 100%;
+    max-width: 352px;
     height: 1px;
     background-color: var(--text-gold);
     /* --text-gold */
@@ -2275,8 +2278,8 @@
    반응형 미디어 쿼리 (Main Responsive Styles)
    ========================================================================== */
 
-/* 1200px 이하: 대형 태블릿 및 랩탑 */
-@media (max-width: 1200px) {
+/* 1025px ~ 1200px: 대형 태블릿 및 랩탑 */
+@media (min-width: 1025px) and (max-width: 1200px) {
     .hero-section {
         height: 960px;
     }
@@ -2349,233 +2352,162 @@
     }
 }
 
-/* 1024px 이하: 태블릿 */
-@media (max-width: 1024px) {
+/* 768px ~ 1024px: 태블릿 전용 (데스크톱 웹페이지 양식 완벽 계승 및 유동형 맞춤) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* 히어로 섹션 데스크톱 양식 계승 (상대위치/절대위치 조합 & 회전 텍스트 & 스크롤 인디케이터) */
     .hero-section {
-        height: 840px;
-    }
-
-    .hero-content {
-        top: 360px;
-    }
-
-    .hero-main-title {
-        font-size: 150px;
-        margin-bottom: 20px;
-    }
-
-    .hero-btn-group {
-        top: 600px;
-    }
-
-    .hero-divider-line {
-        top: 720px;
-    }
-
-    .hero-info-left,
-    .hero-scroll-indicator,
-    .hero-info-right {
-        top: 740px;
-    }
-
-    .intro-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 48px;
-    }
-
-    .intro-text-col {
-        max-width: 100%;
-    }
-
-    .intro-stats-table {
-        max-width: 100%;
-    }
-
-    .beer-cards-group {
-        flex-wrap: wrap;
-        gap: 32px;
-    }
-
-    .beer-card {
-        width: calc((100% - 32px) / 2);
-        max-width: 400px;
-    }
-
-    .ingredients-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 48px;
-    }
-
-    .ingredients-text-area {
-        max-width: 100%;
-    }
-
-    .ingredients-boxes-area {
-        width: 100%;
-    }
-
-    /* 갤러리 프리뷰 그리드 태블릿 */
-    .gallery-preview-section .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .gallery-preview-section .gallery-frame-hero {
-        grid-column: span 2;
-        height: 380px;
-    }
-
-    .gallery-preview-section .gallery-frame-md {
-        grid-column: span 1;
-        height: 320px;
-    }
-
-    .gallery-preview-section .gallery-frame-lg {
-        grid-column: span 1;
-        height: 300px;
-    }
-}
-
-/* 376px ~ 768px: 태블릿 전용 기준 치수 (요소 겹침 방지 및 태블릿 핏) */
-@media (min-width: 376px) and (max-width: 768px) {
-    .hero-section {
-        height: auto;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-top: calc(var(--header-height) + 40px);
-        padding-bottom: 40px;
-        padding-left: var(--page-padding-x);
-        padding-right: var(--page-padding-x);
+        height: clamp(720px, 82vh, 880px);
+        min-height: 720px;
+        position: relative;
+        display: block;
+        padding: 0;
         box-sizing: border-box;
     }
 
     .hero-badge-film {
-        position: static;
-        margin-bottom: 24px;
+        position: absolute;
+        left: var(--page-padding-x);
+        top: clamp(140px, 18vh, 180px);
+        margin: 0;
     }
 
     .hero-rotate-text {
-        display: none;
+        display: flex !important;
+        position: absolute;
+        right: clamp(20px, 3.5vw, 40px);
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+        transform-origin: center center;
+        white-space: nowrap;
+        font-size: clamp(11px, 1.3vw, 13px);
     }
 
     .hero-content {
-        position: static;
-        margin-bottom: 32px;
+        position: absolute;
+        left: var(--page-padding-x);
+        top: clamp(230px, 28vh, 290px);
+        max-width: clamp(520px, 68vw, 680px);
+        margin: 0;
     }
 
     .hero-main-title {
-        font-size: clamp(52px, 13vw, 84px);
+        font-size: clamp(56px, 8.5vw, 92px);
         margin-bottom: 20px;
         word-break: keep-all;
     }
 
     .hero-description {
-        font-size: clamp(13px, 3.5vw, 15px);
-        line-height: 1.65;
+        font-size: clamp(13px, 1.8vw, 15px);
+        line-height: 1.7;
         margin-bottom: 28px;
         word-break: keep-all;
         overflow-wrap: break-word;
+        max-width: 580px;
     }
 
     .hero-btn-group {
-        position: static;
+        position: absolute;
+        left: var(--page-padding-x);
+        top: clamp(480px, 58vh, 550px);
         display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-        max-width: 420px;
-        margin-bottom: 36px;
-    }
-
-    @media (min-width: 521px) {
-        .hero-btn-group {
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
+        flex-direction: row;
+        gap: 16px;
+        width: auto;
+        max-width: none;
+        margin: 0;
     }
 
     .hero-btn {
-        width: 100%;
+        width: auto;
+        min-width: 150px;
         height: 52px;
         font-size: 15px;
-    }
-
-    @media (min-width: 521px) {
-        .hero-btn {
-            flex: 1;
-            min-width: 140px;
-        }
+        padding: 0 24px;
     }
 
     .hero-divider-line {
-        position: static;
-        width: 100%;
-        margin-top: auto;
-        margin-bottom: 16px;
+        position: absolute;
+        left: var(--page-padding-x);
+        width: calc(100% - (var(--page-padding-x) * 2));
+        bottom: 68px;
+        margin: 0;
     }
 
     .hero-info-left {
-        position: static;
-        font-size: 12px;
-        margin-bottom: 12px;
+        position: absolute;
+        left: var(--page-padding-x);
+        bottom: 28px;
+        font-size: 13px;
+        margin: 0;
     }
 
     .hero-info-right {
-        position: static;
-        font-size: 12px;
+        position: absolute;
+        right: var(--page-padding-x);
+        bottom: 28px;
+        font-size: 13px;
+        margin: 0;
     }
 
     .hero-scroll-indicator {
-        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 28px;
+        display: flex !important;
     }
 
     .intro-manifesto-section,
     .signature-section,
     .ingredients-section,
     .gallery-preview-section {
-        padding: 70px 0;
+        padding: clamp(60px, 7vw, 84px) 0;
     }
 
-    .intro-container,
-    .signature-container,
-    .ingredients-row {
-        flex-direction: column;
-        gap: 32px;
+    /* 양조 철학 섹션: 데스크톱 웹페이지 양식 (좌측 텍스트 + 우측 2x2 표 가로 2단 배치) */
+    .intro-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: clamp(32px, 4vw, 56px);
         width: 100%;
+    }
+
+    .intro-text-col {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .intro-table-col {
+        flex: 1;
+        max-width: 480px;
     }
 
     .intro-title,
     .signature-title,
     .ingredients-title,
     .gallery-title {
-        font-size: clamp(26px, 5.5vw, 36px);
+        font-size: clamp(28px, 4vw, 38px);
         word-break: keep-all;
     }
 
-    /* 본문/설명문 2px 축소 및 유동형 (16px -> 13~14px) */
     .intro-desc,
     .signature-desc,
     .ingredients-desc,
     .gallery-desc {
-        font-size: clamp(13px, 3.4vw, 14px);
+        font-size: clamp(13px, 1.8vw, 14px);
         line-height: 1.7;
         word-break: keep-all;
         overflow-wrap: break-word;
     }
 
-    /* 버튼 및 링크 텍스트 2px 축소 (16px -> 14px) */
     .intro-story-btn span,
     .ingredients-story-btn span,
     .gallery-archive-btn span {
         font-size: 14px;
     }
 
-    /* 소제목 영문 (16px -> 14px) */
     .intro-subhead-en,
     .signature-subhead-en,
     .ingredients-subhead-en,
@@ -2583,15 +2515,10 @@
         font-size: 14px;
     }
 
-    /* 양조 철학 2행 2열 표 형식 완벽 유지 (태블릿 유동형) */
-    .intro-table-col {
-        width: 100%;
-        max-width: 100%;
-    }
-
+    /* 양조 철학 2행 2열 표 형식 완벽 유지 */
     .intro-stats-table {
         width: 100%;
-        max-width: 100%;
+        max-width: 480px;
         height: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -2600,8 +2527,8 @@
     }
 
     .stat-cell {
-        padding: clamp(12px, 3vw, 22px) clamp(8px, 2.5vw, 16px);
-        gap: clamp(4px, 1.2vw, 8px);
+        padding: clamp(14px, 2.5vw, 22px) clamp(10px, 2vw, 18px);
+        gap: clamp(4px, 1vw, 8px);
         box-sizing: border-box;
     }
 
@@ -2624,72 +2551,322 @@
     }
 
     .stat-num {
-        font-size: clamp(26px, 6vw, 36px);
+        font-size: clamp(26px, 4vw, 36px);
         line-height: 1;
     }
 
     .stat-label-ko {
-        font-size: clamp(12px, 2.8vw, 15px);
+        font-size: clamp(12px, 1.8vw, 14px);
         word-break: keep-all;
     }
 
     .stat-label-en {
-        font-size: clamp(9px, 2.2vw, 12px);
+        font-size: clamp(9px, 1.3vw, 11px);
         letter-spacing: 0.5px;
     }
 
-    .beer-cards-group {
-        flex-direction: column;
+    /* 재료 소개 섹션: 데스크톱 가로 2단 양식 계승 및 자연스러운 비례 축소 */
+    .ingredients-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+        gap: clamp(24px, 3.5vw, 52px);
         width: 100%;
+    }
+
+    .ingredients-text-area {
+        flex: 1;
+        max-width: 480px;
+        min-width: 0;
+    }
+
+    .ingredients-boxes-area {
+        flex: 1;
+        max-width: 500px;
+        min-width: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(10px, 1.5vw, 16px);
+    }
+
+    .ingredient-box {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 84px;
+        padding: clamp(10px, 1.4vw, 16px) clamp(12px, 1.6vw, 18px);
+        box-sizing: border-box;
+        gap: clamp(8px, 1.2vw, 14px);
+    }
+
+    .ingredient-num {
+        font-size: clamp(28px, 3.8vw, 38px);
+        min-width: clamp(34px, 4vw, 44px);
+    }
+
+    .ingredient-img-box {
+        width: clamp(54px, 6.5vw, 68px);
+        height: clamp(54px, 6.5vw, 68px);
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    .ingredient-info {
+        margin-left: 0;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .ingredient-title-row {
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .ingredient-name-ko {
+        font-size: clamp(17px, 2.2vw, 21px);
+        line-height: 1;
+    }
+
+    .ingredient-name-en {
+        font-size: clamp(10px, 1.3vw, 12px);
+        line-height: 1;
+    }
+
+    .ingredient-origin {
+        font-size: clamp(11px, 1.4vw, 13px);
+        line-height: 1;
+    }
+
+    .ingredient-icon-box {
+        width: clamp(28px, 3.5vw, 36px);
+        height: clamp(28px, 3.5vw, 36px);
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .ingredient-icon {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 시그니처 맥주 섹션: 데스크톱 3열 카드 양식 계승, 자연스럽게 줄어들고 정해진 규격(max 400px)에서 늘어나지 않도록 설정 */
+    .signature-header {
+        margin-bottom: clamp(32px, 4.5vw, 48px);
+    }
+
+    .signature-desc {
+        max-width: 680px;
+        white-space: normal;
+        word-break: keep-all;
+    }
+
+    .beer-cards-group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        align-items: stretch;
+        gap: clamp(14px, 2vw, 28px);
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .beer-card {
         width: 100%;
-        max-width: min(100%, 380px);
+        max-width: 400px;
         height: auto;
-        min-height: 540px;
+        min-height: 480px;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .beer-card-img-box {
+        width: 100%;
+        height: 470px;
+        flex-shrink: 0;
+    }
+
+    .beer-badge-type {
+        left: clamp(8px, 1.2vw, 16px);
+        top: 10px;
+    }
+
+    .beer-badge-abv {
+        right: clamp(8px, 1.2vw, 16px);
+        top: 10px;
+    }
+
+    .beer-card-text-box {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        flex: 1;
+        margin-top: -50px;
+        padding: 8px clamp(8px, 1.2vw, 14px) clamp(12px, 1.5vw, 16px);
         box-sizing: border-box;
     }
 
+    .beer-card-title {
+        font-size: clamp(18px, 2.3vw, 24px);
+        margin-bottom: 2px;
+    }
+
     .beer-card-korean-desc {
-        font-size: 14px;
+        font-size: clamp(10px, 1.2vw, 13px);
+        line-height: 1.3;
+        margin-bottom: clamp(6px, 1vw, 8px);
+        white-space: normal;
+        word-break: keep-all;
+    }
+
+    .beer-card-divider {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto clamp(6px, 1vw, 8px) auto;
+    }
+
+    .beer-card-feature {
+        font-size: clamp(9px, 1.1vw, 11px);
+        line-height: 1.35;
+        margin-bottom: clamp(8px, 1.2vw, 12px);
+        white-space: normal;
+        word-break: keep-all;
+    }
+
+    .beer-card-btn {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        gap: 6px;
+        margin-top: auto;
+    }
+
+    .beer-card-btn span {
+        font-size: clamp(10px, 1.2vw, 12px);
+    }
+
+    .brand-film-section {
+        height: 420px;
+        width: 100%;
+    }
+
+    /* 갤러리 프리뷰 그리드: 데스크톱 2열 비대칭 그리드 */
+    .gallery-preview-section .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+    }
+
+    .gallery-preview-section .gallery-frame-hero {
+        grid-column: span 2;
+        height: 380px;
+        aspect-ratio: auto;
+    }
+
+    .gallery-preview-section .gallery-frame-md {
+        grid-column: span 1;
+        height: 320px;
+        aspect-ratio: auto;
+    }
+
+    .gallery-preview-section .gallery-frame-lg {
+        grid-column: span 1;
+        height: 300px;
+        aspect-ratio: auto;
+    }
+
+    /* 한정상품 광고 섹션: 태블릿 작은 사이즈에서 이미지(50%)와 텍스트(50%) 비율을 맞춰 텍스트가 잘리지 않도록 설정 */
+    .seasonal-section {
+        padding: clamp(60px, 7vw, 84px) 0;
+    }
+
+    .seasonal-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: clamp(24px, 3.5vw, 48px);
+        width: 100%;
+    }
+
+    .seasonal-img-frame {
+        flex: 1;
+        width: auto;
+        max-width: 50%;
+        min-width: 0;
+        height: auto;
+        aspect-ratio: 600 / 400;
+        min-height: 240px;
+        flex-shrink: 1;
+    }
+
+    .seasonal-content {
+        flex: 1;
+        max-width: 50%;
+        min-width: 0;
+        padding: 0;
+    }
+
+    .seasonal-subhead {
+        margin-bottom: 12px;
+    }
+
+    .seasonal-subhead-en {
+        font-size: 13px;
+    }
+
+    .seasonal-subhead-ko {
+        font-size: 11px;
+    }
+
+    .seasonal-title {
+        font-size: clamp(22px, 3vw, 32px);
+        line-height: 1.3;
+        margin-bottom: 14px;
+        word-break: keep-all;
+    }
+
+    .seasonal-desc {
+        font-size: clamp(12px, 1.5vw, 14px);
+        line-height: 1.65;
+        margin-bottom: 20px;
         word-break: keep-all;
         overflow-wrap: break-word;
     }
 
-    .beer-card-feature {
-        font-size: 13px;
+    .seasonal-specs-row {
+        gap: clamp(14px, 2vw, 24px);
+        margin-bottom: 24px;
+        flex-wrap: wrap;
     }
 
-    .beer-card-btn span {
+    .seasonal-spec-item {
+        gap: 10px;
+    }
+
+    .spec-divider-line {
+        height: clamp(28px, 3.5vw, 34px);
+    }
+
+    .spec-value {
+        font-size: clamp(18px, 2.4vw, 24px);
+    }
+
+    .spec-label {
+        font-size: 8px;
+    }
+
+    .seasonal-goods-btn {
         font-size: 14px;
-    }
-
-    .brand-film-section {
-        height: 380px;
-        width: 100%;
-    }
-
-    .gallery-preview-section .gallery-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .gallery-preview-section .gallery-frame-hero,
-    .gallery-preview-section .gallery-frame-md,
-    .gallery-preview-section .gallery-frame-lg {
-        grid-column: span 1;
-        height: auto;
-        aspect-ratio: 16/10;
-        min-height: 220px;
-        width: 100%;
     }
 }
 
-/* 0 ~ 375px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
-@media (max-width: 375px) {
+/* 0 ~ 767px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
+@media (max-width: 767px) {
     :root {
         --page-padding-x: clamp(14px, 4vw, 16px);
     }
@@ -2781,7 +2958,8 @@
 
     .intro-container,
     .signature-container,
-    .ingredients-row {
+    .ingredients-container,
+    .seasonal-container {
         flex-direction: column;
         gap: 24px;
         width: 100%;
@@ -2813,28 +2991,75 @@
     }
 
     .beer-cards-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
         width: 100%;
     }
 
     .beer-card {
         width: 100%;
         max-width: min(100%, 360px);
+        height: auto;
+        min-height: 540px;
         margin: 0 auto;
         box-sizing: border-box;
     }
 
+    .beer-card-img-box {
+        width: 100%;
+        height: 470px;
+        flex-shrink: 0;
+    }
+
+    .beer-card-text-box {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        margin-top: -50px;
+        padding: 8px 14px 16px 14px;
+        box-sizing: border-box;
+    }
+
+    .beer-card-title {
+        font-size: 22px;
+        margin-bottom: 3px;
+    }
+
     .beer-card-korean-desc {
-        font-size: 13px;
+        font-size: 12px;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        white-space: normal;
         word-break: keep-all;
         overflow-wrap: break-word;
     }
 
+    .beer-card-divider {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 8px auto;
+    }
+
     .beer-card-feature {
-        font-size: 12px;
+        font-size: 11px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .beer-card-btn {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        gap: 6px;
     }
 
     .beer-card-btn span {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     /* 양조 철학 2행 2열 표 형식 완벽 유지 (375px 모바일 유동형) */
@@ -2894,38 +3119,139 @@
         letter-spacing: 0.5px;
     }
 
+    .ingredients-boxes-area {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
     .ingredient-box {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
         height: auto;
-        min-height: 84px;
+        min-height: 76px;
         padding: 10px 12px;
         gap: 10px;
+        display: flex;
+        align-items: center;
     }
 
     .ingredient-num {
-        font-size: 28px;
+        font-size: 26px;
         min-width: 30px;
     }
 
     .ingredient-img-box {
-        width: 52px;
-        height: 52px;
+        width: 50px;
+        height: 50px;
         margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    .ingredient-info {
+        margin-left: 0;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .ingredient-title-row {
+        gap: 6px;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
     }
 
     .ingredient-name-ko {
         font-size: 15px;
+        line-height: 1;
         word-break: keep-all;
     }
 
     .ingredient-name-en {
-        font-size: 11px;
+        font-size: 10px;
+        line-height: 1;
     }
 
     .ingredient-origin {
         font-size: 11px;
+        line-height: 1;
+    }
+
+    .ingredient-icon-box {
+        width: 28px;
+        height: 28px;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .ingredient-icon {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 한정상품 광고 섹션 (모바일) */
+    .seasonal-section {
+        padding: 48px 0;
+    }
+
+    .seasonal-img-frame {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 600 / 400;
+        min-height: 200px;
+    }
+
+    .seasonal-content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .seasonal-title {
+        font-size: clamp(20px, 5.5vw, 26px);
+        word-break: keep-all;
+        margin-bottom: 12px;
+    }
+
+    .seasonal-desc {
+        font-size: 13px;
+        line-height: 1.65;
+        margin-bottom: 20px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .seasonal-specs-row {
+        gap: 14px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+    }
+
+    .spec-value {
+        font-size: 18px;
+    }
+
+    /* 갤러리 프리뷰 그리드: 화면 사이즈가 작아지면 이미지 한 줄(1열)로 배치 */
+    .gallery-preview-section .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 28px;
+        width: 100%;
+    }
+
+    .gallery-preview-section .gallery-frame,
+    .gallery-preview-section .gallery-frame-hero,
+    .gallery-preview-section .gallery-frame-md,
+    .gallery-preview-section .gallery-frame-lg {
+        grid-column: span 1;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+        min-height: 200px;
     }
 
     .brand-film-section {

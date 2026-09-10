@@ -1115,8 +1115,8 @@
    맥주 반응형 미디어 쿼리 (Beer Responsive Styles)
    ========================================================================== */
 
-/* 1200px 이하: 대형 태블릿 및 랩탑 */
-@media (max-width: 1200px) {
+/* 1025px ~ 1200px: 대형 태블릿 및 랩탑 */
+@media (min-width: 1025px) and (max-width: 1200px) {
     .beer-hero-section {
         padding-top: calc(var(--header-height) + 50px);
     }
@@ -1137,39 +1137,23 @@
     }
 }
 
-/* 1024px 이하: 태블릿 */
-@media (max-width: 1024px) {
+/* 768px ~ 1024px: 태블릿 전용 (데스크톱 웹페이지 양식 완벽 계승 및 유동형 맞춤) */
+@media (min-width: 768px) and (max-width: 1024px) {
     .beer-hero-section {
         padding-top: calc(var(--header-height) + 40px);
     }
 
-    .beer-title {
-        font-size: 48px;
-    }
-
-    .beer-modal-content {
-        max-width: 800px;
-        width: 90%;
-        height: auto;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-}
-
-/* 376px ~ 768px: 태블릿 전용 기준 치수 (요소 겹침 방지 및 태블릿 핏) */
-@media (min-width: 376px) and (max-width: 768px) {
-    .beer-hero-section {
-        padding-top: calc(var(--header-height) + 32px);
-    }
-
+    /* 데스크톱 웹페이지 양식: 좌측 타이틀 + 우측 문구 가로 배치 */
     .beer-title-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        gap: 24px;
     }
 
     .beer-title {
-        font-size: clamp(28px, 6vw, 38px);
+        font-size: clamp(32px, 4.5vw, 44px);
         word-break: keep-all;
     }
 
@@ -1178,13 +1162,22 @@
         padding-bottom: 0;
     }
 
-    /* 2px 축소 가이드라인 적용: 16px -> 14px */
+    /* 데스크톱 웹페이지 양식: 우측 상단 "04 BEERS - SMALL BATCH ONLY" 문구 표시 */
+    .beer-filter-note {
+        display: block !important;
+        font-size: clamp(12px, 1.4vw, 14px);
+        letter-spacing: 1.5px;
+        color: var(--text-gold);
+        white-space: nowrap;
+    }
+
     .beer-desc {
         margin-top: 24px;
-        font-size: clamp(13px, 3.4vw, 14px);
+        font-size: clamp(13px, 1.8vw, 14px);
         line-height: 1.7;
         word-break: keep-all;
         overflow-wrap: break-word;
+        max-width: 600px;
     }
 
     .beer-filter-section {
@@ -1194,48 +1187,35 @@
     .beer-filter-header {
         flex-direction: row;
         align-items: center;
-        justify-content: flex-start;
-    }
-
-    /* 모바일/태블릿 화면에서 우측 상단 "04 BEERS - SMALL BATCH ONLY" 텍스트 제거 */
-    .beer-filter-note {
-        display: none !important;
+        justify-content: space-between;
     }
 
     .beer-filter-buttons {
         flex-wrap: wrap;
-        gap: clamp(6px, 1.8vw, 10px);
-        width: 100%;
+        gap: clamp(8px, 1.5vw, 12px);
     }
 
     .beer-filter-btn {
         flex: 0 1 auto;
-        min-width: 68px;
-        height: 38px;
-        padding: 0 10px;
+        min-width: 72px;
+        height: 40px;
+        padding: 0 12px;
     }
 
-    .beer-filter-btn .btn-label {
-        font-size: 12px;
-    }
-
-    .beer-filter-btn .btn-count {
-        font-size: 10px;
-    }
-
+    /* 맥주 카드 그리드: 데스크톱 2열 그리드 */
     .beer-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        margin-top: 36px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(20px, 2.5vw, 32px);
+        margin-top: 40px;
         width: 100%;
     }
 
     .beer-card {
         width: 100%;
-        max-width: min(100%, 380px);
-        margin: 0 auto;
+        max-width: 100%;
+        margin: 0;
         height: auto;
-        min-height: 560px;
+        min-height: 540px;
         box-sizing: border-box;
     }
 
@@ -1328,21 +1308,22 @@
         overflow-wrap: break-word;
     }
 
-    /* 양조 철학 소개 섹션 반응형 설정 (Brewing Philosophy Promo Section) */
+    /* 양조 철학 소개 섹션 데스크톱 양식 (가로 분할) */
     .beer-philosophy-section {
-        padding: 56px 0;
+        padding: clamp(48px, 6vw, 68px) 0;
     }
 
     .beer-philosophy-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 26px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: clamp(24px, 3.5vw, 44px);
         width: 100%;
         max-width: 100%;
     }
 
     .beer-philosophy-title {
-        font-size: clamp(22px, 5.5vw, 30px);
+        font-size: clamp(24px, 3.5vw, 32px);
         white-space: normal;
         word-break: keep-all;
         line-height: 1.3;
@@ -1350,6 +1331,7 @@
 
     .beer-philosophy-btn {
         font-size: 16px;
+        flex-shrink: 0;
     }
 
     /* 맥주 상세 모달 모바일/태블릿 반응형 */
@@ -1359,6 +1341,13 @@
         height: auto;
         max-height: 88vh;
         overflow-y: auto;
+    }
+
+    @media (min-width: 601px) {
+        .beer-modal-content {
+            width: min(90vw, 680px);
+            max-width: 680px;
+        }
     }
 
     .beer-modal-header {
@@ -1504,8 +1493,8 @@
     }
 }
 
-/* 0 ~ 375px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
-@media (max-width: 375px) {
+/* 0 ~ 767px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
+@media (max-width: 767px) {
     .beer-hero-section {
         padding-top: calc(var(--header-height) + 24px);
     }

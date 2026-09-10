@@ -151,7 +151,9 @@
 /* 400x600 사이즈, --color-sub-2 굿즈 카드 */
 .goods-card {
     width: 400px;
-    height: 600px;
+    max-width: 100%;
+    height: auto;
+    min-height: 600px;
     background-color: var(--color-sub-2);
     /* --color-sub-2 */
     border: 1px solid rgba(197, 160, 89, 0.4);
@@ -196,8 +198,10 @@
 
 /* 카드 400x400 이미지 프레임 (이미지 미정 프레임 틀) */
 .goods-card-img-frame {
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     background-color: rgba(24, 35, 31, 0.4);
     border-bottom: 1px solid rgba(197, 160, 89, 0.4);
     box-sizing: border-box;
@@ -234,25 +238,27 @@
     color: var(--text-muted);
 }
 
-/* 추후 실제 이미지 삽입 시 사용할 클래스 */
+/* 추후 실제 이미지 삽입 시 사용할 클래스 (가운데 정렬) */
 .goods-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center center;
     display: block;
 }
 
-/* 곡우 코스터 카드 이미지 위치 보정 (하단 잘림 방지 및 수직 균형 정렬) */
+/* 곡우 코스터 카드 이미지 가운데 정렬 */
 .goods-img-coaster {
-    transform: translateY(-16px) scale(1.08);
-    transform-origin: center center;
+    object-position: center center;
 }
-
 
 /* 400x200 텍스트 영역: 상하좌우 24px 여백, 배경색 --color-sub-2 */
 .goods-card-text-box {
-    width: 400px;
-    height: 200px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    min-height: 200px;
+    flex: 1;
     padding: 24px;
     /* 상하좌우 24px 여백 */
     background-color: var(--color-sub-2);
@@ -742,8 +748,8 @@
    굿즈 반응형 미디어 쿼리 (Goods Responsive Styles)
    ========================================================================== */
 
-/* 1200px 이하: 대형 태블릿 및 랩탑 */
-@media (max-width: 1200px) {
+/* 1025px ~ 1200px: 대형 태블릿 및 랩탑 */
+@media (min-width: 1025px) and (max-width: 1200px) {
     .goods-hero-section {
         padding-top: calc(var(--header-height) + 50px);
     }
@@ -765,122 +771,105 @@
     }
 }
 
-/* 1024px 이하: 태블릿 */
-@media (max-width: 1024px) {
+/* 768px ~ 1024px: 태블릿 전용 (데스크톱 웹페이지 양식 완벽 계승 및 유동형 맞춤) */
+@media (min-width: 768px) and (max-width: 1024px) {
     .goods-hero-section {
         padding-top: calc(var(--header-height) + 40px);
     }
 
     .goods-title {
-        font-size: 48px;
-    }
-
-    .goods-list-section {
-        padding: 60px 0 80px;
-    }
-
-    .goods-modal-content {
-        width: 92%;
-        max-width: 540px;
-        height: auto;
-        max-height: 88vh;
-        overflow-y: auto;
-    }
-
-    .goods-modal-body {
-        flex-direction: column;
-        height: auto;
-        gap: 24px;
-    }
-
-    .goods-modal-img-frame {
-        width: 100%;
-        height: 280px;
-    }
-
-    .goods-modal-info-col {
-        width: 100%;
-        height: auto;
-        padding: 0;
-    }
-}
-
-/* 376px ~ 768px: 태블릿 전용 기준 치수 (유동형 레이아웃 적용) */
-@media (min-width: 376px) and (max-width: 768px) {
-    .goods-hero-section {
-        padding-top: calc(var(--header-height) + 32px);
-    }
-
-    .goods-title {
-        font-size: clamp(28px, 6vw, 36px);
+        font-size: clamp(32px, 4.5vw, 42px);
         word-break: keep-all;
     }
 
-    /* 2px 축소 가이드라인 적용: 16px -> 14px */
     .goods-desc {
-        font-size: clamp(13px, 3.4vw, 14px);
+        font-size: clamp(13px, 1.8vw, 15px);
         line-height: 1.7;
         word-break: keep-all;
         overflow-wrap: break-word;
+        max-width: 600px;
     }
 
+    /* 굿즈 카드 그리드: 데스크톱 3열 그리드 계승, 자연스럽게 줄어들고 정해진 규격(max 400px)에서 늘어나지 않도록 설정 */
     .goods-cards-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 32px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        align-items: stretch;
+        gap: clamp(14px, 2vw, 28px);
         width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .goods-card {
         width: 100%;
-        max-width: min(100%, 380px);
+        max-width: 400px;
         margin: 0 auto;
         height: auto;
-        min-height: 540px;
+        min-height: 480px;
+        display: flex;
+        flex-direction: column;
         box-sizing: border-box;
     }
 
-    .goods-card-img-box {
+    .goods-card-img-frame {
         width: 100%;
-        height: 320px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        max-width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .goods-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
     }
 
     .goods-card-text-box {
         width: 100%;
         height: auto;
-        padding: 22px;
+        flex: 1;
+        padding: clamp(12px, 1.8vw, 20px);
+        box-sizing: border-box;
     }
 
     .goods-card-title {
-        font-size: 18px;
+        font-size: clamp(15px, 2vw, 19px);
     }
 
     .goods-card-price {
-        font-size: 18px;
+        font-size: clamp(14px, 1.8vw, 18px);
     }
 
     .goods-card-subtitle {
-        font-size: 11px;
+        font-size: clamp(10px, 1.2vw, 11px);
     }
 
-    /* 2px 축소 가이드라인 적용: 14px -> 13px */
     .goods-card-desc {
-        font-size: clamp(12px, 3.2vw, 13px);
-        margin-top: 18px;
+        font-size: clamp(11px, 1.3vw, 13px);
+        margin-top: clamp(10px, 1.5vw, 16px);
+        line-height: 1.5;
         word-break: keep-all;
         overflow-wrap: break-word;
     }
 
-    /* 맥주 홍보 섹션 반응형 설정 (Beer Promo Section) (유동형) */
+    /* 맥주 홍보 섹션 데스크톱 웹페이지 양식 (가로 분할) */
     .beer-promo-section {
         height: auto;
-        padding: 56px 0;
+        padding: clamp(48px, 6vw, 68px) 0;
     }
 
     .beer-promo-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: clamp(24px, 3.5vw, 44px);
         width: 100%;
         max-width: 100%;
     }
@@ -891,7 +880,7 @@
     }
 
     .beer-promo-title {
-        font-size: clamp(22px, 5.5vw, 30px);
+        font-size: clamp(24px, 3.5vw, 32px);
         white-space: normal;
         word-break: keep-all;
         line-height: 1.3;
@@ -909,6 +898,13 @@
         max-height: 88vh;
         overflow-y: auto;
         padding: 20px 18px 24px;
+    }
+
+    @media (min-width: 601px) {
+        .goods-modal-content {
+            width: min(90vw, 640px);
+            max-width: 640px;
+        }
     }
 
     .goods-modal-header {
@@ -986,8 +982,8 @@
     }
 }
 
-/* 0 ~ 375px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
-@media (max-width: 375px) {
+/* 0 ~ 767px: 모바일 전용 기준 치수 (유동형 레이아웃 및 2px 축소 최적화) */
+@media (max-width: 767px) {
     .goods-hero-section {
         padding-top: calc(var(--header-height) + 24px);
     }
@@ -1005,6 +1001,7 @@
     }
 
     .goods-cards-grid {
+        display: flex;
         flex-direction: column;
         align-items: center;
         gap: 24px;
@@ -1017,18 +1014,34 @@
         margin: 0 auto;
         height: auto;
         min-height: 480px;
+        display: flex;
+        flex-direction: column;
         box-sizing: border-box;
     }
 
-    .goods-card-img-box {
+    .goods-card-img-frame {
         width: 100%;
-        height: 260px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .goods-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
     }
 
     .goods-card-text-box {
         width: 100%;
         height: auto;
+        flex: 1;
         padding: 18px;
+        box-sizing: border-box;
     }
 
     .goods-card-title {
