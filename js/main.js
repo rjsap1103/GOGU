@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 900 && mobileDrawer.classList.contains('is-active')) {
+            if (window.innerWidth > 768 && mobileDrawer.classList.contains('is-active')) {
                 closeMobileMenu();
             }
         });

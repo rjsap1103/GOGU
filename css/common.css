@@ -1152,11 +1152,11 @@ body.menu-open {
     }
 }
 
-/* 900px 이하: 태블릿 세로 및 모바일 네비게이션 드로어 전환 */
-@media (max-width: 900px) {
+/* 768px 이하: 태블릿 기준 치수 (GNB 모바일 전환, 푸터/섹션 모바일 드로어) */
+@media (max-width: 768px) {
     :root {
-        --page-padding-x: 32px;
-        --header-height: 72px;
+        --page-padding-x: 24px;
+        --header-height: 70px;
     }
 
     /* GNB 모바일 전환 */
@@ -1212,12 +1212,12 @@ body.menu-open {
         position: absolute;
         top: 0;
         right: 0;
-        width: 320px;
+        width: 300px;
         max-width: 85%;
         height: 100%;
         background-color: var(--color-main);
         border-left: 1px solid var(--border-color);
-        padding: 90px 32px 40px;
+        padding: 85px 28px 36px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -1245,7 +1245,7 @@ body.menu-open {
     .mobile-nav-list {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 18px;
         flex: 1;
         margin-top: 24px;
     }
@@ -1261,7 +1261,7 @@ body.menu-open {
 
     .mobile-nav-link .link-en {
         font-family: var(--font-en);
-        font-size: 30px;
+        font-size: 28px;
         color: var(--text-primary);
         letter-spacing: 1.5px;
         line-height: 1;
@@ -1270,7 +1270,7 @@ body.menu-open {
 
     .mobile-nav-link .link-ko {
         font-family: var(--font-title);
-        font-size: 14px;
+        font-size: 13px;
         color: var(--text-gold);
         line-height: 1;
     }
@@ -1287,15 +1287,15 @@ body.menu-open {
 
     .mobile-nav-desc {
         font-family: var(--font-body);
-        font-size: 13px;
+        font-size: 12px;
         color: var(--text-muted);
         line-height: 1.6;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
 
     .mobile-nav-badge {
         font-family: var(--font-en);
-        font-size: 12px;
+        font-size: 11px;
         color: var(--text-gold);
         letter-spacing: 1px;
     }
@@ -1319,13 +1319,24 @@ body.menu-open {
     }
 
     .footer-giant-title {
-        font-size: 96px;
-        margin-bottom: 24px;
+        font-size: 80px;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 16px 0;
+    }
+
+    .footer-bottom-right {
+        text-align: left;
     }
 
     /* 공유 컴포넌트: Seasonal */
     .seasonal-section {
-        padding: 80px 0;
+        padding: 70px 0;
     }
 
     .seasonal-container {
@@ -1346,80 +1357,8 @@ body.menu-open {
         width: 100%;
     }
 
-    /* 공유 컴포넌트: Goods Promo */
-    .goods-promo-section {
-        padding: 60px 0;
-    }
-
-    .goods-promo-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 32px;
-    }
-
-    .goods-promo-text-col {
-        max-width: 100%;
-    }
-}
-
-/* 640px 이하: 모바일 기본 */
-@media (max-width: 640px) {
-    :root {
-        --page-padding-x: 20px;
-        --header-height: 64px;
-    }
-
-    .logo-img {
-        width: 46px;
-        height: 46px;
-    }
-
-    /* 푸터 모바일 */
-    .footer-info-group {
-        flex-direction: column;
-        gap: 32px;
-    }
-
-    .footer-col-title {
-        margin-bottom: 16px;
-    }
-
-    .footer-giant-banner {
-        margin-bottom: 24px;
-    }
-
-    .footer-giant-title {
-        font-size: 52px;
-        margin-bottom: 6px;
-        letter-spacing: 1px;
-    }
-
-    .footer-bottom-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 16px 0;
-    }
-
-    .footer-bottom-right {
-        text-align: left;
-    }
-
-    .footer-ai-badge {
-        width: 100%;
-        max-width: 320px;
-        height: auto;
-        padding: 8px 12px;
-    }
-
-    .footer-ai-text {
-        white-space: normal;
-        line-height: 1.4;
-    }
-
-    /* 시즌 한정 */
     .seasonal-title {
-        font-size: 32px;
+        font-size: 34px;
     }
 
     .seasonal-specs-row {
@@ -1428,32 +1367,89 @@ body.menu-open {
         margin-bottom: 28px;
     }
 
-    /* 굿즈 프로모 */
+    /* 공유 컴포넌트: Goods Promo */
+    .goods-promo-section {
+        padding: 60px 0;
+    }
+
+    .goods-promo-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+    }
+
     .goods-promo-title {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .goods-promo-btn {
         width: 100%;
-        max-width: 280px;
+        max-width: 260px;
     }
 }
 
-/* 480px 이하: 소형 모바일 */
-@media (max-width: 480px) {
+/* 375px 이하: 모바일 기준 치수 최적화 */
+@media (max-width: 375px) {
     :root {
         --page-padding-x: 16px;
+        --header-height: 62px;
+    }
+
+    .logo-img {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* 푸터 모바일 */
+    .footer-info-group {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .footer-col-title {
+        margin-bottom: 14px;
+    }
+
+    .footer-giant-banner {
+        margin-bottom: 20px;
     }
 
     .footer-giant-title {
         font-size: 42px;
+        margin-bottom: 4px;
+        letter-spacing: 0.5px;
     }
 
+    .footer-ai-badge {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 8px 10px;
+    }
+
+    .footer-ai-text {
+        white-space: normal;
+        line-height: 1.4;
+        font-size: 9px;
+    }
+
+    .footer-bottom-left,
+    .footer-bottom-right {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    /* 시즌 한정 */
     .seasonal-title {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .spec-value {
+        font-size: 22px;
+    }
+
+    /* 굿즈 프로모 */
+    .goods-promo-title {
         font-size: 24px;
     }
 
