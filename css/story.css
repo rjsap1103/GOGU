@@ -230,9 +230,10 @@
     transform: scale(1.04);
 }
 
-/* 600x40 캡션 영역: --color-main 80% 투명도 배경, 좌우 16px --text-gold-light 텍스트 */
+/* 600x40 캡션 영역: --color-main 80% 투명도 배경, 반응형 유동형 너비 및 서체 */
 .ingredient-caption {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 40px;
     background-color: rgba(24, 35, 31, 0.8);
     /* --color-main 투명도 80% */
@@ -242,14 +243,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 clamp(12px, 1.8vw, 20px);
 }
 
 .caption-en {
     font-family: var(--font-en);
     /* Bebas Neue */
-    font-size: 16px;
-    /* 16px */
+    font-size: clamp(12px, 1.1vw, 16px);
     color: var(--text-gold-light);
     /* --text-gold-light */
     letter-spacing: 1px;
@@ -260,8 +260,7 @@
 .caption-ko {
     font-family: var(--font-title);
     /* 국민대 성곡 세리프 */
-    font-size: 16px;
-    /* 16px */
+    font-size: clamp(12px, 1.1vw, 16px);
     color: var(--text-gold-light);
     /* --text-gold-light */
     line-height: 1;
@@ -539,10 +538,12 @@
     filter: brightness(0) saturate(100%) invert(67%) sepia(43%) saturate(468%) hue-rotate(5deg) brightness(91%) contrast(87%);
 }
 
-/* 우측 텍스트 영역 (1215px 가로선과 x축 일치) */
+/* 우측 텍스트 영역 (유동형 100%, 최대 1215px) */
 .process-content-col {
-    width: 1215px;
-    flex-shrink: 0;
+    width: 100%;
+    max-width: 1215px;
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -555,6 +556,7 @@
     justify-content: space-between;
     align-items: flex-start;
     box-sizing: border-box;
+    gap: 16px;
 }
 
 /* 좌측 3개 텍스트: 베이스라인 정렬 + 10px 간격 */
@@ -562,6 +564,7 @@
     display: flex;
     align-items: baseline;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 /* 숫자 텍스트: --font-title, --color-accent, 16px */
@@ -572,6 +575,7 @@
     color: var(--color-accent);
     /* --color-accent (#AD1931) */
     line-height: 1;
+    flex-shrink: 0;
 }
 
 /* 타이틀: --font-title, --text-primary, 36px */
@@ -635,11 +639,14 @@
     color: var(--text-muted);
     /* --text-muted */
     line-height: 1.6;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
-/* 설명문 하단 42px 간격 1215px 가로선 (--text-gold, 1px 굵기) */
+/* 설명문 하단 42px 간격 유동형 가로선 (--text-gold, 1px 굵기) */
 .process-divider-line {
-    width: 1215px;
+    width: 100%;
+    max-width: 1215px;
     height: 1px;
     background-color: var(--text-gold);
     /* --text-gold */
@@ -796,6 +803,15 @@
         flex-shrink: 1;
     }
 
+    .process-name {
+        font-size: clamp(28px, 2.6vw, 32px);
+    }
+
+    .process-desc {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+
     .process-divider-line {
         width: 100%;
     }
@@ -905,7 +921,7 @@
         word-break: keep-all;
     }
 
-    /* 공정 섹션 */
+    /* 공정 섹션 (6개 템플릿 반응형 유동형 텍스트 축소) */
     .story-process-section {
         padding: clamp(60px, 7vw, 80px) 0;
     }
@@ -917,29 +933,55 @@
     }
 
     .process-item {
-        gap: 24px;
+        gap: clamp(16px, 2.5vw, 24px);
         margin-bottom: 28px;
         width: 100%;
     }
 
     .process-icon-box {
-        width: 56px;
-        height: 56px;
+        width: clamp(52px, 6vw, 60px);
+        height: clamp(52px, 6vw, 60px);
     }
 
     .process-icon-img {
-        width: 30px;
-        height: 30px;
+        width: clamp(28px, 3.2vw, 32px);
+        height: clamp(28px, 3.2vw, 32px);
     }
 
-    .process-title-text {
-        font-size: clamp(18px, 2.5vw, 22px);
+    .process-top-row {
+        gap: 12px;
+    }
+
+    .process-title-group {
+        gap: clamp(6px, 1vw, 10px);
+    }
+
+    .process-num {
+        font-size: clamp(13px, 1.6vw, 15px);
+    }
+
+    .process-name {
+        font-size: clamp(22px, 2.8vw, 28px);
         word-break: keep-all;
     }
 
+    .process-name-ko {
+        font-size: clamp(13px, 1.6vw, 15px);
+    }
+
+    .process-duration-badge {
+        width: clamp(44px, 5vw, 50px);
+        height: clamp(24px, 2.8vw, 26px);
+    }
+
+    .process-duration-badge span {
+        font-size: clamp(9px, 1.1vw, 10px);
+    }
+
     .process-desc {
+        margin-top: 14px;
         margin-bottom: 24px;
-        font-size: clamp(13px, 1.8vw, 14px);
+        font-size: clamp(13px, 1.6vw, 15px);
         line-height: 1.65;
         word-break: keep-all;
         overflow-wrap: break-word;
@@ -1084,22 +1126,53 @@
         height: 24px;
     }
 
-    .process-title-row {
-        flex-wrap: wrap;
-        gap: 8px;
+    .process-content-col {
+        width: 100%;
     }
 
-    .process-title-text {
-        font-size: 18px;
+    .process-top-row {
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .process-title-group {
+        gap: 8px;
+        align-items: baseline;
+    }
+
+    .process-num {
+        font-size: 13px;
+    }
+
+    .process-name {
+        font-size: clamp(18px, 5vw, 22px);
         word-break: keep-all;
+    }
+
+    .process-name-ko {
+        font-size: 13px;
+    }
+
+    .process-duration-badge {
+        width: 42px;
+        height: 22px;
+    }
+
+    .process-duration-badge span {
+        font-size: 9px;
     }
 
     .process-desc {
-        font-size: 12px;
+        font-size: clamp(12px, 3.4vw, 13px);
         line-height: 1.55;
+        margin-top: 10px;
         margin-bottom: 18px;
         word-break: keep-all;
         overflow-wrap: break-word;
+    }
+
+    .process-divider-line {
+        width: 100%;
     }
 
     /* 철학 섹션 모바일 전용 (유동형) */

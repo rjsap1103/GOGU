@@ -305,15 +305,14 @@
     transform: scale(1.05);
 }
 
-/* 카드 내부 좌측 상단 맥주 종류 태그
-   - 100x30 사이즈, 배경색 --color-main, 테두리색상 --text-gold, 1px 굵기, 투명도 40%
-   - 상하좌우 24px 여백 기준 top: 24px, left: 24px */
+/* 카드 내부 좌측 상단 맥주 종류 태그 (반응형 유동형)
+   - 최대 100x30 사이즈, 배경색 --color-main, 테두리색상 --text-gold, 1px 굵기, 투명도 40% */
 .beer-card-tag {
     position: absolute;
-    top: 24px;
-    left: 24px;
-    width: 100px;
-    height: 30px;
+    top: clamp(14px, 1.8vw, 24px);
+    left: clamp(14px, 1.8vw, 24px);
+    width: clamp(84px, 8vw, 100px);
+    height: clamp(26px, 2.2vw, 30px);
     background-color: var(--color-main);
     border: 1px solid rgba(197, 160, 89, 0.4);
     box-sizing: border-box;
@@ -328,7 +327,7 @@
     /* Bebas Neue */
     color: var(--text-gold);
     /* --text-gold */
-    font-size: 10px;
+    font-size: clamp(9px, 0.85vw, 10px);
     line-height: 1;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -412,10 +411,10 @@
     align-self: center;
 }
 
-/* 맥주 색상 표시: 16x16 원 배치 */
+/* 맥주 색상 표시: 반응형 유동형 원 배치 (기본 16x16, 모바일 축소) */
 .beer-color-circle {
-    width: 16px;
-    height: 16px;
+    width: clamp(13px, 1.3vw, 16px);
+    height: clamp(13px, 1.3vw, 16px);
     border-radius: 50%;
     background-color: #F0B41D;
     display: block;
@@ -776,13 +775,14 @@
     display: block;
 }
 
-/* 정보 섹션 좌측 하단 맥주 색상 배지: 240x30, --color-sub-1, corner radius 20, 테두리 --text-gold 1px 40% */
+/* 정보 섹션 좌측 하단 맥주 색상 배지: 최대 240x30, 반응형 유동형 축소 */
 .beer-modal-color-badge {
     position: absolute;
-    left: 24px;
-    bottom: 24px;
-    width: 240px;
-    height: 30px;
+    left: clamp(12px, 1.8vw, 24px);
+    bottom: clamp(12px, 1.8vw, 24px);
+    width: clamp(160px, 22vw, 240px);
+    max-width: calc(100% - clamp(24px, 3.6vw, 48px));
+    height: clamp(26px, 2.5vw, 30px);
     background-color: var(--color-sub-1);
     /* --color-sub-1 (#344E41) */
     border-radius: 20px;
@@ -790,34 +790,35 @@
     border: 1px solid rgba(197, 160, 89, 0.4);
     /* 테두리 --text-gold, 1px 굵기, 투명도 40% */
     box-sizing: border-box;
-    padding: 0 12px;
+    padding: 0 clamp(8px, 1vw, 12px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    /* 10px 간격 */
+    gap: clamp(6px, 0.8vw, 10px);
     z-index: 2;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* 20x20 맥주 색상표시 원 */
+/* 맥주 색상표시 원 (반응형 축소) */
 .beer-modal-color-dot {
-    width: 20px;
-    height: 20px;
+    width: clamp(14px, 1.6vw, 20px);
+    height: clamp(14px, 1.6vw, 20px);
     border-radius: 50%;
     flex-shrink: 0;
     display: block;
     background-color: #DDB86C;
 }
 
-/* 맥주 색상 배지 텍스트: --font-title, --text-gold */
+/* 맥주 색상 배지 텍스트: --font-title, --text-gold, 반응형 유동형 폰트 */
 .beer-modal-color-name {
     font-family: var(--font-title);
     /* 국민대 성곡 세리프 */
-    font-size: 13px;
+    font-size: clamp(10px, 1vw, 13px);
     color: var(--text-gold);
     line-height: 1;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 이미지 우측 36px 간격 상세 텍스트 영역 (상하 36px 여백) */
@@ -1167,7 +1168,7 @@
         display: block !important;
         font-size: clamp(12px, 1.4vw, 14px);
         letter-spacing: 1.5px;
-        color: var(--text-gold);
+        color: var(--text-muted);
         white-space: nowrap;
     }
 
