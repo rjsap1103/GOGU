@@ -17,6 +17,7 @@
    - 하단 여백: 100px 적용 (padding-bottom: 100px)
    ========================================================================== */
 .story-manifesto-section {
+    position: relative;
     width: 100%;
     max-width: var(--container-max-width);
     margin: 0 auto;
@@ -25,9 +26,40 @@
     padding-bottom: 100px;
     /* 하단 여백 100px 적용 */
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* 히어로 배경 은은한 이미지 */
+.story-manifesto-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/images/second_brandfilm.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 텍스트 가독성을 위한 하단 그라데이션 페이드 */
+.story-manifesto-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(24, 35, 31, 0.4) 0%,
+        rgba(24, 35, 31, 0.2) 60%,
+        var(--color-main) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .story-manifesto-container {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

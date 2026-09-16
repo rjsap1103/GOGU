@@ -150,7 +150,7 @@
                             <polyline points="21 15 16 10 5 21" />
                         </svg>
                         <span class="gallery-tab-label">IMAGE ARCHIVE</span>
-                        <span class="gallery-tab-count">6</span>
+                        <span class="gallery-tab-count">19</span>
                     </button>
 
                     <!-- 2번 버튼: 비디오 아카이브 (기본 비활성화, 텍스트 내용은 나중에 수정 가능) -->
@@ -161,71 +161,136 @@
                             <path d="M17 9l5-3v12l-5-3v-6z" />
                         </svg>
                         <span class="gallery-tab-label">VIDEO ARCHIVE</span>
-                        <span class="gallery-tab-count">2</span>
+                        <span class="gallery-tab-count">4</span>
                     </button>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             갤러리 콘텐츠 섹션 (1번: 이미지 그리드 6개 프레임 / 2번: 영상 카드 그리드)
+             갤러리 콘텐츠 섹션 (1번: 이미지 그리드 6개 프레임 x 3세트 + 피날레 1개 프레임 / 2번: 영상 카드 그리드)
              ========================================================================== -->
         <section class="gallery-content-section">
             <div class="container gallery-content-container">
-                <!-- 1. 이미지 아카이브 뷰 (기본 활성화: 6개 프레임) -->
+                <!-- 1. 이미지 아카이브 뷰 (기본 활성화: 총 4개 세트) -->
                 <div id="gallery-image-view" class="gallery-view-pane active">
-                    <div class="gallery-grid">
-                        <!-- Frame 1: 1320 x 520 (시네마틱 와이드) -->
-                        <div class="gallery-frame gallery-frame-hero gallery-frame-1">
-                            <img src="./assets/images/hero_image.jpg" alt="시네마틱 와이드 비주얼" class="gallery-img">
-                            <div class="frame-overlay">
-                                <span class="frame-tag">FRAME 01</span>
-                                <span class="frame-title">군산 황금빛 보리밭과 브루어리의 여명</span>
+                    <div class="gallery-sets-container">
+                        <!-- SET 1 (Group_1) -->
+                        <div class="gallery-set-group" id="gallery-set-1">
+                            <div class="gallery-set-divider"></div>
+                            <div class="gallery-grid">
+                                <!-- Frame 01: 1320 x 520 (시네마틱 와이드) -->
+                                <div class="gallery-frame gallery-frame-hero">
+                                    <img src="./assets/images/Group_1/Group_1_Cinematic_Wide 1320 x 520 px/Cinematic_Wide_1.jpeg" alt="시네마틱 와이드 비주얼 01" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 02: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_1/Group_1_Length 425 x 500 px/Length_1.png" alt="세로 비주얼 01" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 03: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_1/Group_1_Length 425 x 500 px/Length_2.png" alt="세로 비주얼 02" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 04: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_1/Group_1_Length 425 x 500 px/Length_3.jpeg" alt="세로 비주얼 03" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 05: 650 x 420 (와이드) -->
+                                <div class="gallery-frame gallery-frame-lg">
+                                    <img src="./assets/images/Group_1/Group_1_Wide 650 x 420 px/Wide_1.png" alt="와이드 비주얼 01" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 06: 650 x 420 (와이드) -->
+                                <div class="gallery-frame gallery-frame-lg">
+                                    <img src="./assets/images/Group_1/Group_1_Wide 650 x 420 px/Wide_2.png" alt="와이드 비주얼 02" class="gallery-img">
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Frame 2: 426 x 500 (세로형) -->
-                        <div class="gallery-frame gallery-frame-md gallery-frame-2">
-                            <img src="./assets/images/BARLEY.jpg" alt="군산 맥아 디테일" class="gallery-img">
-                            <div class="frame-overlay">
-                                <span class="frame-tag">FRAME 02</span>
-                                <span class="frame-title">군산 황금 보리 텍스처</span>
+                        <!-- SET 2 (Group_2) -->
+                        <div class="gallery-set-group" id="gallery-set-2">
+                            <div class="gallery-set-divider"></div>
+                            <div class="gallery-grid">
+                                <!-- Frame 07: 1320 x 520 (시네마틱 와이드) -->
+                                <div class="gallery-frame gallery-frame-hero">
+                                    <img src="./assets/images/Group_2/Group_2_Cinematic_Wide 1320 x 520 px/Cinematic_Wide_2.jpeg" alt="시네마틱 와이드 비주얼 02" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 08: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_2/Group_2_Length 425 x 500 px/Length_4.jpeg" alt="세로 비주얼 04" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 09: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_2/Group_2_Length 425 x 500 px/Length_5.jpeg" alt="세로 비주얼 05" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 10: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_2/Group_2_Length 425 x 500 px/Length_6.jpeg" alt="세로 비주얼 06" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 11: 650 x 420 (와이드) -->
+                                <div class="gallery-frame gallery-frame-lg">
+                                    <img src="./assets/images/Group_2/Group_2_Wide 650 x 420 px/Wide_3.jpeg" alt="와이드 비주얼 03" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 12: 650 x 420 (와이드) -->
+                                <div class="gallery-frame gallery-frame-lg">
+                                    <img src="./assets/images/Group_2/Group_2_Wide 650 x 420 px/Wide_4.png" alt="와이드 비주얼 04" class="gallery-img">
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Frame 3: 426 x 500 (세로형) -->
-                        <div class="gallery-frame gallery-frame-md gallery-frame-3">
-                            <img src="./assets/images/HOP.jpeg" alt="홍천 신선한 홉" class="gallery-img">
-                            <div class="frame-overlay">
-                                <span class="frame-tag">FRAME 03</span>
-                                <span class="frame-title">홍천 홉의 신선한 아로마</span>
+                        <!-- SET 3 (Group_3) -->
+                        <div class="gallery-set-group" id="gallery-set-3">
+                            <div class="gallery-set-divider"></div>
+                            <div class="gallery-grid">
+                                <!-- Frame 13: 1320 x 520 (시네마틱 와이드) -->
+                                <div class="gallery-frame gallery-frame-hero">
+                                    <img src="./assets/images/Group_3/Group_3_Cinematic_Wide 1320 x 520 px/Cinematic_Wide_3.png" alt="시네마틱 와이드 비주얼 03" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 14: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_3/Group_3_Length 425 x 500 px/Length_7.jpeg" alt="세로 비주얼 07" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 15: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_3/Group_3_Length 425 x 500 px/Length_8.png" alt="세로 비주얼 08" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 16: 425 x 500 (세로형) -->
+                                <div class="gallery-frame gallery-frame-md">
+                                    <img src="./assets/images/Group_3/Group_3_Length 425 x 500 px/Length_9.jpeg" alt="세로 비주얼 09" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 17: 650 x 420 (와이드) -->
+                                <div class="gallery-frame gallery-frame-lg">
+                                    <img src="./assets/images/Group_3/Group_3_Wide 650 x 420 px/Wide_5.jpeg" alt="와이드 비주얼 05" class="gallery-img">
+                                </div>
+
+                                <!-- Frame 18: 650 x 420 (와이드) -->
+                                <div class="gallery-frame gallery-frame-lg">
+                                    <img src="./assets/images/Group_3/Group_3_Wide 650 x 420 px/Wide_6.jpeg" alt="와이드 비주얼 06" class="gallery-img">
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Frame 4: 426 x 500 (세로형) -->
-                        <div class="gallery-frame gallery-frame-md gallery-frame-4">
-                            <img src="./assets/images/YEAST.jpeg" alt="한국 토종 효모" class="gallery-img">
-                            <div class="frame-overlay">
-                                <span class="frame-tag">FRAME 04</span>
-                                <span class="frame-title">토종 효모의 생명력</span>
-                            </div>
-                        </div>
-
-                        <!-- Frame 5: 650 x 420 (와이드) -->
-                        <div class="gallery-frame gallery-frame-lg gallery-frame-5">
-                            <img src="./assets/images/pour_beer.jpeg" alt="맥주 서빙 텍스처" class="gallery-img">
-                            <div class="frame-overlay">
-                                <span class="frame-tag">FRAME 05</span>
-                                <span class="frame-title">잔을 채우는 완벽한 크레마</span>
-                            </div>
-                        </div>
-
-                        <!-- Frame 6: 650 x 420 (와이드) -->
-                        <div class="gallery-frame gallery-frame-lg gallery-frame-6">
-                            <img src="./assets/images/DARK BEER MOCKUP.jpeg" alt="곡우 시그니처 맥주" class="gallery-img">
-                            <div class="frame-overlay">
-                                <span class="frame-tag">FRAME 06</span>
-                                <span class="frame-title">빛과 음영의 맥주 실루엣</span>
+                        <!-- SET 4 (Group_4: 갤러리 피날레 와이드) -->
+                        <div class="gallery-set-group" id="gallery-set-4">
+                            <div class="gallery-set-divider"></div>
+                            <div class="gallery-grid">
+                                <!-- Frame 19: 1320 x 520 (시네마틱 와이드 마무리) -->
+                                <div class="gallery-frame gallery-frame-hero">
+                                    <img src="./assets/images/Group_4/Cinematic_Wide_4.jpeg" alt="시네마틱 와이드 비주얼 04" class="gallery-img">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -234,40 +299,82 @@
                 <!-- 2. 영상 아카이브 뷰 (2번 버튼 클릭 시 노출) -->
                 <div id="gallery-video-view" class="gallery-view-pane is-hidden">
                     <div class="gallery-video-grid">
-                        <!-- Video Card 1 -->
-                        <div class="gallery-video-card">
+                        <!-- Video Card 1 (유튜브 비디오 링크: data-video-id 속성값만 변경하면 언제든 수정 가능) -->
+                        <div class="gallery-video-card" data-video-id="fxy0TyU5f6Y" tabindex="0" role="button"
+                            aria-label="곡우의 메인 브랜드">
                             <div class="gallery-video-thumb-wrap">
-                                <img src="./assets/images/brand_film_thumb.jpeg" alt="브랜드 필름"
+                                <img src="./assets/images/main_brandfilm.png" alt="브랜드 필름" class="gallery-video-thumb">
+                                <div class="gallery-video-play-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                                <span class="gallery-video-duration">00:18</span>
+                            </div>
+                            <div class="gallery-video-info">
+                                <span class="gallery-video-tag">BRAND FILM</span>
+                                <h3 class="gallery-video-title">브랜드 필름</h3>
+                                <p class="gallery-video-desc">전라북도 군산의 바람과 햇살, 장인의 손길로 빚어낸 한 잔의 시네마틱 아카이브</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Card 2 (유튜브 비디오 링크: data-video-id 속성값만 변경하면 언제든 수정 가능) -->
+                        <div class="gallery-video-card" data-video-id="uwTsGQiJ1L8" tabindex="0" role="button"
+                            aria-label="소배치 발효와 맥주의 탄생 영상 재생">
+                            <div class="gallery-video-thumb-wrap">
+                                <img src="./assets/images/second_brandfilm.png" alt="세컨드 브랜드 필름"
                                     class="gallery-video-thumb">
                                 <div class="gallery-video-play-btn">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
-                                <span class="gallery-video-duration">01:24</span>
+                                <span class="gallery-video-duration">00:37</span>
                             </div>
                             <div class="gallery-video-info">
-                                <span class="gallery-video-tag">BRAND FILM</span>
-                                <h3 class="gallery-video-title">곡우의 사계 - 홉과 보리가 숨쉬는 땅</h3>
-                                <p class="gallery-video-desc">전라북도 군산의 바람과 햇살, 장인의 손길로 빚어낸 한 잔의 시네마틱 아카이브</p>
+                                <span class="gallery-video-tag">SECOND BRAND FILM</span>
+                                <h3 class="gallery-video-title">두번째 브랜드 필름</h3>
+                                <p class="gallery-video-desc"></p>
                             </div>
                         </div>
 
-                        <!-- Video Card 2 -->
-                        <div class="gallery-video-card">
+                        <!-- Video Card 3 (굿즈 맥주잔 홍보 영상) -->
+                        <div class="gallery-video-card" data-video-id="jm_9Tq7whYQ" tabindex="0" role="button"
+                            aria-label="굿즈 맥주잔 홍보 영상 재생">
                             <div class="gallery-video-thumb-wrap">
-                                <img src="./assets/images/pour_beer.jpeg" alt="브루잉 프로세스" class="gallery-video-thumb">
+                                <img src="./assets/images/beercup_film.png" alt="굿즈 맥주잔 홍보 영상"
+                                    class="gallery-video-thumb">
                                 <div class="gallery-video-play-btn">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
-                                <span class="gallery-video-duration">00:48</span>
+                                <span class="gallery-video-duration">00:12</span>
                             </div>
                             <div class="gallery-video-info">
-                                <span class="gallery-video-tag">BREWING PROCESS</span>
-                                <h3 class="gallery-video-title">소배치 발효와 맥주의 탄생</h3>
-                                <p class="gallery-video-desc">1,200리터 소배치 탱크 안에서 일어나는 신비로운 탄산과 거품의 파동</p>
+                                <span class="gallery-video-tag">GOODS FILM</span>
+                                <h3 class="gallery-video-title">굿즈 맥주잔 홍보 영상</h3>
+                                <p class="gallery-video-desc">맥주의 풍미와 향을 온전히 전하는 곡우 시그니처 글라스</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Card 4 (곡우 코스터 홍보 영상) -->
+                        <div class="gallery-video-card" data-video-id="x4qS8we5yqM" tabindex="0" role="button"
+                            aria-label="곡우 코스터 홍보 영상 재생">
+                            <div class="gallery-video-thumb-wrap">
+                                <img src="./assets/images/coaster_film.jpeg" alt="곡우 코스터 홍보 영상"
+                                    class="gallery-video-thumb">
+                                <div class="gallery-video-play-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                                <span class="gallery-video-duration">00:15</span>
+                            </div>
+                            <div class="gallery-video-info">
+                                <span class="gallery-video-tag">GOODS FILM</span>
+                                <h3 class="gallery-video-title">곡우 코스터 홍보 영상</h3>
+                                <p class="gallery-video-desc">정갈한 감성을 더하는 곡우 우드 코스터 컬렉션</p>
                             </div>
                         </div>
                     </div>
@@ -429,6 +536,28 @@
             <div class="gallery-modal-caption">
                 <span id="gallery-modal-tag" class="gallery-modal-tag"></span>
                 <h4 id="gallery-modal-title" class="gallery-modal-title"></h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         유튜브 비디오 모달 팝업 (Video Modal - 16:9 Aspect Ratio)
+         - 데스크탑 기준 최대 1280px x 720px, 화면 중앙 정렬, 16:9 비율 유지
+         ========================================================================== -->
+    <div id="video-modal" class="video-modal" aria-hidden="true" role="dialog" aria-label="영상 재생 팝업">
+        <div class="video-modal-backdrop"></div>
+        <div class="video-modal-content">
+            <button type="button" class="video-modal-close" aria-label="영상 닫기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="video-modal-player-wrap">
+                <iframe id="video-modal-iframe" src="" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
             </div>
         </div>
     </div>

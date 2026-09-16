@@ -65,6 +65,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================================================
+    // 스마트 헤더 (Smart Header) - 스크롤 다운 시 숨김, 스크롤 업 시 노출
+    // ==========================================================================
+    const header = document.querySelector('.header');
+    if (header) {
+        let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        let ticking = false;
+        const scrollThreshold = 10; // 미세 스크롤 덜컥거림 방지 임계값 (10px)
+
+        const updateHeader = () => {
+            const currentScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+            const scrollDiff = currentScrollY - lastScrollY;
+
+            // 모바일 메뉴가 열려있을 때는 헤더 숨김 방지
+            const isMenuOpen = mobileDrawer && mobileDrawer.classList.contains('is-active');
+
+            if (!isMenuOpen) {
+                // 페이지 최상단 부근(100px 이내)에서는 항상 헤더 표시
+                if (currentScrollY <= 100) {
+                    header.classList.remove('header--hidden');
+                } else if (Math.abs(scrollDiff) >= scrollThreshold) {
+                    if (scrollDiff > 0) {
+                        // 스크롤 다운 -> 숨김
+                        header.classList.add('header--hidden');
+                    } else {
+                        // 스크롤 업 -> 노출
+                        header.classList.remove('header--hidden');
+                    }
+                }
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
     // BEER 페이지 맥주 카드 카테고리 필터링
     const beerFilterBtns = document.querySelectorAll('.beer-filter-btn');
     const beerCards = document.querySelectorAll('.beer-cards-grid .beer-card');
@@ -131,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 모달 열기
         galleryFrames.forEach(frame => {
             frame.addEventListener('click', () => {
+                if (frame.classList.contains('is-placeholder')) return;
                 const img = frame.querySelector('.gallery-img');
                 const tag = frame.querySelector('.frame-tag');
                 const title = frame.querySelector('.frame-title');
@@ -169,6 +213,89 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==========================================================================
+    // 브랜드 필름 & 갤러리 영상 유튜브 모달 팝업 제어
+    // - 1280px x 720px 16:9 비율 유지
+    // - data-video-id 또는 data-video-url을 통해 모달 열기
+    // - 닫힐 때 iframe src를 비워 오디오/영상 즉시 정지
+    // ==========================================================================
+    const videoModal = document.getElementById('video-modal');
+    const videoModalIframe = document.getElementById('video-modal-iframe');
+    const videoModalClose = document.querySelector('.video-modal-close');
+    const videoModalBackdrop = document.querySelector('.video-modal-backdrop');
+    const videoTriggers = document.querySelectorAll('[data-video-id], [data-video-url]');
+
+    const closeVideoModal = () => {
+        if (!videoModal) return;
+        videoModal.classList.remove('is-open');
+        videoModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (videoModalIframe) {
+            videoModalIframe.src = '';
+        }
+    };
+
+    const openVideoModal = (videoSource) => {
+        if (!videoModal || !videoModalIframe || !videoSource) return;
+
+        let embedUrl = '';
+        // 사용자가 유튜브 ID를 넣거나 전체 URL을 넣더라도 유연하게 파싱
+        if (videoSource.includes('youtube.com/embed/')) {
+            embedUrl = videoSource;
+        } else if (videoSource.includes('watch?v=')) {
+            const urlObj = new URL(videoSource);
+            const v = urlObj.searchParams.get('v');
+            embedUrl = `https://www.youtube.com/embed/${v}`;
+        } else if (videoSource.includes('youtu.be/')) {
+            const id = videoSource.split('youtu.be/')[1].split('?')[0];
+            embedUrl = `https://www.youtube.com/embed/${id}`;
+        } else {
+            // video id 형식 (기본)
+            embedUrl = `https://www.youtube.com/embed/${videoSource}`;
+        }
+
+        // 자동재생 및 관련 영상 매개변수 적용
+        const separator = embedUrl.includes('?') ? '&' : '?';
+        videoModalIframe.src = `${embedUrl}${separator}autoplay=1&rel=0&playsinline=1`;
+
+        videoModal.classList.add('is-open');
+        videoModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    if (videoTriggers.length > 0 && videoModal) {
+        videoTriggers.forEach(trigger => {
+            const triggerOpen = (e) => {
+                e.preventDefault();
+                const videoId = trigger.getAttribute('data-video-id') || trigger.getAttribute('data-video-url');
+                if (videoId) {
+                    openVideoModal(videoId);
+                }
+            };
+
+            trigger.addEventListener('click', triggerOpen);
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    triggerOpen(e);
+                }
+            });
+        });
+    }
+
+    if (videoModalClose) {
+        videoModalClose.addEventListener('click', closeVideoModal);
+    }
+    if (videoModalBackdrop) {
+        videoModalBackdrop.addEventListener('click', closeVideoModal);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal && videoModal.classList.contains('is-open')) {
+            closeVideoModal();
+        }
+    });
 
     // BEER 페이지 맥주 카드 클릭 시 맥주 상세 정보 모달 팝업
     const beerModal = document.getElementById('beer-modal');

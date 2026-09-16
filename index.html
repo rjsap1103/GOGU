@@ -141,8 +141,8 @@
 
             <!-- 5. 직사각형 버튼 그룹: (860, 744) 위치 -->
             <div class="hero-btn-group">
-                <!-- 버튼 1: EXPLORE BEER (배경 #AD1931 + 화살표 아이콘) -->
-                <a href="#beer" class="hero-btn hero-btn-primary">
+                <!-- 버튼 1: EXPLORE BEER (배경 #AD1931 + 화살표 아이콘, 맥주 페이지로 이동) -->
+                <a href="./beer.html" class="hero-btn hero-btn-primary">
                     <span class="btn-text">EXPLORE BEER</span>
                     <!-- 20x20 우측 화살표 SVG 아이콘 -->
                     <svg class="btn-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -152,8 +152,9 @@
                     </svg>
                 </a>
 
-                <!-- 버튼 2: BRAND FILM (투명 배경 + 1px 테두리 + 재생 아이콘) -->
-                <button type="button" class="hero-btn hero-btn-secondary" id="brandFilmBtn">
+                <!-- 버튼 2: BRAND FILM (투명 배경 + 1px 테두리 + 재생 아이콘, 유튜브 비디오 링크 설정) -->
+                <button type="button" class="hero-btn hero-btn-secondary" id="brandFilmBtn" data-video-id="fxy0TyU5f6Y"
+                    aria-label="브랜드 필름 영상 보기">
                     <!-- 14px 재생 아이콘 SVG -->
                     <svg class="btn-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                         <polygon points="6 3 20 12 6 21 6 3"></polygon>
@@ -656,8 +657,8 @@
                 <span class="film-line"></span>
             </div>
 
-            <!-- 정중앙 60x60 --color-accent 원형 재생 버튼 (20px --text-primary 재생 아이콘) -->
-            <button type="button" class="brand-film-play-btn" aria-label="브랜드 필름 재생">
+            <!-- 정중앙 60x60 --color-accent 원형 재생 버튼 (유튜브 비디오 링크 설정) -->
+            <button type="button" class="brand-film-play-btn" data-video-id="fxy0TyU5f6Y" aria-label="브랜드 필름 재생">
                 <svg class="film-play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M8 5v14l11-7z" />
                 </svg>
@@ -705,55 +706,37 @@
                     <!-- [1] 상단 시네마틱 와이드 프레임 (1320 x 520) -->
                     <a href="./gallery.html" class="gallery-frame gallery-frame-hero gallery-frame-1"
                         aria-label="갤러리 페이지로 이동">
-                        <div class="frame-placeholder">
-                            <span class="frame-tag">FRAME 01</span>
-                            <span class="frame-size">1320 × 520 px (시네마틱 와이드)</span>
-                        </div>
+                        <img src="./assets/images/Group_1/Group_1_Cinematic_Wide 1320 x 520 px/Cinematic_Wide_1.jpeg" alt="군산 황금빛 보리밭과 브루어리의 여명" class="gallery-img">
                     </a>
 
-                    <!-- [2] 중단 세로형 프레임 1 (426 x 500) -->
+                    <!-- [2] 중단 세로형 프레임 1 (425 x 500) -->
                     <a href="./gallery.html" class="gallery-frame gallery-frame-md gallery-frame-2"
                         aria-label="갤러리 페이지로 이동">
-                        <div class="frame-placeholder">
-                            <span class="frame-tag">FRAME 02</span>
-                            <span class="frame-size">426 × 500 px (세로형)</span>
-                        </div>
+                        <img src="./assets/images/Group_1/Group_1_Length 425 x 500 px/Length_1.png" alt="엄선된 군산 보리의 결" class="gallery-img">
                     </a>
 
-                    <!-- [3] 중단 세로형 프레임 2 (426 x 500) -->
+                    <!-- [3] 중단 세로형 프레임 2 (425 x 500) -->
                     <a href="./gallery.html" class="gallery-frame gallery-frame-md gallery-frame-3"
                         aria-label="갤러리 페이지로 이동">
-                        <div class="frame-placeholder">
-                            <span class="frame-tag">FRAME 03</span>
-                            <span class="frame-size">426 × 500 px (세로형)</span>
-                        </div>
+                        <img src="./assets/images/Group_1/Group_1_Length 425 x 500 px/Length_2.png" alt="수확의 숨결과 보리 맥아" class="gallery-img">
                     </a>
 
-                    <!-- [4] 중단 세로형 프레임 3 (426 x 500) -->
+                    <!-- [4] 중단 세로형 프레임 3 (425 x 500) -->
                     <a href="./gallery.html" class="gallery-frame gallery-frame-md gallery-frame-4"
                         aria-label="갤러리 페이지로 이동">
-                        <div class="frame-placeholder">
-                            <span class="frame-tag">FRAME 04</span>
-                            <span class="frame-size">426 × 500 px (세로형)</span>
-                        </div>
+                        <img src="./assets/images/Group_1/Group_1_Length 425 x 500 px/Length_3.jpeg" alt="양조사의 정성과 시간의 기록" class="gallery-img">
                     </a>
 
                     <!-- [5] 하단 와이드 프레임 1 (650 x 420) -->
                     <a href="./gallery.html" class="gallery-frame gallery-frame-lg gallery-frame-5"
                         aria-label="갤러리 페이지로 이동">
-                        <div class="frame-placeholder">
-                            <span class="frame-tag">FRAME 05</span>
-                            <span class="frame-size">650 × 420 px (와이드)</span>
-                        </div>
+                        <img src="./assets/images/Group_1/Group_1_Wide 650 x 420 px/Wide_1.png" alt="자연의 햇살을 머금은 브루하우스" class="gallery-img">
                     </a>
 
                     <!-- [6] 하단 와이드 프레임 2 (650 x 420) -->
                     <a href="./gallery.html" class="gallery-frame gallery-frame-lg gallery-frame-6"
                         aria-label="갤러리 페이지로 이동">
-                        <div class="frame-placeholder">
-                            <span class="frame-tag">FRAME 06</span>
-                            <span class="frame-size">650 × 420 px (와이드)</span>
-                        </div>
+                        <img src="./assets/images/Group_1/Group_1_Wide 650 x 420 px/Wide_2.png" alt="숙성의 계절을 기다리는 오크" class="gallery-img">
                     </a>
                 </div>
             </div>
@@ -769,7 +752,7 @@
              - 설명문 (16px, 줄간격 1.875)
              - 3개 상세 정보 (2px 40px 세로선 + 28px 수치 + 8px 라벨, 간격 32px)
              - 굿즈 페이지 링크 버튼 (SEE AUTUMN ALE + 16x16 화살표)
-             ========================================================================== -->
+             ========================================================================== -->0
         <section id="seasonal-release" class="seasonal-section">
             <div class="container seasonal-container">
                 <!-- 좌측: 600x400 이미지 프레임 -->
@@ -982,6 +965,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- ==========================================================================
+         유튜브 비디오 모달 팝업 (Video Modal - 16:9 Aspect Ratio)
+         - 데스크탑 기준 최대 1280px x 720px, 화면 중앙 정렬, 16:9 비율 유지
+         ========================================================================== -->
+    <div id="video-modal" class="video-modal" aria-hidden="true" role="dialog" aria-label="영상 재생 팝업">
+        <div class="video-modal-backdrop"></div>
+        <div class="video-modal-content">
+            <button type="button" class="video-modal-close" aria-label="영상 닫기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="video-modal-player-wrap">
+                <iframe id="video-modal-iframe" src="" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Main JavaScript -->
     <script src="./js/main.js"></script>

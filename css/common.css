@@ -70,6 +70,120 @@
 }
 
 /* ==========================================================================
+   공통 비디오 모달 팝업 (Video Modal - 16:9 YouTube Embed)
+   - 최대 1280px x 720px, 항상 16:9 비율 유지, 화면 중앙 정렬
+   ========================================================================== */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.video-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.video-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.video-modal-content {
+    position: relative;
+    z-index: 1;
+    width: 90vw;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-modal.is-open .video-modal-content {
+    transform: scale(1);
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.video-modal-close:hover {
+    color: var(--color-accent);
+    transform: rotate(90deg);
+}
+
+.video-modal-player-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 720px;
+    background-color: #000;
+    border: 1px solid rgba(163, 176, 167, 0.25);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.video-modal-player-wrap iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .video-modal-content {
+        width: 94vw;
+    }
+
+    .video-modal-close {
+        top: -40px;
+        width: 34px;
+        height: 34px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .video-modal-content {
+        width: 95vw;
+    }
+
+    .video-modal-close {
+        top: -36px;
+        right: 0;
+    }
+}
+
+/* ==========================================================================
    3. 기본 리셋 스타일 (Reset & Base)
    ========================================================================== */
 *,
@@ -174,7 +288,7 @@ h6 {
     /* 최대 1920px */
     height: var(--header-height);
     /* 높이 100px */
-    background: rgba(24, 35, 31, 0.3);
+    background: rgba(24, 35, 31, 0.65);
     /* 반투명 배경 */
     backdrop-filter: blur(4px);
     /* 은은한 글래스모피즘 효과 */
@@ -184,6 +298,12 @@ h6 {
     /* 테두리 없음 */
     z-index: 1000;
     /* 항상 최상단에 표시 */
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 스크롤 다운 시 화면 상단으로 숨김 */
+.header.header--hidden {
+    transform: translate(-50%, -100%);
 }
 
 /* 네비게이션 컨테이너 */

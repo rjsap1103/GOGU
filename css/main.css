@@ -1442,7 +1442,7 @@
     width: 100%;
     height: 100%;
     background-image: linear-gradient(rgba(24, 35, 31, 0.7), rgba(24, 35, 31, 0.7)),
-        url('../assets/images/brand_film_thumb.jpeg');
+        url('../assets/images/main_brandfilm.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1745,8 +1745,7 @@
     /* 10px 곡률 */
     background-color: rgba(52, 78, 65, 0.25);
     /* 은은한 서브 포레스트 톤 */
-    border: 1px dashed rgba(163, 176, 167, 0.35);
-    /* 이미지 삽입 전 가이드 테두리 */
+    border: 1px solid rgba(163, 176, 167, 0.25);
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -2354,6 +2353,7 @@
 
 /* 768px ~ 1024px: 태블릿 전용 (데스크톱 웹페이지 양식 완벽 계승 및 유동형 맞춤) */
 @media (min-width: 768px) and (max-width: 1024px) {
+
     /* 히어로 섹션 데스크톱 양식 계승 (상대위치/절대위치 조합 & 회전 텍스트 & 스크롤 인디케이터) */
     .hero-section {
         height: clamp(720px, 82vh, 880px);

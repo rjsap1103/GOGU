@@ -18,6 +18,7 @@
    - 하단 여백: 100px 적용 (padding-bottom: 100px)
    ========================================================================== */
 .beer-hero-section {
+    position: relative;
     width: 100%;
     max-width: var(--container-max-width);
     margin: 0 auto;
@@ -26,9 +27,40 @@
     padding-bottom: 0;
     /* 맥주 카드 영역과의 104px 여백을 위해 0으로 설정 */
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* 히어로 배경 은은한 이미지 */
+.beer-hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/images/hero_image2.jpeg');
+    background-size: cover;
+    background-position: center 35%;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 텍스트 가독성을 위한 하단 그라데이션 페이드 */
+.beer-hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(24, 35, 31, 0.4) 0%,
+        rgba(24, 35, 31, 0.2) 50%,
+        var(--color-main) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .beer-hero-container {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
